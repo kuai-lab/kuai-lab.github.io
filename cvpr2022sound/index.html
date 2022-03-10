@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sound-Guided Semantic Image Manipulation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="Sound-Guided Semantic Image Manipulation">
+    <meta property="og:url" content="https://cvpr2022-7227.github.io/">
+	<meta property="og:image" content="https://cvpr2022-7227.github.io/image/overview.png">
+	<meta name="description" content="cvpr2022-7227">
+	<meta name="keywords" content="Sound-Guided Semantic Image Manipulation">
+	<meta name="author" content="....">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="title">
+    <h1>Sound-Guided Semantic Image Manipulation</h1>
+    <center>
+        <h3>IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2022</h3>
+    </center>
+    
+</div>
+<div class="byline">
+    <div class="authors">
+        <center>
+            <div class="author"><sup> <h2>Seung Hyun&nbsp;Lee</a><sup>1</sup> &emsp; Wonseok&nbsp;Roh</a><sup>1</sup> &emsp; Wonmin&nbsp;Byeon</a><sup>2</sup> &emsp; Sang Ho&nbsp;Yoon</a><sup>3</sup>&emsp; Chanyoung&nbsp;Kim</a><sup>1</sup> &emsp; Jinkyu&nbsp;Kim</a><sup>1*</sup>&emsp; Sangpil&nbsp;Kim</a><sup>1*</sup></h2></sup></div>
+
+        </center>
+    </div>
+    <div class="affiliations">
+        <center>
+            <p class="affiliation"><sup> </sup><h3>Korea University<sup>1</sup> &emsp; NVIDIA Research<sup>2</sup>&emsp; KAIST<sup>3</sup></h3></p>
+        </center>
+    </div>
+    <div class="links">
+        <center>
+            <a href="https://arxiv.org/abs/2112.00007" class="link">
+                [Paper]
+    
+        </center>
+        </a>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="center-img">
+        <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/overview.png">
+    </div>
+    <div class="sections-container">
+        <div class="section">
+            <h2 class="section-title">Abstract</h2>
+            <p>
+                The recent success of the generative model shows that leveraging the multi-modal embedding space can manipulate an image using text information.
+                However, manipulating an image with other sources rather than text, such as sound, is not easy due to the dynamic characteristics of the sources.
+                Especially, sound can convey vivid emotions and dynamic expressions of the real world.
+                Here, we propose a framework that directly encodes sound into the multi-modal (image-text) embedding space and manipulates an image from the space.
+                Our audio encoder is trained to produce a latent representation from an audio input, which is forced to be aligned with image and text representations in the multi-modal embedding space.
+                We use a direct latent optimization method based on aligned embeddings for sound-guided image manipulation.
+                We also show that our method can mix text and audio modalities, which enrich the variety of the image modification.
+                We verify the effectiveness of our sound-guided image manipulation quantitatively and qualitatively.
+                We also show that our method can mix different modalities, i.e., text and audio, which enrich the variety of the image modification.
+                The experiments on zero-shot audio classification and semantic-level image classification show that our proposed model outperforms other text and sound-guided state-of-the-art methods.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Method</h2>
+            <div class="center-img">
+                <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/main_figure.png"/>
+            </div>
+            <p style="margin-top: 30px">
+                Our model consists of two main steps: (a) the <em>CLIP-based Contrastive Latent Representation Learning</em> step and (b) the <em>Sound-Guided Image Manipulation</em> step.
+                In (a), we train a set of encoders with three different modalities (audio, text, and image) to produce the matched latent representations.
+                The latent representations for a positive triplet pair (e.g., audio input: "Explosion", text: "explosion", and corresponding image) are mapped close together,
+                while that of negative pair samples further away in the (CLIP-based) embedding space (left).
+                In (b), we use a direct code optimization approach where a source latent code is modified in response to user-provided audio, producing a sound-guided image manipulation result (right).
+            </p>
+        </div>
+<!--        <div class="section">-->
+<!--            <h2 class="section-title">Links</h2>-->
+<!--        </div>-->
+        <div class="section">
+            <h2 class="section-title">Manipulation Results</h2>
+            <p> Comparison of manipulation results between ours and the existing text-driven manipulation approach,
+                StyleCLIP. Unlike the text-driven approach, ours can produce more diverse manipulation results in response to different intensities of raining, i.e. raining, raining
+                with weak thunder, and raining with strong thunder.</p>
+
+            <div class="center-img">
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/fire_demo.gif"/>
+                    <figcaption style="text-align: center;"> 🔊Fire crackling.</figcaption>
+                    <audio controls>
+                        <source src="https://kr.object.ncloudstorage.com/cvpr2022/fire.wav" type="audio/wav">
+                    </audio>
+                </figure>
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/explosion_demo.gif"/>
+                    <figcaption style="text-align: center;"> 🔊Explosion.</figcaption>
+                    <audio controls>
+                        <source src="https://kr.object.ncloudstorage.com/cvpr2022/explosion.wav" type="audio/wav">
+                    </audio>
+                </figure>
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/thunder2_demo.gif"/>
+                    <figcaption style="text-align: center;"> 🔊Thunder.</figcaption>
+                    <audio controls>
+                        <source src="https://kr.object.ncloudstorage.com/cvpr2022/thunder2.wav" type="audio/wav">
+                    </audio>
+                </figure>
+            </div>
+
+            <div class="center-img">
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/thunderstorm_demo.gif"/>
+                    <figcaption style="text-align: center;"> 🔊Thunderstorm.</figcaption>
+                    <audio controls>
+                        <source src="https://kr.object.ncloudstorage.com/cvpr2022/thunderstorm.wav" type="audio/wav">
+                    </audio>
+                </figure>
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/rain2_demo.gif"/>
+                    <figcaption style="text-align: center;"> 🔊Raining Scene 1.</figcaption>
+                    <audio controls>
+                        <source src="https://kr.object.ncloudstorage.com/cvpr2022/raining2.wav" type="audio/wav">
+                    </audio>
+                </figure>
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/rain3_demo.gif"/>
+                    <figcaption style="text-align: center;"> 🔊Raining Scene 2. </figcaption>
+                    <audio controls>
+                        <source src="https://kr.object.ncloudstorage.com/cvpr2022/raining3.wav" type="audio/wav">
+                    </audio>
+                </figure>
+            </div>
+            
+            <p>
+                The following manipulated results are obtained from the pretrained StyleGAN2 with the LSUN dataset.
+            </p>
+            
+
+            <div class="center-img">
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/figure4_submission.png"/>
+                </figure>
+            </div>
+            <div class="center-img">
+        
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/fire.wav" type="audio/wav">
+                </audio>
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/thunderstorm.wav" type="audio/wav">
+                </audio>
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/explosion.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <p> The following manipulated results are obtained from the pretrained StyleGAN2 with the FFHQ dataset.</p>
+
+            
+            <div class="center-img">
+                <figure>
+                    <img class="content" src="https://kr.object.ncloudstorage.com/cvpr2022/figure5_submission.png"/>
+                </figure>
+            </div>
+
+            <div class="center-img">
+                
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/sobbing.wav" type="audio/wav">
+                </audio>
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/giggling.wav" type="audio/wav">
+                </audio>
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/noseblowing.wav" type="audio/wav">
+                </audio>
+            </div>
+
+
+            <h3 style="margin-bottom: 30px">The LHQ dataset.</h3>
+            <div class="examples">
+                <div id="left-example-column" class="example-column"></div>
+                <div id="right-example-column" class="example-column"></div>
+            </div>
+                
+            <h3 style="margin-bottom: 30px">The AFHQ2 dataset.</h3>
+
+            <div class="example-item">
+                <img src="https://kr.object.ncloudstorage.com/cvpr2022/wolfhowling0000.jpg" >
+                <p class="arrow">→</p>
+                <img src="https://kr.object.ncloudstorage.com/cvpr2022/wolfhowling0190.jpg">
+            </div>
+            <div class="sound-control">
+                <p> 🔊Wolf-howling</p>
+                
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/wolf-howling.wav" type="audio/wav">
+                </audio>
+            </div> 
+
+            <div class="example-item">
+                <img src="https://kr.object.ncloudstorage.com/cvpr2022/wildangry0000.jpg" >
+                <p class="arrow">→</p>
+                <img src="https://kr.object.ncloudstorage.com/cvpr2022/wildangry0199.jpg">
+            </div>
+            <div class="sound-control">
+                <p> 🔊Dog Barking</p>
+                
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/wildangry.wav" type="audio/wav">
+                </audio>
+            </div> 
+
+            <div class="example-item">
+                <img src="https://kr.object.ncloudstorage.com/cvpr2022/lionroaring0000.jpg" >
+                <p class="arrow">→</p>
+                <img src="https://kr.object.ncloudstorage.com/cvpr2022/lionroaring0190.jpg">
+            </div>
+            <div class="sound-control">
+                <p> 🔊Lion Roaring</p>
+                
+                <audio controls>
+                    <source src="https://kr.object.ncloudstorage.com/cvpr2022/wounded-lion-growling.wav" type="audio/wav">
+                </audio>
+            </div> 
+        
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 text-left">
+            <h3>BibTeX</h3>
+            <p>If you use our code or data, please cite:</p>
+            <pre>
+	    <code>
+@article{lee2021sound,
+    title={Sound-Guided Semantic Image Manipulation},
+    author={Lee, Seung Hyun and Roh, Wonseok and Byeon, Wonmin and Yoon, Sang Ho and Kim, Chan Young and Kim, Jinkyu and Kim, Sangpil},
+    journal={arXiv preprint arXiv:2112.00007},
+    year={2021}
+    }
+    </code>
+    </pre>
+        </div>
+    </div>
+<!--        <div class="section">-->
+<!--            <h2 class="section-title">Videos</h2>-->
+<!--        </div>-->
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        formatting_manipulation_results()
+    });
+
+    const manipulation_examples = [
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/0.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video1.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/wind.wav", "attribute": "🔊Wind"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/27.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video7.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/explosion.wav", "attribute": "🔊Explosion" },
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/40.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video2.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/thunderstorm.wav", "attribute": "🔊Thunder"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/1.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video8.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/raining2.wav", "attribute": "🔊Rain"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/2.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video3.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/thunderstorm.wav", "attribute": "🔊Thunder"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/3.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video9.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/explosion.wav", "attribute": "🔊Explosion"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/4.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video4.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/explosion.wav", "attribute": "🔊Explosion"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/chain.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video13.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/chain.wav", "attribute": "🔊Chainsaw"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/6.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video5.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/thunderstorm.wav", "attribute": "🔊Thunder"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/16.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video11.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/wind.wav", "attribute": "🔊Wind"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/24.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video6.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/bubbling.wav", "attribute": "🔊Water"},
+        {"source_image": "https://kr.object.ncloudstorage.com/cvpr2022/14.png", "manipulated_image": "https://kr.object.ncloudstorage.com/cvpr2022/video12.gif", "sound": "https://kr.object.ncloudstorage.com/cvpr2022/raining2.wav", "attribute": "🔊Rain"}
+    ]
+    function formatting_manipulation_results(){
+        let left_example_column = document.querySelector('#left-example-column');
+        let right_example_column = document.querySelector('#right-example-column');
+
+        for(let i=0;i<manipulation_examples.length;i++){
+            let example_item = document.createElement('div')
+            example_item.classList.add('example-item')
+
+            let source_image = document.createElement('img')
+            source_image.setAttribute('src', manipulation_examples[i]['source_image'])
+            source_image.classList.add('example-image')
+
+            let manipulated_image = document.createElement('img')
+            manipulated_image.setAttribute('src', manipulation_examples[i]['manipulated_image'])
+            manipulated_image.classList.add('example-image')
+
+            let arrow_p = document.createElement('p')
+            arrow_p.classList.add('arrow')
+            arrow_p.innerHTML = '&rarr;'
+
+            example_item.append(source_image, arrow_p, manipulated_image)
+
+            let sound_control = document.createElement('div')
+            sound_control.classList.add('sound-control')
+            sound_control.innerText += manipulation_examples[i]['attribute']
+
+            let audio_controls = document.createElement('audio')
+            audio_controls.setAttribute('controls', 'true')
+            let audio_source = document.createElement('source')
+            audio_source.setAttribute('src', manipulation_examples[i]['sound'])
+            audio_source.setAttribute('type', 'audio/wav')
+
+            audio_controls.append(audio_source)
+            sound_control.append(audio_controls)
+
+            if (i%2 == 0){
+                left_example_column.append(example_item, sound_control)
+            }else{
+                right_example_column.append(example_item, sound_control)
+            }
+        }
+    }
+
+
+    
+
+</script>
+</html>

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio-Guided Image Manipulation for Artistic Paintings
+</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="Artistic Image Style Modification by Audio">
+	<meta property="og:url" content="https://kuai-lab.github.io/aiartist/">
+	<meta property="og:image" content="https://kuai-lab.github.io/aiartist/image/overview.png">
+
+	<meta name="description" content="kuaicv">
+	<meta name="keywords" content="Computer Vision, GAN, CLIP, StyleCLIP, Korea University">
+	<meta name="author" content="Gaejal-hak">
+	<!-- jQuery -->
+	<script
+		src="https://code.jquery.com/jquery-3.1.0.min.js"
+		integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+		crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container" style="background-color: white">
+		<div class="row">
+			<div class="col-xs-12 text-center" style="background-color: #e9ecef">
+				<br>
+				<h1>Audio-Guided Image Manipulation for Artistic Paintings</h1>
+				<br>
+				<h4><a href="https://sites.google.com/view/seung-hyun-lee/%ED%99%88">Seung hyun&nbsp;Lee</a><sup>1</sup> &emsp; <a href="https://github.com/NahyukLEE">Nahyuk&nbsp;Lee</a><sup>1</sup> &emsp; <a href="https://kcy.smarcle.dev/">Chanyoung&nbsp;Kim</a><sup>1</sup> &emsp; <a href="https://www.linkedin.com/in/won-jeong-ryoo-6a72221b3/">Wonjeong&nbsp;Ryoo</a><sup>1</sup>&emsp; <a href="https://visionai.korea.ac.kr/">Jinkyu&nbsp;Kim</a><sup>1</sup> &emsp; <a href="http://hcidesigner.weebly.com/">Sang Ho&nbsp;Yoon</a><sup>2</sup>&emsp; <a href="https://kuaicv.com/">Sangpil&nbsp;Kim</a><sup>1</sup></h4>
+			</div>
+			<div class="col-xs-12 text-center" style="background-color: #e9ecef">
+                
+                <h4>Korea University<sup>1</sup> &emsp; KAIST<sup>2</sup></h4>
+            </div>
+		</div>
+		<br>
+		<div class="row">
+                <img class="img-responsive" src="image/overview.png" width = "800">
+		</div>
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>Overview</h3>
+				<p >We propose a novel audio-guided image manipulation approach for artistic paintings, generating semantically meaningful latent manipulations that give an audio input. To our best knowledge, our work is the first to explore generating semantically meaningful image manipulations from various audio sources. Our proposed approach consists of two main steps. First, we train a set of encoders with a different modality (i.e., audio, text, and image) to produce the matched latent representations.  Second, we use direct code optimization to modify a source latent code in response to a user-provided audio input. This methodology enables various manipulations for art paintings conditioned on driving audio inputs, such as wind, fire, explosion, thunderstorm, rain, folk music, and Latin music.</p>
+			</div>
+		</div>
+       
+		<div class="row">
+			<div class="col-xs-12 text-left">
+           
+				<h3>Examples</h3>
+				<center>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/qjMsVRUyC10" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</center>
+				<div style="width: 100%">
+					<div style="display: flex; flex-direction: row;">
+						<div class="image-audio-items">
+							<b style="font-size: 13px">Original Art</b>
+						</div>
+						<div class="image-audio-items">
+							<b style="font-size: 13px">Sound</b>
+						</div>
+						<div class="image-audio-items">
+							<b style="font-size: 13px">Manipulated Art</b>
+						</div>
+					</div>
+					<div class="image-audio">
+						<div class="image-audio-items">
+							<img alt="" src="image/93.png" width="300" />
+						</div>
+						<div class="image-audio-items">
+							<audio controls> <source src="audio/fire.wav" type="audio/wav"></audio>
+							<h4>Fire Sound -></h4>
+						</div>
+						<div class="image-audio-items">
+							<img alt="" src="image/fire.gif" width="300" />
+						</div>
+					</div>
+					<div class="image-audio">
+						<div class="image-audio-items">
+							<img alt="" src="image/0.png" width="300" />
+						</div>
+						<div class="image-audio-items">
+							<audio controls> <source src="audio/latinmusic.wav" type="audio/wav"></audio>
+							<h4>Latin Music Sound -></h4>
+						</div>
+						<div class="image-audio-items">
+							<img alt="" src="image/latin.gif" width="300" />
+						</div>
+					</div>
+					<div class="image-audio">
+						<div class="image-audio-items">
+							<img alt="" src="image/37.png" width="300" />
+						</div>
+						<div class="image-audio-items">
+							<audio controls> <source src="audio/wind.wav" type="audio/wav"></audio>
+							<h4>Wind Sound -></h4>
+						</div>
+						<div class="image-audio-items">
+							<img alt="" src="image/wind.gif" width="300" />
+						</div>
+					</div>
+				</div>
+			</div>
+		
+		
+        <div class="row">
+			<div class="col-xs-12 text-left" style="margin-top: 3%">
+				<img class="img-responsive" src="image/plot.png" width = "1100">
+				
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 text-left">
+				<h3>BibTeX</h3>
+				<p>If you use our code or data, please cite:</p>
+				<pre>
+    @inproceedings{seunghyun2021audio,
+      title        = {Audio-Guided Image Manipulation for Artistic Paintings},
+      author       = {Seung hyun Lee, Nahyuk Lee, Chanyoung Kim, Wonjeong Ryoo, Jinkyu Kim, Sang Ho Yoon, Sangpil Kim},
+      booktitle    = {NIPS Workshop on Machine Learning for Creativity and Design},
+      year         = {2021}
+    }
+</pre>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	
+	
+<style type="text/css">
+	.container {
+		background-color: #FBFBFC;
+	}
+	.teaser-img {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	.img-responsive {
+		margin: auto;
+	}
+	.image-audio {
+		display: flex;
+		flex-direction: row;
+	}
+	.image-audio-items {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 33%;
+		margin: 10px;
+	}
+</style>
+<script>
+	$(document).ready(function() {
+		check_size();
+	});
+
+	function check_size(){
+		let window_width = $(window).width();
+		if(window_width < 500){
+			let image_audio_collection = document.querySelectorAll('.image-audio')
+			for (let i=0;i<image_audio_collection.length;i++){
+				let children_collection = image_audio_collection[i].children
+				for (let j=0;j<children_collection.length;j++){
+					children_collection[j].style.width = '100%'
+				}
+				image_audio_collection[i].classList.remove('image-audio')
+			}
+		}
+	}
+</script>
+</body>
+</html>

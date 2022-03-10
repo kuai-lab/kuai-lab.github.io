@@ -1,0 +1,164 @@
+body {
+    font-family: "Barlow",system-ui,Arial,sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    padding: 64px 0 24px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.title h1 {
+    font-size: 50px;
+    font-family: "Barlow",system-ui,Arial,sans-serif;
+    color: #082333;
+    font-weight: 650;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+    text-align: center;
+}
+
+.author {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #000000;
+}
+
+.link {
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #000000;
+}
+
+.affiliation {
+    margin-top: 20px;
+    font-size: 15px;
+    color: #7E7E7E;
+}
+
+.authors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-flow: wrap;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-flow: wrap;
+}
+
+.affiliations {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.byline {
+    padding: 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.center-img {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #082333;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.section {
+    width: 100%;
+    line-height: 1.7;
+    color: #212835;
+}
+
+.content {
+    max-width: 1000px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sections-container {
+    max-width: 1280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.examples {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.example-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sound-control {
+    margin-top: 5px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: 00;
+    font-family: "Times New Roman";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+audio {
+    width: 260px;
+}
+
+.arrow {
+    font-size: 30px;
+    margin: auto 30px auto 30px;
+}
+
+.example-image {
+    width: 256px;
+}
+
+@media (max-width: 500px) {
+    .center-img {
+        display: none;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    .examples {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .example-image {
+        width: 175px;
+    }
+}
