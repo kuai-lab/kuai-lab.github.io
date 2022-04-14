@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://tianqi.name/jekyll-TeXt-theme/feed.xml" rel="self" type="application/atom+xml" /><link href="https://tianqi.name/jekyll-TeXt-theme/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-01-03T23:02:04+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/feed.xml</id><title type="html">TeXt Theme</title><subtitle>A super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc.
-</subtitle><author><name>TeXt</name><email>kitian616@outlook.com</email></author><entry><title type="html">Blog - What’s NEXT</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2019/10/09/what-next.html" rel="alternate" type="text/html" title="Blog - What’s NEXT" /><published>2019-10-09T00:00:00+08:00</published><updated>2019-10-09T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2019/10/09/what-next</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2019/10/09/what-next.html">&lt;p&gt;Dark Mode is cool, and TeXt is supporting it.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/techblog/feed.xml" rel="self" type="application/atom+xml" /><link href="/techblog/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-01-03T23:02:04+08:00</updated><id>/techblog/feed.xml</id><title type="html">TeXt Theme</title><subtitle>A super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc.
+</subtitle><author><name>TeXt</name><email>kitian616@outlook.com</email></author><entry><title type="html">Blog - What’s NEXT</title><link href="/techblog/post/2019/10/09/what-next.html" rel="alternate" type="text/html" title="Blog - What’s NEXT" /><published>2019-10-09T00:00:00+08:00</published><updated>2019-10-09T00:00:00+08:00</updated><id>/techblog/post/2019/10/09/what-next</id><content type="html" xml:base="/techblog/post/2019/10/09/what-next.html">&lt;p&gt;Dark Mode is cool, and TeXt is supporting it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/blog/dark-mode.gif&quot; alt=&quot;Dark Mode&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/blog/dark-mode.gif&quot; alt=&quot;Dark Mode&quot; /&gt;&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -9,17 +9,17 @@
 
 &lt;p&gt;It is developing on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dev&lt;/code&gt; branch, you can run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout dev&lt;/code&gt; to switch to this branch.&lt;/p&gt;
 
-&lt;p&gt;For now, ONLY &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt; skin supports Dark Mode.&lt;/p&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="Blog" /><summary type="html">Dark Mode is cool, and TeXt is supporting it.</summary></entry><entry><title type="html">TeXt - Additional Styles</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/08/additional-styles.html" rel="alternate" type="text/html" title="TeXt - Additional Styles" /><published>2017-08-08T00:00:00+08:00</published><updated>2017-08-08T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2017/08/08/additional-styles</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/08/additional-styles.html">&lt;p class=&quot;success&quot;&gt;Success!&lt;/p&gt;
+&lt;p&gt;For now, ONLY &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;default&lt;/code&gt; skin supports Dark Mode.&lt;/p&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="Blog" /><summary type="html">Dark Mode is cool, and TeXt is supporting it.</summary></entry><entry><title type="html">TeXt - Additional Styles</title><link href="/techblog/post/2017/08/08/additional-styles.html" rel="alternate" type="text/html" title="TeXt - Additional Styles" /><published>2017-08-08T00:00:00+08:00</published><updated>2017-08-08T00:00:00+08:00</updated><id>/techblog/post/2017/08/08/additional-styles</id><content type="html" xml:base="/techblog/post/2017/08/08/additional-styles.html">&lt;p class=&quot;success&quot;&gt;Success!&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext success highlighter-rouge&quot;&gt;success&lt;/code&gt; &lt;code class=&quot;language-plaintext info highlighter-rouge&quot;&gt;info&lt;/code&gt; &lt;code class=&quot;language-plaintext warning highlighter-rouge&quot;&gt;warning&lt;/code&gt; &lt;code class=&quot;language-plaintext error highlighter-rouge&quot;&gt;error&lt;/code&gt;&lt;/p&gt;
 
 &lt;div class=&quot;grid-container&quot;&gt;
 &lt;div class=&quot;grid grid--p-3&quot;&gt;
 &lt;div class=&quot;cell cell--12 cell--md-5 cell--lg-4&quot;&gt;
-      &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_rounded&quot; class=&quot;rounded&quot; /&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_rounded&quot; class=&quot;rounded&quot; /&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;div class=&quot;cell cell--12 cell--md-5 cell--lg-4&quot;&gt;
-      &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle+shadow&quot; class=&quot;circle shadow&quot; /&gt;&lt;/p&gt;
+      &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle+shadow&quot; class=&quot;circle shadow&quot; /&gt;&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -43,7 +43,7 @@
 
 &lt;!--more--&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/additional-styles&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/techblog/docs/en/additional-styles&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;alert&quot;&gt;Alert&lt;/h2&gt;
 
@@ -76,8 +76,8 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_border&quot; class=&quot;border&quot; /&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_shadow&quot; class=&quot;shadow&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_border&quot; class=&quot;border&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_shadow&quot; class=&quot;shadow&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -91,8 +91,8 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_rounded&quot; class=&quot;rounded&quot; /&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle&quot; class=&quot;circle&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_rounded&quot; class=&quot;rounded&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle&quot; class=&quot;circle&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -108,8 +108,8 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_border+rounded&quot; class=&quot;border rounded&quot; /&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle+shadow&quot; class=&quot;circle shadow&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_border+rounded&quot; class=&quot;border rounded&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle+shadow&quot; class=&quot;circle shadow&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -123,8 +123,8 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_rounded+shadow&quot; class=&quot;circle rounded shadow&quot; /&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle+border+shadow&quot; class=&quot;circle border shadow&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_rounded+shadow&quot; class=&quot;circle rounded shadow&quot; /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kitian616/techblog/master/docs/assets/images/image.jpg&quot; alt=&quot;Image&quot; title=&quot;Image_circle+border+shadow&quot; class=&quot;circle border shadow&quot; /&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -141,42 +141,42 @@
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;Spacing&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/spacing&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/spacing&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Grid&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/grid&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/grid&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Icons&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/icons&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/icons&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Image&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/image&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/image&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Button&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/button&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/button&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Item&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/item&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/item&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Card&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/card&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/card&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Hero&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/hero&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/hero&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Swiper&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/swiper&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/techblog/docs/en/swiper&quot;&gt;Doc&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">Success! success info warning error CLICK ME CLICK ME CLICK ME CLICK ME</summary></entry><entry><title type="html">TeXt - Extensions</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/02/extensions.html" rel="alternate" type="text/html" title="TeXt - Extensions" /><published>2017-08-02T00:00:00+08:00</published><updated>2017-08-02T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2017/08/02/extensions</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2017/08/02/extensions.html">&lt;p&gt;With the help of extensions, you can easily add &lt;strong&gt;audios&lt;/strong&gt;, &lt;strong&gt;videos&lt;/strong&gt;, &lt;strong&gt;slides&lt;/strong&gt; and &lt;strong&gt;demos&lt;/strong&gt; in your posts.&lt;/p&gt;
+&lt;/table&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">Success! success info warning error CLICK ME CLICK ME CLICK ME CLICK ME</summary></entry><entry><title type="html">TeXt - Extensions</title><link href="/techblog/post/2017/08/02/extensions.html" rel="alternate" type="text/html" title="TeXt - Extensions" /><published>2017-08-02T00:00:00+08:00</published><updated>2017-08-02T00:00:00+08:00</updated><id>/techblog/post/2017/08/02/extensions</id><content type="html" xml:base="/techblog/post/2017/08/02/extensions.html">&lt;p&gt;With the help of extensions, you can easily add &lt;strong&gt;audios&lt;/strong&gt;, &lt;strong&gt;videos&lt;/strong&gt;, &lt;strong&gt;slides&lt;/strong&gt; and &lt;strong&gt;demos&lt;/strong&gt; in your posts.&lt;/p&gt;
 
 &lt;div&gt;&lt;div class=&quot;extensions extensions--video&quot;&gt;
   &lt;iframe src=&quot;https://embed.ted.com/talks/emily_esfahani_smith_there_s_more_to_life_than_being_happy&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;&quot;&gt;
@@ -186,7 +186,7 @@
 
 &lt;!--more--&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/extensions&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/techblog/docs/en/extensions&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;audio&quot;&gt;Audio&lt;/h2&gt;
 
@@ -245,7 +245,7 @@
 &lt;div&gt;&lt;div class=&quot;extensions extensions--demo&quot;&gt;
 &lt;iframe src=&quot;//codepen.io/kitian616/embed/aQmWZG/?theme-id=0&amp;amp;default-tab=html,result&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;
-&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">With the help of extensions, you can easily add audios, videos, slides and demos in your posts.</summary></entry><entry><title type="html">TeXt - MathJax</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2017/07/07/mathjax.html" rel="alternate" type="text/html" title="TeXt - MathJax" /><published>2017-07-07T00:00:00+08:00</published><updated>2017-07-07T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2017/07/07/mathjax</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2017/07/07/mathjax.html">&lt;p&gt;When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are&lt;/p&gt;
+&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">With the help of extensions, you can easily add audios, videos, slides and demos in your posts.</summary></entry><entry><title type="html">TeXt - MathJax</title><link href="/techblog/post/2017/07/07/mathjax.html" rel="alternate" type="text/html" title="TeXt - MathJax" /><published>2017-07-07T00:00:00+08:00</published><updated>2017-07-07T00:00:00+08:00</updated><id>/techblog/post/2017/07/07/mathjax</id><content type="html" xml:base="/techblog/post/2017/07/07/mathjax.html">&lt;p&gt;When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are&lt;/p&gt;
 
 \[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\]
 
@@ -257,7 +257,7 @@
 
 &lt;p class=&quot;info&quot;&gt;&lt;strong&gt;After MathJax enabled&lt;/strong&gt;, you can set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mathjax_autoNumber: true&lt;/code&gt; to have equations be numbered automatically, You can use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\notag&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\nonumber&lt;/code&gt; to prevent individual equations from being numbered.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/markdown-enhancements#mathjax&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/techblog/docs/en/markdown-enhancements#mathjax&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;markdown:&lt;/strong&gt;&lt;/p&gt;
 
@@ -273,7 +273,7 @@
 mathjax: true
 mathjax_autoNumber: true
 ---
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\] \[x_2 = {-b - \sqrt{b^2-4ac} \over 2a} \notag\]</summary></entry><entry><title type="html">TeXt - Mermaid</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2017/06/06/mermaid.html" rel="alternate" type="text/html" title="TeXt - Mermaid" /><published>2017-06-06T00:00:00+08:00</published><updated>2017-06-06T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2017/06/06/mermaid</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2017/06/06/mermaid.html">&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TB;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are \[x_1 = {-b + \sqrt{b^2-4ac} \over 2a}\] \[x_2 = {-b - \sqrt{b^2-4ac} \over 2a} \notag\]</summary></entry><entry><title type="html">TeXt - Mermaid</title><link href="/techblog/post/2017/06/06/mermaid.html" rel="alternate" type="text/html" title="TeXt - Mermaid" /><published>2017-06-06T00:00:00+08:00</published><updated>2017-06-06T00:00:00+08:00</updated><id>/techblog/post/2017/06/06/mermaid</id><content type="html" xml:base="/techblog/post/2017/06/06/mermaid.html">&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph TB;
     A[Do you have a problem in your life?]
     B[Then don't worry]
     C[Can you do something about it?]
@@ -287,7 +287,7 @@ mathjax_autoNumber: true
 
 &lt;p class=&quot;warning&quot;&gt;You need set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mermaid: true&lt;/code&gt; in the &lt;em&gt;_config.yml&lt;/em&gt; or the markdown’s front matter to &lt;strong&gt;enable&lt;/strong&gt; it.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/markdown-enhancements#mermaid&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/techblog/docs/en/markdown-enhancements#mermaid&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Generation of diagrams and flowcharts from text in a similar manner as markdown.&lt;/p&gt;
 
@@ -385,7 +385,7 @@ gantt
     Create tests for renderer           :2d
     Add to mermaid
 ```
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">graph TB; A[Do you have a problem in your life?] B[Then don't worry] C[Can you do something about it?] A--no--&amp;gt;B; A--yes--&amp;gt;C; C--no--&amp;gt;B; C--yes--&amp;gt;B;</summary></entry><entry><title type="html">TeXt - Chart</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2017/05/05/chart.html" rel="alternate" type="text/html" title="TeXt - Chart" /><published>2017-05-05T00:00:00+08:00</published><updated>2017-05-05T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2017/05/05/chart</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2017/05/05/chart.html">&lt;pre&gt;&lt;code class=&quot;language-chart&quot;&gt;{
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">graph TB; A[Do you have a problem in your life?] B[Then don't worry] C[Can you do something about it?] A--no--&amp;gt;B; A--yes--&amp;gt;C; C--no--&amp;gt;B; C--yes--&amp;gt;B;</summary></entry><entry><title type="html">TeXt - Chart</title><link href="/techblog/post/2017/05/05/chart.html" rel="alternate" type="text/html" title="TeXt - Chart" /><published>2017-05-05T00:00:00+08:00</published><updated>2017-05-05T00:00:00+08:00</updated><id>/techblog/post/2017/05/05/chart</id><content type="html" xml:base="/techblog/post/2017/05/05/chart.html">&lt;pre&gt;&lt;code class=&quot;language-chart&quot;&gt;{
   &quot;type&quot;: &quot;line&quot;,
   &quot;data&quot;: {
     &quot;labels&quot;: [
@@ -438,7 +438,7 @@ gantt
 
 &lt;p class=&quot;warning&quot;&gt;You need set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chart: true&lt;/code&gt; in the &lt;em&gt;_config.yml&lt;/em&gt; or the markdown’s front matter to &lt;strong&gt;enable&lt;/strong&gt; it.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/markdown-enhancements#chart&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/techblog/docs/en/markdown-enhancements#chart&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;line-chart&quot;&gt;Line Chart&lt;/h2&gt;
 
@@ -1030,7 +1030,7 @@ gantt
   &quot;options&quot;: {}
 }
 ```
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">{ &quot;type&quot;: &quot;line&quot;, &quot;data&quot;: { &quot;labels&quot;: [ &quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot; ], &quot;datasets&quot;: [ { &quot;label&quot;: &quot;# of bugs&quot;, &quot;fill&quot;: false, &quot;lineTension&quot;: 0.1, &quot;backgroundColor&quot;: &quot;rgba(75,192,192,0.4)&quot;, &quot;borderColor&quot;: &quot;rgba(75,192,192,1)&quot;, &quot;borderCapStyle&quot;: &quot;butt&quot;, &quot;borderDash&quot;: [], &quot;borderDashOffset&quot;: 0, &quot;borderJoinStyle&quot;: &quot;miter&quot;, &quot;pointBorderColor&quot;: &quot;rgba(75,192,192,1)&quot;, &quot;pointBackgroundColor&quot;: &quot;#fff&quot;, &quot;pointBorderWidth&quot;: 1, &quot;pointHoverRadius&quot;: 5, &quot;pointHoverBackgroundColor&quot;: &quot;rgba(75,192,192,1)&quot;, &quot;pointHoverBorderColor&quot;: &quot;rgba(220,220,220,1)&quot;, &quot;pointHoverBorderWidth&quot;: 2, &quot;pointRadius&quot;: 1, &quot;pointHitRadius&quot;: 10, &quot;data&quot;: [ 65, 59, 80, 81, 56, 55, 40 ], &quot;spanGaps&quot;: false } ] }, &quot;options&quot;: {} }</summary></entry><entry><title type="html">TeXt - Modify Date</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2017/04/19/modify-date.html" rel="alternate" type="text/html" title="TeXt - Modify Date" /><published>2017-04-19T00:00:00+08:00</published><updated>2017-04-19T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2017/04/19/modify-date</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2017/04/19/modify-date.html">&lt;p&gt;Article with modify date.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">{ &quot;type&quot;: &quot;line&quot;, &quot;data&quot;: { &quot;labels&quot;: [ &quot;January&quot;, &quot;February&quot;, &quot;March&quot;, &quot;April&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot; ], &quot;datasets&quot;: [ { &quot;label&quot;: &quot;# of bugs&quot;, &quot;fill&quot;: false, &quot;lineTension&quot;: 0.1, &quot;backgroundColor&quot;: &quot;rgba(75,192,192,0.4)&quot;, &quot;borderColor&quot;: &quot;rgba(75,192,192,1)&quot;, &quot;borderCapStyle&quot;: &quot;butt&quot;, &quot;borderDash&quot;: [], &quot;borderDashOffset&quot;: 0, &quot;borderJoinStyle&quot;: &quot;miter&quot;, &quot;pointBorderColor&quot;: &quot;rgba(75,192,192,1)&quot;, &quot;pointBackgroundColor&quot;: &quot;#fff&quot;, &quot;pointBorderWidth&quot;: 1, &quot;pointHoverRadius&quot;: 5, &quot;pointHoverBackgroundColor&quot;: &quot;rgba(75,192,192,1)&quot;, &quot;pointHoverBorderColor&quot;: &quot;rgba(220,220,220,1)&quot;, &quot;pointHoverBorderWidth&quot;: 2, &quot;pointRadius&quot;: 1, &quot;pointHitRadius&quot;: 10, &quot;data&quot;: [ 65, 59, 80, 81, 56, 55, 40 ], &quot;spanGaps&quot;: false } ] }, &quot;options&quot;: {} }</summary></entry><entry><title type="html">TeXt - Modify Date</title><link href="/techblog/post/2017/04/19/modify-date.html" rel="alternate" type="text/html" title="TeXt - Modify Date" /><published>2017-04-19T00:00:00+08:00</published><updated>2017-04-19T00:00:00+08:00</updated><id>/techblog/post/2017/04/19/modify-date</id><content type="html" xml:base="/techblog/post/2017/04/19/modify-date.html">&lt;p&gt;Article with modify date.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1040,7 +1040,7 @@ gantt
 ...
 modify_date: 2017-09-09
 ---
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">Article with modify date.</summary></entry><entry><title type="html">TeXt - Author</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2017/04/15/author.html" rel="alternate" type="text/html" title="TeXt - Author" /><published>2017-04-15T00:00:00+08:00</published><updated>2017-04-15T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2017/04/15/author</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2017/04/15/author.html">&lt;p&gt;Article with specified author.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">Article with modify date.</summary></entry><entry><title type="html">TeXt - Author</title><link href="/techblog/post/2017/04/15/author.html" rel="alternate" type="text/html" title="TeXt - Author" /><published>2017-04-15T00:00:00+08:00</published><updated>2017-04-15T00:00:00+08:00</updated><id>/techblog/post/2017/04/15/author</id><content type="html" xml:base="/techblog/post/2017/04/15/author.html">&lt;p&gt;Article with specified author.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1053,7 +1053,7 @@ modify_date: 2017-09-09
 author: Tian Qi
 show_author_profile: true
 ---
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tian Qi</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">Article with specified author.</summary></entry><entry><title type="html">Jekyll - Paragraphs</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2016/10/10/paragraphs.html" rel="alternate" type="text/html" title="Jekyll - Paragraphs" /><published>2016-10-10T00:00:00+08:00</published><updated>2016-10-10T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2016/10/10/paragraphs</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2016/10/10/paragraphs.html">&lt;p&gt;Electroencephalography (EEG) is an electrophysiological monitoring method to record electrical activity of the brain. It is typically noninvasive, with the electrodes placed along the scalp, although invasive electrodes are sometimes used such as in electrocorticography. EEG measures voltage fluctuations resulting from ionic current within the neurons of the brain. In clinical contexts, EEG refers to the recording of the brain’s spontaneous electrical activity over a period of time, as recorded from multiple electrodes placed on the scalp. Diagnostic applications generally focus either on event-related potentials or on the spectral content of EEG. The former investigates potential fluctuations time locked to an event like stimulus onset or button press. The latter analyses the type of neural oscillations (popularly called “brain waves”) that can be observed in EEG signals in the frequency domain.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Tian Qi</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="TeXt" /><summary type="html">Article with specified author.</summary></entry><entry><title type="html">Jekyll - Paragraphs</title><link href="/techblog/post/2016/10/10/paragraphs.html" rel="alternate" type="text/html" title="Jekyll - Paragraphs" /><published>2016-10-10T00:00:00+08:00</published><updated>2016-10-10T00:00:00+08:00</updated><id>/techblog/post/2016/10/10/paragraphs</id><content type="html" xml:base="/techblog/post/2016/10/10/paragraphs.html">&lt;p&gt;Electroencephalography (EEG) is an electrophysiological monitoring method to record electrical activity of the brain. It is typically noninvasive, with the electrodes placed along the scalp, although invasive electrodes are sometimes used such as in electrocorticography. EEG measures voltage fluctuations resulting from ionic current within the neurons of the brain. In clinical contexts, EEG refers to the recording of the brain’s spontaneous electrical activity over a period of time, as recorded from multiple electrodes placed on the scalp. Diagnostic applications generally focus either on event-related potentials or on the spectral content of EEG. The former investigates potential fluctuations time locked to an event like stimulus onset or button press. The latter analyses the type of neural oscillations (popularly called “brain waves”) that can be observed in EEG signals in the frequency domain.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1067,7 +1067,7 @@ show_author_profile: true
 
 &lt;blockquote&gt;
   &lt;p&gt;From Wikipedia, the free encyclopedia&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="Jekyll" /><summary type="html">Electroencephalography (EEG) is an electrophysiological monitoring method to record electrical activity of the brain. It is typically noninvasive, with the electrodes placed along the scalp, although invasive electrodes are sometimes used such as in electrocorticography. EEG measures voltage fluctuations resulting from ionic current within the neurons of the brain. In clinical contexts, EEG refers to the recording of the brain’s spontaneous electrical activity over a period of time, as recorded from multiple electrodes placed on the scalp. Diagnostic applications generally focus either on event-related potentials or on the spectral content of EEG. The former investigates potential fluctuations time locked to an event like stimulus onset or button press. The latter analyses the type of neural oscillations (popularly called “brain waves”) that can be observed in EEG signals in the frequency domain.</summary></entry><entry><title type="html">Jekyll - Headers</title><link href="https://tianqi.name/jekyll-TeXt-theme/post/2016/09/19/headers.html" rel="alternate" type="text/html" title="Jekyll - Headers" /><published>2016-09-19T00:00:00+08:00</published><updated>2016-09-19T00:00:00+08:00</updated><id>https://tianqi.name/jekyll-TeXt-theme/post/2016/09/19/headers</id><content type="html" xml:base="https://tianqi.name/jekyll-TeXt-theme/post/2016/09/19/headers.html">&lt;h1 id=&quot;h1-text-heading&quot;&gt;H1. TeXt Heading&lt;/h1&gt;
+&lt;/blockquote&gt;</content><author><name>TeXt</name><email>kitian616@outlook.com</email></author><category term="post" /><category term="Jekyll" /><summary type="html">Electroencephalography (EEG) is an electrophysiological monitoring method to record electrical activity of the brain. It is typically noninvasive, with the electrodes placed along the scalp, although invasive electrodes are sometimes used such as in electrocorticography. EEG measures voltage fluctuations resulting from ionic current within the neurons of the brain. In clinical contexts, EEG refers to the recording of the brain’s spontaneous electrical activity over a period of time, as recorded from multiple electrodes placed on the scalp. Diagnostic applications generally focus either on event-related potentials or on the spectral content of EEG. The former investigates potential fluctuations time locked to an event like stimulus onset or button press. The latter analyses the type of neural oscillations (popularly called “brain waves”) that can be observed in EEG signals in the frequency domain.</summary></entry><entry><title type="html">Jekyll - Headers</title><link href="/techblog/post/2016/09/19/headers.html" rel="alternate" type="text/html" title="Jekyll - Headers" /><published>2016-09-19T00:00:00+08:00</published><updated>2016-09-19T00:00:00+08:00</updated><id>/techblog/post/2016/09/19/headers</id><content type="html" xml:base="/techblog/post/2016/09/19/headers.html">&lt;h1 id=&quot;h1-text-heading&quot;&gt;H1. TeXt Heading&lt;/h1&gt;
 
 &lt;h2 id=&quot;h2-text-heading&quot;&gt;H2. TeXt Heading&lt;/h2&gt;
 
