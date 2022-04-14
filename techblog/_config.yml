@@ -55,14 +55,14 @@ author:
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
-repository: user_name/repo_name
-repository_tree: master
+repository: https://github.com/kuai-lab/kuai-lab.github.io
+repository_tree: main
 
 
 ## => Paths
 ##############################
 paths:
-  root    : # title link url, "/" (default)
+  root    : https://kuai-lab.github.io/techblog/ # title link url, "/" (default)
   home    : # home layout url, "/" (default)
   archive : # "/archive.html" (default)
   rss     : # "/feed.xml" (default)
