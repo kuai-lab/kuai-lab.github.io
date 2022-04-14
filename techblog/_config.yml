@@ -18,7 +18,7 @@
 ##############################
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : https://kuai-lab.github.io/ # the base hostname & protocol for your site e.g. https://www.someone.com
+url     : https://kuai-lab.github.io/techblog # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : techblog # does not include hostname
 title   : Your Site Title
 description: > # this means to ignore newlines until "Language & timezone"
@@ -62,7 +62,7 @@ repository_tree: main
 ## => Paths
 ##############################
 paths:
-  root    : https://kuai-lab.github.io/ # title link url, "/" (default)
+  root    : https://kuai-lab.github.io/techblog # title link url, "/" (default)
   home    : /_layouts # home layout url, "/" (default)
   archive : # "/archive.html" (default)
   rss     : # "/feed.xml" (default)
