@@ -62,8 +62,8 @@ repository_tree: main
 ## => Paths
 ##############################
 paths:
-  root    : https://kuai-lab.github.io/techblog/ # title link url, "/" (default)
-  home    : # home layout url, "/" (default)
+  root    : https://kuai-lab.github.io/ # title link url, "/" (default)
+  home    : /_layouts # home layout url, "/" (default)
   archive : # "/archive.html" (default)
   rss     : # "/feed.xml" (default)
 
