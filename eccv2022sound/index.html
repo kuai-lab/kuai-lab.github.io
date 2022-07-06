@@ -1,0 +1,371 @@
+<html lang="en"><head>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Sound-Guided Semantic Video Generation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="Sound-guided Semantic Video Generation">
+    <meta name="author" content="....">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+
+        MathJax.Hub.Config({
+        
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        
+        });
+        
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+</head>
+<body>
+<div class="title">
+    <h1>Sound-guided Semantic Video Generation</h1>
+    <center>
+        <h2>European Conference on Computer Vision (ECCV), 2022</h2>
+    </center>
+</div>
+<div class="byline">
+    <div class="authors">
+        <center>
+            <div class="author"><sup> <h2>Seung Hyun&nbsp;Lee</a><sup>1</sup> &emsp; Gyeongrok&nbsp;Oh</a><sup>1</sup> &emsp; Wonmin&nbsp;Byeon</a><sup>2</sup> &emsp; Jihyun&nbsp;Bae</a><sup>1</sup>&emsp; Chanyoung&nbsp;Kim</a><sup>1</sup> &emsp;Won Jeong&nbsp;Ryoo</a><sup>1</sup> &emsp;Hyunjun&nbsp;Cho</a><sup>1</sup> &emsp;Sang Ho&nbsp;Yoon</a><sup>3</sup> &emsp; Jinkyu&nbsp;Kim</a><sup>1*</sup>&emsp; Sangpil&nbsp;Kim</a><sup>1*</sup></h2></sup></div>
+        </center>
+    </div>
+    <div class="affiliations">
+        <center>
+            <p class="affiliation"><sup> </sup><h3>Korea University<sup>1</sup> &emsp; NVIDIA Research<sup>2</sup>&emsp; KAIST<sup>3</sup></h3></p>
+        </center>
+    </div>
+    <div class="code">
+        <center>
+        <a class="paper-btn" href=" ">
+            <span class="material-icons"> code </span>
+            Code
+        </a>
+        <a class="paper-btn" href="https://kr.object.ncloudstorage.com/eccv2022/dataset/DATASET.csv">
+            <span class="material-icons"> description </span>
+            Dataset
+        </a>
+
+        <a class="paper-btn" href="https://arxiv.org/abs/2204.09273">
+            <span class="material-icons"> description </span>
+            Paper
+        </a>
+        </center>
+    </div>
+</div>
+
+<div class="container">
+    <div class="center-img">
+        <img class="content"  width="100%" height="100%" src="./image/title.png">
+    </div>
+    <div class="sections-container">
+        <div class="section">
+            <h2 class="section-title">Abstract</h2>
+            <p>
+                The recent success in StyleGAN demonstrates that pre-trained StyleGAN latent space is useful for realistic video generation. However, the generated motion in the video is usually not semantically meaningful due to the difficulty of determining the direction and magnitude in the StyleGAN latent space. 
+            In this paper, we propose a framework to generate realistic videos by leveraging multimodal (sound-image-text) embedding space. As sound provides the temporal contexts of the scene, our framework learns to generate a video that is semantically consistent with sound.
+            First, our sound inversion module maps the audio directly into the StyleGAN latent space. We then incorporate the CLIP-based multimodal embedding space to further provide the audio-visual relationships. Finally, the proposed frame generator learns to find the trajectory in the latent space which is coherent with the corresponding sound and generates a video in a hierarchical manner. 
+            We provide the new high-resolution landscape video dataset (audio-visual pair) for the sound-guided video generation task. The experiments show that our model outperforms the state-of-the-art methods in terms of video quality. We further show several applications including image and video editing to verify the effectiveness of our method.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Method</h2>
+            <p></p>
+            <h2>Train</h2>
+            <div class="center-img">
+                <img class="content" width="100%" height="100%" src="./image/train.png"/>
+            </div>
+            <p style="margin-top: 30px">
+                Fig5. An overview of our sound-guided video generation model, which consists of two main parts: (i) Sound Inversion Encoder, which iteratively generates sound-conditioned latent code ${\bf{w}}_a^t$ from corresponding audio time segments. (ii) StyleGAN-based Video Generator, which recurrently generates a video frame that is trained to be consistent with neighboring frames. Moreover, we train image and video discriminators adversarially 
+            to generate perceptually realistic video frames. 
+            </p>
+            <h2>Inference</h2>
+            <div class="center-img">
+                <img class="content" width="100%" height="100%" src="./image/test.png"/>
+            </div>
+            <p style="margin-top: 30px">
+                Fig3. An overview of our proposed sound-guided video generation model. Our model consists of two main modules: 
+                    (i) Sound Inversion Encoder (Section 3.1), which takes a sequence of audio inputs as an input and outputs a latent code to generate video frames. (ii) StyleGAN-based Video Generator (Section 3.2), which generates temporally consistent and perceptually realistic video frames conditioned on the sound input.  
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Supplementary Video</h2>
+            <div class="center-img">
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/showvideo/supplementary.m4v" controls="controls"></video>
+                </figure>
+            </div>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Generation Results</h2>
+            <p></p>
+            <h2>Our Landscape Dataset</h2>
+            <div class="center-img">
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/1_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/5_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/10_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+            </div>
+<!-- 
+            <div class="center-img">
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/13_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/19_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/21_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+            </div>
+
+            <div class="center-img">
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/22_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/28_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/33_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+            </div> -->
+
+            <div class="center-img">
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/47_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/48_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/49_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Splashing Water.</figcaption>
+                </figure>
+            </div>
+
+            <div class="center-img">
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/2_waterfall_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Waterfall.</figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/3_waterfall_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Waterfall.</figcaption>
+                </figure>
+
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/7_waterfall_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Waterfall.</figcaption>
+                </figure>
+            </div>
+
+            <div class="center-img">
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/5_rain_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Rain.</figcaption>
+                </figure>
+                
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/6_rain_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Rain.</figcaption>
+                </figure>
+
+                <figure>
+                    <video class="content" src="https://kr.object.ncloudstorage.com/eccv2022/video/7_rain_combined.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Rain.</figcaption>
+                </figure>
+            </div>
+
+            <h2>Sub-URMP dataset</h2>
+            <p></p>
+            <div class="sub-urmp" style="margin-left: 35;">
+                <table width=1200px>
+                    <!-- <center> -->
+                    <tbody><tr>
+                        <td width=20px align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                            Ours
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/video/cello.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/video/horn.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/video/violin.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/video/trumbone.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/video/tuba.m4v" controls="controls"></video>
+                        </td>
+                        </tr>
+                </table>
+                           
+                <table width="1200px">
+                    <tbody><tr>
+                        <td width=20 align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                            CCVS
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/ccvs/cello.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/ccvs/horn.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">           
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/ccvs/violin.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">    
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/ccvs/trumbone.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/ccvs/tuba.m4v" controls="controls"></video>
+                        </td>
+                </table>
+                        
+                <table width="1200px">
+                    <tbody><tr>
+                        <td width=20 align=center style="writing-mode: tb-rl;padding-right: 0px;font-size: 20px;">
+                            Sound2Sight
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/s2s/cello.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/s2s/horn.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/s2s/violin.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/s2s/trumbone.m4v" controls="controls"></video>
+                        </td>
+                        <td width="256px">
+                            <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/s2s/tuba.m4v" controls="controls"></video>
+                        </td>
+                </table>
+                          
+                <table width="1200px">
+                    <tbody><tr>
+                        <td width=20 align=center style="writing-mode: tb-rl;padding-right: 30px;font-size: 20px;">
+                            
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            Cello
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            Horn
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            Violin
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            Trumbone
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            Tuba
+                        </td>
+                    </tr></tbody>
+                </table>
+
+                <table width="1200px">
+                    <tbody><tr>
+                        <td width=20 align=center style="writing-mode: tb-rl;padding-right: 30px;font-size: 20px;">
+                            
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            <audio controls style="width: 200px;">
+                                <source width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/audio/cello.m4a" type="audio/wav">
+                            </audio>
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            <audio controls style="width: 200px;">
+                                <source width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/audio/horn.m4a" type="audio/wav">
+                            </audio>
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            <audio controls style="width: 200px;">
+                                <source width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/audio/violin.m4a" type="audio/wav">
+                            </audio>
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            <audio controls style="width: 200px;">
+                                <source width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/audio/trumbone.m4a" type="audio/wav">
+                            </audio>
+                        </td>
+                        <td width="256px" valign="middle" halign="middle" align="center" style="font-size: 20px">
+                            <audio controls style="width: 200px;">
+                                <source width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/supplementary/audio/tuba.m4a" type="audio/wav">
+                            </audio>
+                        </td>
+                    </tr></tbody>
+                </table>    
+            </div>
+            <p></p>    
+            <h2>Face Example</h2>
+            <div class="center-img">
+                <figure>
+                    <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/facevideo/0.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Giggling sound.</figcaption>
+                </figure>
+                
+                <figure>
+                    <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/facevideo/7.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Giggling sound.</figcaption>
+                </figure>
+
+                <figure>
+                    <video width="100%" height="100%" src="https://kr.object.ncloudstorage.com/eccv2022/facevideo/8.m4v" controls="controls"></video>
+                    <figcaption style="text-align: center;"> 🔊Giggling sound.</figcaption>
+                </figure>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-left">
+                    <h3>BibTeX</h3>
+                    <p>If you use our code or data, please cite:</p>
+                    <pre>
+                <code>
+                    @article{lee2022sound,
+                        title={Sound-Guided Semantic Video Generation},
+                        author={Lee, Seung Hyun and Oh, Gyeongrok and Byeon, Wonmin and Bae, Jihyun and Kim, Chanyoung and Ryoo, Won Jeong and Yoon, Sang Ho and Kim, Jinkyu and Kim, Sangpil},
+                        journal={arXiv preprint arXiv:2204.09273},
+                        year={2022}
+                      }
+            </code>
+            </pre>
+                </div>
+            </div>
+</script>
+
+</body></html>
