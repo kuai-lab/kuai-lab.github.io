@@ -36,6 +36,16 @@
     <div class="affiliations">
         <p class="affiliation" style="color: darkslategray;">Korea University<sup>1</sup> &emsp; KAIST<sup>2</sup>&emsp; Hyundai Motor Company R&D Division<sup>3</sup></p>
     </div>
+    <div class="links">
+        <center>
+            <a href="https://arxiv.org/abs/2207.00865" class="link">
+                [Paper]
+            </a>
+            <!-- <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" class="link">
+                [Code]
+            </a> -->
+        </center>
+    </div>
 </div>
 
 
@@ -73,7 +83,7 @@
             <div class="center-img">
                 <img class="content" src="./image/train.png"/>
             </div>
-            <p style="margin-top: 30px; padding-left: 150px; margin-right: 150px;">
+            <p style="margin-top: 30px;">
                 An overview of our proposed architecture. 
                 Built upon DETR3D, our model takes multi-view camera inputs and outputs a set of 3D bounding boxes for objects in the scene. 
                 Our model consists of two main modules: (1) Stereo Matching Network for Weak Depth Supervision, where our depth estimation head is trained to predict a dense depth map of the overlap region. 
@@ -87,7 +97,7 @@
         <div class="center-img">
                 <img class="content" src="./image/disparity.png"/>
             </div>
-            <p style="margin-top: 30px; padding-left: 150px; margin-right: 150px;">
+            <p style="margin-top: 30px;">
                 Following recent work by Liu, our Stereo Disparity Estimation head is co-trained to compute the disparity map from two overlapped images.
                 As shown in figure above, Our stereo network extracts features of an image pair with a standard visual encoder. 
                 Our disparity estimation head outputs a cost volume through multi-scale stereo matching. 
@@ -107,14 +117,13 @@
             <div class="example-item">
                 <img src="./image/ora_3.gif" width = '1000' >
             </div>
-        <p style="margin-top: 30px; padding-left: 150px; margin-right: 150px;">
-            Example of qualitative evaluation on a car driving and BEV video. The blue, green, and magenta
+        <p style="margin-top: 30px;">
+            <center>
+            Example of qualitative evaluation on a car driving and BEV video. <br> The blue, green, and magenta
             boxes denote ground truth, DETR3D prediction, and the prediction of our model,
             respectively.
+            </center>
         </p>
-
-        
-
             <div class="example-item">
                 <img src="./image/ora_detr1-1.jpg" width = '1000' >
             </div>
@@ -122,12 +131,12 @@
                 <img src="./image/ora_detr2-1.jpg" width = '1000' >
             </div>
         
-        <p style="margin-top: 30px; padding-left: 150px; margin-right: 150px;">
-            Examples of 3D bounding boxes predictions. The blue, green, and magenta
-boxes denote ground truth, DETR3D prediction, and the prediction of our model,
-respectively. The red dotted lines in the upper BEV images indicates the overlap region
-between the back right and back cameras of multi-view.
-
+        <p style="margin-top: 30px;">
+            <center>
+            Examples of 3D bounding boxes predictions. <br>
+            The blue, green, and magenta boxes denote ground truth, DETR3D prediction, and the prediction of our model, respectively. <br>
+            The red dotted lines in the upper BEV images indicates the overlap region between the back right and back cameras of multi-view.
+            </center>
         </p>
 </div>
 </body>
