@@ -2,45 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ORA3D</title>
+    <title>EFPS-Net</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-	<meta property="og:title" content="ORA3D: Overlap Region Aware Multi-view 3D Object Detection">
+	<meta property="og:title" content="Event Fusion Photometric Stereo Network">
     <meta property="og:url" content="https://anonymous2276.github.io/">
-	<meta property="og:image" content="./image/train.png">
+	<meta property="og:image" content="./image/dataset.png">
 	<meta name="description" content="aaaa2022-0000">
-	<meta name="keywords" content="ORA3D: Overlap Region Aware Multi-view 3D Object Detection">
+	<meta name="keywords" content="Event Fusion Photometric Stereo Network">
 	<meta name="author" content="....">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="code.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="title">
-    <h1>ORA3D: Overlap Region Aware<br>Multi-view 3D Object Detection</h1>
+    <h1>Event Fusion Photometric Stereo Network</h1>
     <center>
-    <h3>British Machine Vision Conference (BMVC), 2022</h3>
+    <h3>Neural Networks</h3>
     <center>
 </div>
 <div class="byline">
     <div class="authors">
         <div class="author"><b>
-            Wonseok Roh<sup>1</sup> &emsp; 
-            Gyusam Chang<sup>1</sup> &emsp; 
-            Seokha Moon<sup>1</sup> &emsp; 
-            Giljoo Nam<sup>2</sup> &emsp; 
-            Chanyoung Kim<sup>1</sup> &emsp; 
-            Younghyun Kim<sup>3</sup> &emsp; 
-            Jinkyu Kim<sup>1*</sup> &emsp; 
+            Wonjeong Ryoo<sup>1</sup> &emsp; 
+            Giljoo Nam<sup>3</sup> &emsp; 
+            Jae-Sang Hyun<sup>2*</sup> &emsp; 
             Sangpil Kim<sup>1*</sup></b>
         </div>
     </div>
     <div class="affiliations">
-        <p class="affiliation" style="color: darkslategray;">Korea University<sup>1</sup> &emsp; KAIST<sup>2</sup>&emsp; Hyundai Motor Company R&D Division<sup>3</sup></p>
+        <p class="affiliation" style="color: darkslategray;">Department of Artificial Intelligence, Korea University<sup>1</sup> &emsp; School of Mechanical Engineering, Yonsei University<sup>2</sup>&emsp; Reality Labs Research, Meta<sup>3</sup></p>
     </div>
     <div class="links">
         <center>
-            <a href="https://arxiv.org/abs/2207.00865" class="link">
-                [Paper]
-            </a>
+            <a href="https://doi.org/10.1016/j.neunet.2023.08.009" class="link">[Paper]</a>
+            <a href="https://doi.org/10.1016/j.neunet.2023.08.009" class="link">[Dataset]</a>
             <!-- <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" class="link">
                 [Code]
             </a> -->
@@ -51,95 +47,99 @@
 
 <div class="container">
     <div class="center-img">
-        <img class="content" src="./image/ora3d_results.png">
+        <img class="content" src="./image/dataset.png">
     </div>
 
     <div class="sections-container">
     <div class="section">
-        <h2 class="section-title">Presentation Video</h2>
+        <!-- <h2 class="section-title">Presentation Video</h2>
             <center>
                 <iframe width="840" height="472" src="https://www.youtube.com/embed/649K_5-bt9k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </center>
-    </div>
+            </center> -->
+    </div> 
 </div>
 
     <div class="sections-container">
         <div class="section">
             <h2 class="section-title">Abstract</h2>
             <p>
-            Current multi-view 3D object detection methods often fail to detect objects in the overlap region properly, and the networks' understanding of the scene is often limited to that of a monocular detection network. 
-            Moreover, objects in the overlap region are often largely occluded or suffer from deformation due to camera distortion, causing a domain shift. 
-            To mitigate this issue, we propose using the following two main modules: (1) Stereo Disparity Estimation for Weak Depth Supervision and (2) Adversarial Overlap Region Discriminator. 
-            The former utilizes the traditional stereo disparity estimation method to obtain reliable disparity information from the overlap region. 
-            Given the disparity estimates as supervision, we propose regularizing the network to fully utilize the geometric potential of binocular images and improve the overall detection accuracy accordingly.
-            Further, the latter module minimizes the representational gap between non-overlap and overlapping regions. 
-            We demonstrate the effectiveness of the proposed method with the nuScenes large-scale multi-view 3D object detection data. Our experiments show that our proposed method outperforms current state-of-the-art models, i.e., DETR3D and BEVDet.
+                Photometric stereo methods typically rely on RGB cameras and are usually performed in a dark room to avoid ambient illumination.
+                Ambient illumination poses a great challenge in photometric stereo due to the restricted dynamic range of the RGB cameras.
+                To address this limitation, we present a novel method, namely Event Fusion Photometric Stereo Network (<b>EFPS-Net</b>), which estimates the surface normals of an object in an ambient light environment by utilizing a deep fusion of RGB and event cameras.
+                The high dynamic range of event cameras provides a broader perspective of light representations that RGB cameras cannot provide.
+                Specifically, we propose an event interpolation method to obtain ample light information, which enables precise estimation of the surface normals of an object.
+                By using RGB-event fused observation maps, our EFPS-Net outperforms previous state-of-the-art methods that depend only on RGB frames, resulting in a 7.94% reduction in mean average error.
+                In addition, we curate a novel photometric stereo dataset by capturing objects with RGB and event cameras under numerous ambient light environments.
             </p>
         </div>
+
         <div class="section">
             <h2 class="section-title">Method</h2>
 
-            <h2 class="section-subtitle">Train / Test Overview</h2>
+            <h2 class="section-subtitle">Model Overview</h2>
             <div class="center-img">
-                <img class="content" src="./image/train.png"/>
+                <img class="content" src="./image/flow.png"/>
             </div>
             <p style="margin-top: 30px;">
                 An overview of our proposed architecture. 
-                Built upon DETR3D, our model takes multi-view camera inputs and outputs a set of 3D bounding boxes for objects in the scene. 
-                Our model consists of two main modules: (1) Stereo Matching Network for Weak Depth Supervision, where our depth estimation head is trained to predict a dense depth map of the overlap region. 
-                The ground-truth depth map is obtained by a traditional stereo disparity estimation algorithm. 
-                (2) Adversarial Overlap Region Discriminator, which minimizes the gap between non-overlap regions vs. overlap regions, improving the overall detection performance.
+                Built upon EFPS-Net, our model utilizes fused observation maps from RGB frames and event signals. 
+                EFPS-Net consists of two main networks and one module: (1) Event Interpolation Network (EI-Net), which converts to one dense interpolated observation map for representing more fluent light information with two sparse event observation maps, (2) Observation Fusion Module (OFM) that fuses to associate with each observation map, and (3) Surface Normal Estimation Network (SNE-Net) which utilizes fused observation maps to estimate precisely the surface normal vector.
             </p>
-
         </br>
+    </div>
 
-        <h2 class="section-subtitle">Stereo Disparity Estimation</h2>
+    <div class="section">
+        <h2 class="section-title">Experiments</h2>
         <div class="center-img">
-                <img class="content" src="./image/disparity.png"/>
-            </div>
-            <p style="margin-top: 30px;">
-                Following recent work by Liu, our Stereo Disparity Estimation head is co-trained to compute the disparity map from two overlapped images.
-                As shown in figure above, Our stereo network extracts features of an image pair with a standard visual encoder. 
-                Our disparity estimation head outputs a cost volume through multi-scale stereo matching. 
-                To obtain the target disparity map, we use the output from the conventional stereo matching algorithm, which performs pixel-wise mutual information-based matching. 
-            </p>
+            <img class="content" src="./image/table.png"/>
         </div>
-        
-        <div class="section">
-            <h2 class="section-title">Qualitative Results</h2>
-
-            <div class="example-item">
-                <img src="./image/15.02_15.12.gif" width = '1000' >
-            </div>
-            <div class="example-item">
-                <img src="./image/15.25_15.38.gif" width = '1000' >
-            </div>
-            <div class="example-item">
-                <img src="./image/ora_3.gif" width = '1000' >
-            </div>
         <p style="margin-top: 30px;">
             <center>
-            Example of qualitative evaluation on a car driving and BEV video. <br> The blue, green, and magenta
-            boxes denote ground truth, DETR3D prediction, and the prediction of our model,
-            respectively.
-            </center>
-        </p>
-            <div class="example-item">
-                <img src="./image/ora_detr1-1.jpg" width = '1000' >
-            </div>
-            <div class="example-item">
-                <img src="./image/ora_detr2-1.jpg" width = '1000' >
-            </div>
-        
-        <p style="margin-top: 30px;">
-            <center>
-            Examples of 3D bounding boxes predictions. <br>
-            The blue, green, and magenta boxes denote ground truth, DETR3D prediction, and the prediction of our model, respectively. <br>
-            The red dotted lines in the upper BEV images indicates the overlap region between the back right and back cameras of multi-view.
-            </center>
+            Quantitative result of methods on the RGB-event pair test dataset.<br>
+            Our method outperforms previous methods on real world RGB-event pair dataset. <br>
+            The underlined values are the second best-performing values, and the bolded values are the first best-performing values.
+        </center>
         </p>
 </div>
-</body>
+
+        <div class="bib">
+            <h2 class="section-title">BiBTeX</h2>
+            <pre><code>@article{Ryoo_2023,
+    doi = {10.1016/j.neunet.2023.08.009},
+    url = {https://doi.org/10.1016%2Fj.neunet.2023.08.009},
+    year = 2023,
+    month = {aug},
+    publisher = {Elsevier {BV}},
+    author = {Wonjeong Ryoo and Giljoo Nam and Jae-Sang Hyun and Sangpil Kim},
+    title = {Event fusion photometric stereo network},              
+    journal = {Neural Networks}
+}
+</code></pre>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Datasets</h2>
+
+            <div class="example-item">
+                <img class="dataset_crop_first" src="./image/dataset_examples_1.png" width='1000'>
+            </div>
+            <div class="example-item">
+                    <img class="dataset_crop" src="./image/dataset_examples_2.png" width='1000'>
+            </div>
+            <div class="example-item">
+                <img class="dataset_crop" src="./image/dataset_examples_3.png" width='1000'>
+            </div>
+            <div class="example-item">
+                <img class="dataset_crop" src="./image/dataset_examples_4.png" width='1000'>
+            </div>
+            <div class="example-item">
+                <img class="dataset_crop_last" src="./image/dataset_examples_5.png" width='1000'>
+            </div>
+        <p style="margin-top: 10px;">
+            <center><b>Examples of our RGB-event pair dataset.</b></center>
+        </div>
+
+    </body>
 <script>
 
     

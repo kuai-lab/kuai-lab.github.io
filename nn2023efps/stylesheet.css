@@ -26,6 +26,27 @@ body {
     color: #000000;
 }
 
+.dataset_crop_first {
+    width: 1000px;
+    height: 900px;
+    object-fit: cover;
+    margin-bottom:-20px;
+}
+
+.dataset_crop {
+    width: 1000px;
+    height: 886px;
+    object-fit: cover;
+    margin-bottom:-74px;
+}
+
+.dataset_crop_last {
+    width: 1000px;
+    height: 600px;
+    object-fit: cover;
+    object-position: 0% 30%;
+}
+
 .link {
     margin-left: 20px;
     margin-top: 10px;
