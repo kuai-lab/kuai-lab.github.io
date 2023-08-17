@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ORA3D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="ORA3D: Overlap Region Aware Multi-view 3D Object Detection">
+    <meta property="og:url" content="https://anonymous2276.github.io/">
+	<meta property="og:image" content="./image/train.png">
+	<meta name="description" content="aaaa2022-0000">
+	<meta name="keywords" content="ORA3D: Overlap Region Aware Multi-view 3D Object Detection">
+	<meta name="author" content="....">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="title">
+    <h1>ORA3D: Overlap Region Aware<br>Multi-view 3D Object Detection</h1>
+    <center>
+    <h3>British Machine Vision Conference (BMVC), 2022</h3>
+    <center>
+</div>
+<div class="byline">
+    <div class="authors">
+        <div class="author"><b>
+            Wonseok Roh<sup>1</sup> &emsp; 
+            Gyusam Chang<sup>1</sup> &emsp; 
+            Seokha Moon<sup>1</sup> &emsp; 
+            Giljoo Nam<sup>2</sup> &emsp; 
+            Chanyoung Kim<sup>1</sup> &emsp; 
+            Younghyun Kim<sup>3</sup> &emsp; 
+            Jinkyu Kim<sup>1*</sup> &emsp; 
+            Sangpil Kim<sup>1*</sup></b>
+        </div>
+    </div>
+    <div class="affiliations">
+        <p class="affiliation" style="color: darkslategray;">Korea University<sup>1</sup> &emsp; KAIST<sup>2</sup>&emsp; Hyundai Motor Company R&D Division<sup>3</sup></p>
+    </div>
+    <div class="links">
+        <center>
+            <a href="https://arxiv.org/abs/2207.00865" class="link">
+                [Paper]
+            </a>
+            <!-- <a href="https://github.com/kuai-lab/sound-guided-semantic-image-manipulation" class="link">
+                [Code]
+            </a> -->
+        </center>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="center-img">
+        <img class="content" src="./image/ora3d_results.png">
+    </div>
+
+    <div class="sections-container">
+    <div class="section">
+        <h2 class="section-title">Presentation Video</h2>
+            <center>
+                <iframe width="840" height="472" src="https://www.youtube.com/embed/649K_5-bt9k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </center>
+    </div>
+</div>
+
+    <div class="sections-container">
+        <div class="section">
+            <h2 class="section-title">Abstract</h2>
+            <p>
+            Current multi-view 3D object detection methods often fail to detect objects in the overlap region properly, and the networks' understanding of the scene is often limited to that of a monocular detection network. 
+            Moreover, objects in the overlap region are often largely occluded or suffer from deformation due to camera distortion, causing a domain shift. 
+            To mitigate this issue, we propose using the following two main modules: (1) Stereo Disparity Estimation for Weak Depth Supervision and (2) Adversarial Overlap Region Discriminator. 
+            The former utilizes the traditional stereo disparity estimation method to obtain reliable disparity information from the overlap region. 
+            Given the disparity estimates as supervision, we propose regularizing the network to fully utilize the geometric potential of binocular images and improve the overall detection accuracy accordingly.
+            Further, the latter module minimizes the representational gap between non-overlap and overlapping regions. 
+            We demonstrate the effectiveness of the proposed method with the nuScenes large-scale multi-view 3D object detection data. Our experiments show that our proposed method outperforms current state-of-the-art models, i.e., DETR3D and BEVDet.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Method</h2>
+
+            <h2 class="section-subtitle">Train / Test Overview</h2>
+            <div class="center-img">
+                <img class="content" src="./image/train.png"/>
+            </div>
+            <p style="margin-top: 30px;">
+                An overview of our proposed architecture. 
+                Built upon DETR3D, our model takes multi-view camera inputs and outputs a set of 3D bounding boxes for objects in the scene. 
+                Our model consists of two main modules: (1) Stereo Matching Network for Weak Depth Supervision, where our depth estimation head is trained to predict a dense depth map of the overlap region. 
+                The ground-truth depth map is obtained by a traditional stereo disparity estimation algorithm. 
+                (2) Adversarial Overlap Region Discriminator, which minimizes the gap between non-overlap regions vs. overlap regions, improving the overall detection performance.
+            </p>
+
+        </br>
+
+        <h2 class="section-subtitle">Stereo Disparity Estimation</h2>
+        <div class="center-img">
+                <img class="content" src="./image/disparity.png"/>
+            </div>
+            <p style="margin-top: 30px;">
+                Following recent work by Liu, our Stereo Disparity Estimation head is co-trained to compute the disparity map from two overlapped images.
+                As shown in figure above, Our stereo network extracts features of an image pair with a standard visual encoder. 
+                Our disparity estimation head outputs a cost volume through multi-scale stereo matching. 
+                To obtain the target disparity map, we use the output from the conventional stereo matching algorithm, which performs pixel-wise mutual information-based matching. 
+            </p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Qualitative Results</h2>
+
+            <div class="example-item">
+                <img src="./image/15.02_15.12.gif" width = '1000' >
+            </div>
+            <div class="example-item">
+                <img src="./image/15.25_15.38.gif" width = '1000' >
+            </div>
+            <div class="example-item">
+                <img src="./image/ora_3.gif" width = '1000' >
+            </div>
+        <p style="margin-top: 30px;">
+            <center>
+            Example of qualitative evaluation on a car driving and BEV video. <br> The blue, green, and magenta
+            boxes denote ground truth, DETR3D prediction, and the prediction of our model,
+            respectively.
+            </center>
+        </p>
+            <div class="example-item">
+                <img src="./image/ora_detr1-1.jpg" width = '1000' >
+            </div>
+            <div class="example-item">
+                <img src="./image/ora_detr2-1.jpg" width = '1000' >
+            </div>
+        
+        <p style="margin-top: 30px;">
+            <center>
+            Examples of 3D bounding boxes predictions. <br>
+            The blue, green, and magenta boxes denote ground truth, DETR3D prediction, and the prediction of our model, respectively. <br>
+            The red dotted lines in the upper BEV images indicates the overlap region between the back right and back cameras of multi-view.
+            </center>
+        </p>
+</div>
+</body>
+<script>
+
+    
+
+</script>
+</html>
