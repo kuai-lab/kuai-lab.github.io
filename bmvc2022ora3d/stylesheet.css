@@ -157,7 +157,7 @@ audio {
 
 @media (max-width: 500px) {
     .center-img {
-        display: none;
+        width: 100%;
     }
 
     .arrow {
