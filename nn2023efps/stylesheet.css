@@ -183,6 +183,18 @@ audio {
         width: 100%;
     }
     
+    .dataset_crop_first {
+        width: 100%;
+    }
+
+    .dataset_crop {
+        width: 100%;
+    }
+
+    .dataset_crop_last {
+        width: 100%;
+    }
+    
     .center-img {
         width: 100%;
     }
