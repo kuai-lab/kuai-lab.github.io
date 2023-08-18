@@ -180,7 +180,7 @@ audio {
 
 @media (max-width: 500px) {
     .center-img {
-        width: 175px;
+        width: 100%;
     }
 
     .arrow {
