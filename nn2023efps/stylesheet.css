@@ -179,6 +179,10 @@ audio {
 }
 
 @media (max-width: 500px) {
+     .example-item {
+        width: 100%;
+    }
+    
     .center-img {
         width: 100%;
     }
