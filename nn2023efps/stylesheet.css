@@ -88,6 +88,7 @@ body {
 
 .center-img {
     margin-top: 50px;
+    flex-direction: row;
     display: flex;
     justify-content: center;
 }
