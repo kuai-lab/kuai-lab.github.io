@@ -115,6 +115,7 @@ body {
 
 .content {
     max-width: 1000px;
+    object-fit: cover;
 }
 
 .container {
