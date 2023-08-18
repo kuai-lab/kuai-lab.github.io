@@ -88,8 +88,8 @@ body {
 
 .center-img {
     margin-top: 50px;
-    flex-direction: row;
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 
@@ -180,7 +180,7 @@ audio {
 
 @media (max-width: 500px) {
     .center-img {
-        display: none;
+        width: 175px;
     }
 
     .arrow {
