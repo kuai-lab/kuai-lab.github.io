@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>anonymousbmvc193</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="Functional Hand Type Prior for 3D Hand Pose Estimation and Action Recognition from Egocentric View Monocular Videos">
+    <meta property="og:url" content="https://anonymousbmvc193.github.io/">
+	<meta name="description" content="bmvc2023-193">
+	<meta name="keywords" content="bmvc2023-193">
+	<meta name="author" content="....">
+    
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="stylesheet" href="./fontawesome.all.min.css">
+    <!-- <link rel="stylesheet" href="./bulma.min.css"> -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/d4c0a5ef49.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+<body>
+<div class="title">
+    <h1>Functional Hand Type Prior for 3D Hand
+        Pose Estimation and <br> Action Recognition from
+        Egocentric View Monocular Videos</h1>   
+    <center>
+    <h3>British Machine Vision Conference (BMVC), 2023</h3>
+    <center>
+</div>
+<div class="byline">
+    <div class="authors">
+        <div class="author"><b>
+            Wonseok Roh<sup>1</sup> &emsp; 
+            Seung Hyun Lee<sup>1</sup> &emsp; 
+            Won Jeong Ryoo<sup>1</sup> &emsp; 
+            Jakyung Lee<sup>1</sup> &emsp; 
+            Gyeongrok Oh<sup>1</sup> &emsp; 
+            Sooyeon Hwang<sup>1</sup> &emsp; 
+            Hyung-gun chi<sup>2</sup> &emsp; 
+            Sangpil Kim<sup>1*</sup></b>
+        </div>
+    </div>
+    <div class="affiliations">
+        <p class="affiliation" style="color: darkslategray;">Korea University<sup>1</sup> &emsp; Purdue University<sup>2</sup></p>
+    </div>
+    <div class="links">
+    <h3>
+        <a href="" target="_blank" style="text-decoration: none; color: cadetblue;"> Github <i class="fa fa-github"></i></a>
+        &nbsp;&nbsp;
+        <a href="" target="_blank" style="text-decoration: none; color: royalblue;"> Dataset <i class="fa fa-database"></i></a>
+        &nbsp;&nbsp;
+        <a href="" target="_blank" style="text-decoration: none; color: palevioletred;"> Paper <i class="fa fa-scroll"></i></a>
+    </h3>
+    </div>
+    <div class="links">
+        <h4 style="font-weight: normal;">
+            &#128640; Code and Dataset Annotation file will be released soon! &#128640;
+        </h4>
+    </div>
+</div>
+<div class="container">
+<div class="sections-container">
+        <div class="section">
+            <h2 class="section-title">Presentation Video</h2>
+            <center>
+                <iframe width="840" height="472" src="https://www.youtube.com/embed/bcMjHfMQpi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </center>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Abstract</h2>
+            <p>
+                Current methods for egocentric view action recognition overlook the role of hand shape during interactions with objects, as well as the inherent properties of the objects, both of which are critical elements in recognizing actions. 
+                Therefore, gaining insights into the correlation between functional hand configurations and objects could substantially improve the accuracy of hand action recognition. 
+                In this work, we consider the semantic prior of the human-level hand type as a key indicator to handle this challenge. 
+                To this end, we introduce a practical taxonomy of functional hand types based on the functioning perspective and provide annotations for existing datasets. 
+                We also propose to utilize semantic knowledge of hand type in each frame to encourage the network to understand the continuous interaction across the hand and the object. 
+                Our whole pipeline consists of two main modules: (1) Egocentric Knowledge Module, which estimates 3D hand pose, object category, and hand type leveraging short-term cues, and (2) Egocentric Action Module, which aggregates per-frame pose, object, and hand type information over a longer time. 
+                We validate the efficacy of our proposed approach with large-scale benchmarks: FPHA and H2O, and our model outperforms current state-of-the-art action recognition models, demonstrating its superior performance.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Function-Based Hand Type Taxonomy</h2>
+            <h2 class="section-subtitle">Redesign Taxonomy</h2>
+            <div class="center-img">
+                <img class="content" src="./image/taxonomy.png"/>
+            </div>
+            <p style="margin-top: 30px;">
+                As shown in Figure, we first categorize the mainly used hand types into two groups: Isolated and Interaction. 
+                Isolated represents independent hand types that do not interact with other people or objects, and Interaction describes hand types that are actively interacting with other people or objects. 
+                We then organize the hand types as Interaction into Grasp and Control, focusing on the functions in the activity. 
+                Grasp includes hand types that hold an object even over time in the video clip, which are further divided into Power, Precision, and Intermediate depending on the hand's appearance. 
+                We also distinguish between Circular and Prismatic depending on the shape of the interacting objects. 
+                On the other hand, Control includes hand types that manipulate objects over time. 
+                Here, we categorize hand types concentrating on the deformation of the object. For example, the hand type that turns the lid does not deform the object, but the hand type that crumples the paper or the hand type that opens the can deform the object.
+                Thus, we categorize them as Non-Deformable and Deformable according to these criteria.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Learning Functional Hand Type</h2>
+
+            <h2 class="section-subtitle">Overview</h2>
+            <div class="center-img">
+                <img class="content" src="./image/overview.png"/>
+            </div>
+            <p style="margin-top: 30px;">
+                An overview of our main architecture. Built upon hierarchical temporal transformer (HTT), which considers the high-level action recognition task as a mixture of two low-level tasks: 3D hand poses estimation and object classification, we especially utilize hand type estimation as semantic cues. 
+                Our model consists of three main modules: (1) Feature Extraction, (2) Egocentric Knowledge Module, which estimates 3D hand pose, object category and hand type leveraging the short-term temporal cue and (3) Egocentric Action Module, which aggregates per-frame pose, object and hand type information over a longer time span. 
+                First, our model takes aligned 2D video clip consisting of $K$ frames as input, which are converted into feature vector $F_I$ containing fine details. Then we employ temporal-dependent features $F_H$ from the Local Transformer to estimate the per-frame 3D hand pose with feature vector $F_P$, which contains geometric potential, and the category of interacting objects with feature vector $F_O$. 
+                Additionally, $F_H$ feed into the hand type classification network, which utilizes language models based on our proposed functional hand type taxonomy to provide the semantic cues of hand type and outputs hand type feature vector $F_T$. 
+                Subsequently, the Egocentric Action Module aggregates the predicted embeddings: hand position $F_P$, object category $F_O$, and hand type $F_T$ for action recognition.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Experiment Results</h2>
+            <h2 class="section-subtitle">Performance Comparison with SOTA</h2>
+            <div class="center-img">
+                <img class="content" src="./image/table1.png" >
+            </div>
+            <p style="margin-top: 30px;">
+                <!-- <center> -->
+                    We compare our proposed method with existing state-of-the-art methods on the FPHA dataset and the H2O dataset. 
+                    As reported in Table1 (a) and (b), our method generally outperforms other methods with state-of-the-art accuracy (FPHA: 95.13%, H2O: 89.67%). 
+                    These results emphasize the effectiveness of our method in understanding the interaction between hands and objects.
+                <!-- </center> -->
+            </p>
+            <div class="center-img">
+                <img class="content" src="./image/table2.png" >
+            </div>
+
+            <p style="margin-top: 30px;">
+                <!-- <center> -->
+                    We also demonstrate considerable performance on 3D hand pose estimation, scoring AUC for 3D PCK-RA at error thresholds, and ranging from 0 to 50 and the MEPE-RA in the unit of mm. 
+                    Our method estimates hand pose more precisely than current state-of-the-art method in Root-Aligned space. 
+                    These experimental results verify that the semantic knowledge of the hand type benefits not only the action recognition network but also the entire network, resulting in high precision in 3D hand pose estimation.
+                <!-- </center> -->
+            </p>
+            <h2 class="section-subtitle">Qualitative Results</h2>
+            <div class="center-img">
+                <img class="content" src="./image/qualitative.png" >
+            </div>
+            <p style="margin-top: 30px;">
+                <!-- <center> -->
+                    In this section, we qualitatively verify the usefulness of our novel framework. 
+                    Figure 4 shows the visualized results of our experiments. In Figure 4 (a), the ground-truth hand pose (see green lines) and our estimated hand pose (see blue lines) are projected in both 3D space and images. Ours show comparable results compared to ground truth. 
+                    We also provide 3D PCK-RA graph on the H2O test split of ours (see blue lines) vs. HTT (see red lines). This graph validates that our method generates reasonable results in both left and right hands. Overall, our model is robust for estimating hand pose in 3D space. 
+                <!-- </center> -->
+            </p>
+        </div>
+</div>
+</body>
+<script>
+
+    
+
+</script>
+</html>
