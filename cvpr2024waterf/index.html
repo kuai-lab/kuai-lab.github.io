@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bmvc2023fhtp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<meta property="og:title" content="Functional Hand Type Prior for 3D Hand Pose Estimation and Action Recognition from Egocentric View Monocular Videos">
+    <meta property="og:url" content="https://anonymousbmvc193.github.io/">
+	<meta name="description" content="bmvc2023-193">
+	<meta name="keywords" content="bmvc2023-193">
+	<meta name="author" content="....">
+    
+    <link rel="stylesheet" href="./css/image_grid.css">
+    <link rel="stylesheet" href="./css/bulma.min.css">
+    <link rel="stylesheet" href="./css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <!-- <link rel="stylesheet" href="./css/index.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="./css/stylesheet.css">
+    <link rel="stylesheet" href="./fontawesome.all.min.css">
+    <!-- <link rel="stylesheet" href="./bulma.min.css"> -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/d4c0a5ef49.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+</head>
+<body>
+<div class="title">
+    <h1>WateRF: Robust Watermarks in Radiance Fields for Protection of Copyrights</h1>   
+    <center>
+    <h2>Computer Vision and Pattern Recognition Conference (CVPR), 2024</h2>
+    <center>
+</div>
+<div class="byline">
+    <div class="authors">
+        <div class="author"><b>
+            Youngdong Jang<sup>1</sup> &emsp; 
+            <a href="https://scholar.google.com/citations?user=VRcajyUAAAAJ&hl=ko&oi=sra">Dong In Lee</a><sup>1</sup> &emsp; 
+            MinHyuk Jang<sup>1</sup> &emsp; 
+            Jong Wook Kim<sup>1</sup> &emsp; 
+            Feng Yang<sup>2</sup> &emsp; 
+            Sangpil Kim<sup>1*</sup></b>
+        </div>
+    </div>
+    <div class="affiliations">
+        <p class="affiliation" style="color: darkslategray;">Korea University<sup>1</sup> &emsp; Google Research<sup>2</sup></p>
+    </div>
+    <div class="links">
+    <h2>
+        <a href="" target="_blank" style="text-decoration: none; color: palevioletred;"> Paper <i class="fa fa-scroll"></i></a>
+        &nbsp;&nbsp;
+        <a href="" target="_blank" style="text-decoration: none; color: cadetblue;"> Code <i class="fa fa-github"></i></a>
+    </h2>
+    </div>
+    <div class="links">
+        <h3 style="font-weight: normal;">
+            &#128640; Code will be released soon! &#128640;
+        </h3>
+    </div>
+</div>
+<div class="container">
+<div class="sections-container">
+        <div class="section">
+            <h2 class="section-title">Presentation Video</h2>
+            <center>
+                <iframe width="840" height="472" src="https://youtube.com/embed/Y7vGpwwcycs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </center>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Abstract</h2>
+            <p>
+                The advances in the Neural Radiance Fields (NeRF) research offer extensive applications in diverse domains, but protecting their copyrights has not yet been researched in depth. 
+                Recently, NeRF watermarking has been considered one of the pivotal solutions for safely deploying NeRF-based 3D representations. 
+                However, existing methods are designed to apply only to implicit or explicit NeRF representations. 
+                In this work, we introduce an innovative watermarking method that can be employed in both representations of NeRF. 
+                This is achieved by fine-tuning NeRF to embed binary messages in the rendering process. 
+                In detail, we propose utilizing the discrete wavelet transform in the NeRF space for watermarking. 
+                Furthermore, we adopt a deferred back-propagation technique and introduce a combination with the patch-wise loss to improve rendering quality and bit accuracy with minimum trade-offs. 
+                We evaluate our method in three different aspects: capacity, invisibility, and robustness of the embedded watermarks in the 2D-rendered images. 
+                Our method achieves state-of-the-art performance with faster training speed over the compared state-of-the-art methods.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Method</h2>
+            <!-- <h2 class="section-subtitle">Redesign Taxonomy</h2> -->
+            <div class="center-img">
+                <img class="content" src="./image/figure_2.png"/>
+            </div>
+            <p style="margin-top: 20px;">
+                Phase 1: We train the encoder and the decoder to extract messages. After training is done, we do not use the encoder. 
+                Phase 2: We fine-tune the NeRF to embed the messages into the rendered images automatically. 
+                (a) We disable auto-differentiation and render a full-resolution image in order to save memory. 
+                (b) We use DWT for the rendered images and choose the LL coefficient as the input of the pre-trained decoder. 
+                (c) We enable auto-differentiation and render the images patch by patch.
+            </p>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Experiment Results</h2>
+            <div class="center-img">
+                <img class="content" src="./image/table_1.png" >
+            </div>
+            <p style="margin-top: 20px;">
+                <!-- <center> -->
+                    Bit accuracies with different message lengths are compared with the state-of-the-art method i.e CopyRNeRF.
+                    Our method generally outperforms other methods with state-of-the-art bit-accuracy. 
+                    HiDDeN + NeRF is pre-embedded before training. The results are the average of LLFF and Blender datasets.
+                <!-- </center> -->
+            </p>
+            <div class="center-img">
+                <img class="content2" src="./image/table_2.png" >
+            </div>
+
+            <p style="margin-top: 20px;">
+                <!-- <center> -->
+                    Our method demonstrates a trade-off between bit accuracy and the quality of reconstructed data, as detailed in the Table.
+                    Bit accuracies and reconstruction qualities comparision with baselines. ↑ (↓) means higher (lower) is better. 
+                    We show the results on 16 bits. The results are evaluated in the same way as baselines. 
+                    The best performances are highlighted in bold.
+                <!-- </center> -->
+            </p>
+            <div class="center-img">
+                <img class="content3" src="./image/table_3.png" >
+            </div>
+
+            <p style="margin-top: 20px;">
+                <!-- <center> --> 
+                    We show the results on 16 message bits. The best performances are highlighted in bold.
+                    We evaluate the robustness of the watermarked image to different attacks by applying Gaussian noise, 
+                    Rotation, Scaling, Gaussian Blur, Crop, Brightness, JPEG compression and combination of these distortions. 
+                    As shown in Table, We experiment on both TensoRF and Vanila NeRF when applied with our method, resulting in robustness against various attacks compared to CopyRNeRF.
+                <!-- </center> -->
+            </p>
+            <div class="center-img">
+                <img class="content" src="./image/figure_7.png" >
+            </div>
+
+            <p style="margin-top: 20px;">
+                <!-- <center> --> 
+                    Even though our proposed method necessitates the use of a pre-trained model’s weights as a starting point for fine-tuning, 
+                    the time requirement for training is significantly less compared to that of CopyRNeRF. 
+                    As depicted in Figure, it is evident that the model utilizing our techniques substantially outperforms CopyRNeRF regarding training efficiency.
+                <!-- </center> -->
+            </p>
+            <br>
+            
+            <!-- result gif-->
+            <h2 class="section-title">Qualitative Results</h2>
+            <section class="hero is-light">
+                <div class="container is-max-desktop">
+                    <h2 class="title is-3">Ours (w/ NeRF)</h2>
+                    <div class="grid-container">
+                            <div class="grid-item"><img src="./image/results/syn/chair.gif" alt="chair"></div>
+                            <div class="grid-item"><img src="./image/results/syn/drums.gif" alt="druns"></div>
+                            <div class="grid-item"><img src="./image/results/syn/ficus.gif" alt="ficus"></div>
+                            <div class="grid-item"><img src="./image/results/syn/hotdog.gif" alt="hotdog"></div>
+                            <div class="grid-item"><img src="./image/results/syn/lego.gif" alt="lego"></div>
+                            <div class="grid-item"><img src="./image/results/syn/materials.gif" alt="materials"></div>
+                            <div class="grid-item"><img src="./image/results/syn/mic.gif" alt="mic"></div>
+                            <div class="grid-item"><img src="./image/results/syn/ship.gif" alt="ship"></div>
+                            <div class="grid-item"><img src="./image/results/llff/fern.gif" alt="fern"></div>
+                            <div class="grid-item"><img src="./image/results/llff/flower.gif" alt="flower"></div>
+                            <div class="grid-item"><img src="./image/results/llff/fortress.gif" alt="fortress"></div>
+                            <div class="grid-item"><img src="./image/results/llff/horns.gif" alt="horns"></div>
+                            <div class="grid-item"><img src="./image/results/llff/leaves.gif" alt="leaves"></div>
+                            <div class="grid-item"><img src="./image/results/llff/orchids.gif" alt="orchids"></div>
+                            <div class="grid-item"><img src="./image/results/llff/room.gif" alt="room"></div>
+                            <div class="grid-item"><img src="./image/results/llff/trex.gif" alt="trex"></div>
+                        </div>
+                    </div>
+                <!-- </section>
+                <section class="hero is-light"> -->
+                    <div class="container is-max-desktop">
+                        <h2 class="title is-3">Ours (w/ NeRF)</h2>
+                        <div class="grid-container">
+                          <div class="grid-item"><img src="./image/results/vanilla/chair.gif" alt="chair"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/drums.gif" alt="druns"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/ficus.gif" alt="ficus"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/hotdog.gif" alt="hotdog"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/lego.gif" alt="lego"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/materials.gif" alt="materials"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/mic.gif" alt="mic"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/ship.gif" alt="ship"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/fern.gif" alt="fern"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/flower.gif" alt="flower"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/fortress.gif" alt="fortress"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/horns.gif" alt="horns"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/leaves.gif" alt="leaves"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/orchids.gif" alt="orchids"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/room.gif" alt="room"></div>
+                          <div class="grid-item"><img src="./image/results/vanilla/trex.gif" alt="trex"></div>
+                        </div>
+                    </div>
+                  </section>
+        </div>
+</div>
+</body>
+<script>
+
+    
+
+</script>
+</html>
