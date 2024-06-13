@@ -1,0 +1,19 @@
+/* 그리드 컨테이너 스타일 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* 4개의 열, 창 크기에 맞게 조정 */
+    gap: 10px; /* 이미지 간격 조정 */
+    justify-items: center; /* 가로 중앙 정렬 */
+  }
+  
+  /* 각 그리드 아이템(이미지) 스타일 */
+  .grid-item {
+    display: flex;
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center;
+  }
+  
+  .grid-item img {
+    max-width: 100%; /* 이미지가 그리드 아이템을 넘어가지 않도록 크기 제한 */
+    height: auto;
+  }
