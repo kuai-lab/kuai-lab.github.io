@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MEVG: Multi-event Video Generation with Text-to-Video Models</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Titillium Web", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        }
+
+        .cite {
+            padding: 0px;
+            background: #ffffff;
+            font-size: 18px
+        }
+
+        .card {
+            border: 1px solid #ccc
+        }
+
+        img {
+            margin-bottom: -6px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #2196F3;
+        }
+        
+        .bibtexsection {
+            width: 100%;
+            height: 12em;
+            font-family: "Courier", monospace;
+            white-space: pre;
+            background-color: #f4f4f4;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+        
+        
+        .layered-paper-big {
+            box-shadow:
+                0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+                5px 5px 0 0px #fff,
+                5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+                10px 10px 0 0px #fff,
+                10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+                15px 15px 0 0px #fff,
+                15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+                20px 20px 0 0px #fff,
+                20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+                25px 25px 0 0px #fff,
+                25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+            margin-left: 10px;
+            margin-right: 60px;
+        }
+
+        table {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+        }
+
+        table> :is(thead, tbody)>tr> :is(th, td) {
+            padding: 3px;
+            text-align: center;
+        }
+
+        table>thead>tr> :is(th, td) {
+            border-top: 2px solid;
+            border-bottom: 1px solid;
+        }
+
+        table>tbody>tr:last-child> :is(th, td) {
+            border-bottom: 2px solid;
+        }
+
+        table>tbody {
+            border-top: 2px solid;
+            border-bottom: 1px solid;
+        }
+
+        .slider-container {
+            max-width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .slider {
+            width: 80%;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .video-container {
+            text-align: center;
+        }
+
+        .jb-title2 {
+            text-align: center;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2em;
+            padding: 0.5em;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .prompts-container {
+            display: inline-block;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .prompts-title {
+            background-color: rgb(0, 0, 0);
+            padding: 10px;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .prompts-text {
+            border: 2px solid black;
+            padding: 10px;
+            display: inline-block;
+            text-align: left;
+        }
+        
+        .original-title {
+            background-color: rgb(180, 177, 173);
+            padding: 10px;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+        .arrow-next {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            margin: 0 5px;
+        }
+        .jb-title2 {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="w3-white">
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top w3-margin-bottom" style="max-width:960px;">
+
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+
+            <!-- paper container -->
+            <div class="w3-display-container w3-row w3-white w3-margin-bottom">
+                <div class="w3-center">
+                    <h1>MEVG: Multi-event Video Generation with <br>
+                        Text-to-Video Models</h1> 
+
+                <div class="w3-center">
+                    <h4>ECCV 2024</h4> 
+
+		    <h5><a href="">Gyeongrok Oh</a><sup>1</sup>, <a href="">Jaehwan Jeong</a><sup>1</sup>, <a href="">Sieun Kim</a><sup>1</sup>, <a href="">Wonmin Byeon</a><sup>2</sup>, <br> <a href="">Jinkyu Kim</a><sup>3</sup>, <a href="">Sungwoong Kim</a><sup>1</sup>, and <a href="">Sangpil Kim</a><sup>1</sup></h5>
+                    <h5><sup>1</sup>Department of Artificial Intelligence, Korea University <br> <sup>2</sup>NVIDIA Research, NVIDIA Corporation  <br> <sup>3</sup>Department of Computer Science and Engineering, Korea University</h5>
+                </div>
+
+                <div class="w3-center">
+            <!-- TODO: NEED TO FIX THE LINK -->
+	    <h3>[<a href="">Code</a>][<a href="">Paper</a>]</h3>
+                </div>
+
+                <hr>
+                <div class="w3-display-container w3-row w3-white w3-margin-bottom w3-center">
+                    <embed src="images/overview.png" style="width:80%">
+
+                </div>
+
+                <hr>
+                <div class="w3-center">
+                    <h2>Abstract</h2>
+                </div>
+                <p align="justify">We introduce a novel diffusion-based video generation method, generating a video showing multiple events given multiple individual sentences from the user.
+                    Our method does not require a large-scale video dataset since our method uses a pre-trained diffusion-based text-to-video generative model without a fine-tuning process.
+                    Specifically, we propose a last frame-aware diffusion process to preserve visual coherence between consecutive videos where each video consists of different events by initializing the latent and simultaneously adjusting noise in the latent to enhance the motion dynamic in a generated video.
+                    Furthermore, we find that the iterative update of latent vectors by referring to all the preceding frames maintains the global appearance across the frames in a video clip.
+                    To handle dynamic text input for video generation, we utilize a novel prompt generator that transfers course text messages from the user into the multiple optimal prompts for the text-to-video diffusion model.
+                    Extensive experiments and user studies show that our proposed method is superior to other video-generative models in terms of temporal coherency of content and semantics.</p>
+
+                <hr>
+                <div class="w3-center">
+                    <h2>Results</h2>
+                </div>
+                
+                <!-- Slider 1 -->
+                <div class="slider-container">
+                    <h4>Video Results Based on LVDM</h4>
+                    <div class="slider" id="slider1">
+                        <div class="slides">
+                            <div class="slide">
+                                <video width="256" height="256" controls autoplay muted loop>
+                                    <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/qualitative/idx14_best_4.0_seed32000_000_1x64x256x256x3.mp4" type="video/mp4">
+                                </video>
+                                <h4 class="subtitle has-text-centered;">
+                                    <br>"Santa Claus <span style="color: rgb(10, 91, 205);">goes snowboarding</span> on a snowy mountain."
+                                    <br>"Santa Claus <span style="color: rgb(10, 91, 205);">rides his sleigh</span> through the snow in the mountain."
+                                    <br>"Santa Claus <span style="color: rgb(10, 91, 205);">walks through the forest to a frozen lake</span>."
+                                    <br/>"Santa Claus <span style="color: rgb(10, 91, 205);">has fun skating on the ice.</span>"
+                                </h4>
+                            </div>   
+
+                            <div class="slide">
+                                <video width="256" height="256" controls autoplay muted loop>
+                                    <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/IDX15/v4.0_seed00100_000_1x64x256x256x3.mp4" type="video/mp4">
+                                </video>
+                                <h4 class="subtitle has-text-centered;">
+                                    <br>"A golden retriever <span style="color: rgb(197, 93, 229);">is having a picnic </span>on a beautiful tropical beach at sunset."<br>
+                                    "A golden retriever <span style="color: rgb(197, 93, 229)">is running </span> towards a beautiful tropical beach at sunset."<br>
+                                    "A golden retriever <span style="color: rgb(197, 93, 229);">is sitting next to a bonfire </span> on a beautiful tropical beach at sunset."<br>
+                                    "A golden retriever <span style="color: rgb(197, 93, 229);">is looking at the starry sky</span>  on a beautiful tropical beach."
+                                </h4>
+                            </div>
+
+                            <div class="slide">
+                                <video width="256" height="256" controls autoplay muted loop>
+                                    <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/IDX27/a_v4.0_seed00750_000_1x64x256x256x3.mp4" type="video/mp4">
+                                </video>
+                                <h4 class="subtitle has-text-centered;">
+                                    <br>"A waterfall flows in the<span style="color: rgb(184, 95, 6);"> mountains</span> under a clear sky."<br>
+                                    "A waterfall flows in the <span style="color: rgb(184, 95, 6);">fall mountains</span> under a clear sky."<br>
+                                    "A waterfall flows in the <span style="color: rgb(184, 95, 6);">winter mountains</span> under a clear sky."<br/>
+                                    "A waterfall <span style="color: rgb(184, 95, 6);">frozen on a mountain during a snowstorm</span>."
+                                </h4>
+                            </div>
+
+                            <div class="slide">
+                                <video width="256" height="256" controls autoplay muted loop>
+                                    <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/qualitative/a_v4.0_seed00000_000_1x48x256x256x3.mp4" type="video/mp4">
+                                </video>
+                                <h4 class="subtitle has-text-centered;">
+                                    <br>"<span style="color: rgb(204,0,0);">The volcano erupts</span> in the clear weather."<br>
+                                    "<span style="color: rgb(204,0,0);">Smoke comes from the crater of the volcano, </span><br/>which has ended its eruption in the clear weather."<br>
+                                    "The weather around the volcano <span style="color: rgb(204,0,0);">turns cloudy</span>."
+                                </h4>
+                            </div>
+
+                            <div class="slide">
+                                <video width="256" height="256" controls autoplay muted loop>
+                                    <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/IDX19/beach_v4.0_seed30000_000_1x48x256x256x3.mp4" type="video/mp4">
+                                </video>
+                                <h4 class="subtitle has-text-centered;">
+                                    <br>"There is a beach <span style="color: rgb(49, 138, 4);">where there is no one</span>."
+                                    <br>"<span style="color: rgb(49, 138, 4);">The waves hit</span> the deserted beach."
+                                    <br>"There is a beach <span style="color: rgb(49, 138, 4);">that has been swept away by waves</span>."
+                                </h4>
+                            </div>
+                        </div>
+                        <button class="prev" onclick="moveSlide(-1, 'slider1')">&#10094;</button>
+                        <button class="next" onclick="moveSlide(1, 'slider1')">&#10095;</button>
+                    </div>
+                </div>
+
+                <hr>
+                
+                <!-- Slider 2 -->
+                <div class="slider-container">
+                    <h4>Video Results Based on VideoCrafter1</h4>
+                    <div class="slider" id="slider2">
+                        <div class="slides">
+                            <div class="slide">
+                                <video width="512" height="256" controls autoplay muted loop>
+                                    <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/videocrafter/av4.0_seed91000_000_1x48x576x1024x3.mp4" type="video/mp4">
+                                </video>
+                                <h4 class="subtitle has-text-centered;">
+                                    <br>"An astronaut in a white uniform is snowboarding in the snowy hill."
+                                    <br>"An astronaut in a white uniform is surfing in the sea."
+                                    <br>"An astronaut in a white uniform is surfing in the desert."
+                                </h4>
+                            </div>
+
+                            <div class="slide">
+                                <video width="512" height="256" controls autoplay muted loop>
+                                    <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/videocrafter/aaa_v4.0_seed102000_000_1x64x576x1024x3.mp4" type="video/mp4">
+                                </video>
+                                <h4 class="subtitle has-text-centered;">
+                                    <br>"A white dog is running in the beautiful meadow."<br>
+                                    "A white dog is standing in the beautiful meadow."<br>
+                                    "A white dog is yawning loudly in the beautiful meadow."<br>
+                                    "A white dog lies on the ground in the beautiful meadow."
+                                </h4>
+                            </div>
+                        </div>
+                        <button class="prev" onclick="moveSlide(-1, 'slider2')">&#10094;</button>
+                        <button class="next" onclick="moveSlide(1, 'slider2')">&#10095;</button>
+                    </div>
+                </div>
+                <hr>
+
+            <div class="w3-center">
+                <h2>Applications</h2>
+            </div>
+
+            <div class="container">
+                <h4>Image and Multi-text-based Video Generation</h4>
+
+                <div class="slider-container">
+                    <div class="slider" id="slider3">
+                        <div class="slides">
+                            <div class="slide">
+                                <div class="prompts-container">
+                                    <h3 class="prompts-title">Prompts</h3>
+                                    <h5 class="prompts-text">
+                                        <span class="prompts1">A single white flower gradually blooms from a single green flower bud.</span><br/>
+                                        <span class="prompts2">&rarr; The single white flower is blooming.</span><br/>
+                                        <span class="prompts3">&rarr; A lovely fully blossomed single white flower.</span>
+                                    </h5>
+                                </div>
+                                <div class="content-container">
+                                    <div class="content">
+                                        <img src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/image/I2V_flower.jpg" alt="Input Image" style="width:256px;height:256px;"/>
+                                        <h4 class="jb-title2">Input Image</h4>
+                                    </div>
+                                    <span class="arrow-next"></span>
+                                    <span class="arrow-next"></span>
+                                    <span class="arrow-next"></span>
+                                    <div class="content">
+                                        <video width="256" height="256" controls>
+                                            <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/white_flower.mp4" type="video/mp4">
+                                            <p id="statusText"></p>
+                                        </video>
+                                        <h4 class="jb-title2">Output</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slide">
+                                <div class="prompts-container">
+                                    <h3 class="prompts-title">Prompts</h3>
+                                    <h5 class="prompts-text">
+                                        <span class="prompts1">People walks on the beach at night.</span><br/>
+                                        <span class="prompts2">&rarr; There are sand castles on the beach under the fireworks at night.</span><br/>
+                                        <span class="prompts3">&rarr; Very few people remain on the beach at night and they gradually fade away.</span>
+                                    </h5>
+                                </div>
+                                <div class="content-container">
+                                    <div class="content">
+                                        <img src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/image/Beach.jpg" alt="Input Image" style="width:256px;height:256px;"/>
+                                        <h4 class="jb-title2">Input Image</h4>
+                                    </div>
+                                    <span class="arrow-next"></span>
+                                    <span class="arrow-next"></span>
+                                    <span class="arrow-next"></span>
+                                    <div class="content">
+                                        <video width="256" height="256" controls>
+                                            <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/beach_applications.mp4" type="video/mp4">
+                                            <p id="statusText"></p>
+                                        </video>
+                                        <h4 class="jb-title2">Output</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <button class="prev" onclick="moveSlide(-1, 'slider3')">&#10094;</button>
+                    <button class="next" onclick="moveSlide(1, 'slider3')">&#10095;</button>   
+                </div>
+            </div>   
+
+            <hr>
+
+            <div class="container">
+                <h4>Video Generation with Large Language Model (LLM)</h4>
+
+                <div class="slider-container">
+                    <div class="slider" id="slider4">
+                        <div class="slides">
+                            <div class="slide">
+                                <div class="prompts-container">
+                                    <h3 class="original-title">Original Scenario</h3>
+                                    <h5 class="prompts-text">
+                                    <span class="prompts1">"In the morning, Albert Einstein was walking in the forest, later he read a book under a tree, and as night fell, he walked towards the lake, eventually sitting near it in the forest at night."
+                                    </h5>
+                                    <h3 class="prompts-title">Prompts as a result of LLM</h3>
+                                    <h5 class="prompts-text">
+                                        <span class="prompts1">Albert Einstein is walking in the forest in the morning.</span><br/>
+                                        <span class="prompts2">&rarr; Albert Einstein reads a book under a tree.</span><br/>
+                                        <span class="prompts3">&rarr; Albert Einstein walks from the forest towards the lake as night falls.</span><br/>
+                                        <span class="prompts4">&rarr; Albert Einstein sits near the lake in the forest at night.</span>
+                                    </h5>
+                                </div>
+                                <div class="content-container">
+                                    <div class="content">
+                                        <video width="256" height="256" controls>
+                                            <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/a_v4.0_seed48900_000_1x64x256x256x3.mp4" type="video/mp4">
+                                            <p id="statusText"></p>
+                                        </video>
+                                        <h4 class="jb-title2">Output</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slide">
+                                <div class="prompts-container">
+                                    <h3 class="original-title">Original Scenario</h3>
+                                    <h5 class="prompts-text">
+                                    <span class="prompts1">"A man embarks on a motorcycle journey, runs through a traffic jam on a busy road, rides a motorcycle in the desert, walks in the desert at night, and looks at the sky with aurora in the desert."
+                                    </h5>
+                                    <h3 class="prompts-title">Prompts as a result of LLM</h3>
+                                    <h5 class="prompts-text">
+                                        <span class="prompts1">A man embarks on a motorcycle journey.</span><br/>
+                                        <span class="prompts2">&rarr; A man runs through a traffic jam on a busy road.</span><br/>
+                                        <span class="prompts3">&rarr; A man rides a motorcycle in the desert.</span><br/>
+                                        <span class="prompts4">&rarr; A man walks in the desert at night.</span><br/>
+                                        <span class="prompts5">&rarr; A man looks at the sky with aurora in the desert.</span></h4>
+                                    </h5>
+                                </div>
+                                <div class="content-container">
+                                    <div class="content">
+                                        <video width="256" height="256" controls>
+                                            <source src="https://kr.object.ncloudstorage.com/free-mt2v/ours/Projectpage/video/supple_motor.mp4" type="video/mp4">
+                                            <p id="statusText"></p>
+                                        </video>
+                                        <h4 class="jb-title2">Output</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <button class="prev" onclick="moveSlide(-1, 'slider4')">&#10094;</button>
+                    <button class="next" onclick="moveSlide(1, 'slider4')">&#10095;</button>   
+                </div>
+            </div>   
+
+
+                <hr>
+
+                <div class="w3-center">
+                    <h2>The used codes and license</h2>
+                        <table>
+                            <tr>
+                            <th>URL</th><th>License</th>
+                            </tr>
+    
+                            <tr>
+                            <th><a href="https://github.com/YingqingHe/LVDM/">https://github.com/YingqingHe/LVDM/</a></th><td>MIT</td>
+                            </tr>
+    
+                            <tr>
+                            <th><a href="https://github.com/AILab-CVC/VideoCrafter">https://github.com/AILab-CVC/VideoCrafter</a></th><td>(Hugging Face Space) MIT</td>
+    
+                        </table>
+                </div>            
+
+                <hr>  
+                
+                <div class="w3-center">
+                    <h2>Bibtex</h2>
+
+<textarea class="bibtexsection" readonly wrap="off">
+@article{oh2023mtvg,
+title={MTVG: Multi-text Video Generation with Text-to-Video Models},
+author={Oh, Gyeongrok and Jeong, Jaehwan and Kim, Sieun and Byeon, Wonmin and Kim, Jinkyu and Kim, Sungwoong and Kwon, Hyeokmin and Kim, Sangpil},
+journal={arXiv preprint arXiv:2312.04086},
+year={2023}
+}
+</textarea>
+                </div>
+
+                <hr>
+            </div>
+            <!-- end paper container -->
+
+        </div><!-- End Grid -->
+    </div><!-- End Page Container -->
+
+    <script>
+    
+    function moveSlide(direction, sliderId) {
+    const slider = document.getElementById(sliderId);
+    const slides = slider.querySelectorAll('.slide');
+    const slideWidth = slides[0].offsetWidth; // 첫 번째 슬라이드의 너비를 가져옴
+
+    let currentSlide = getCurrentSlideIndex();
+
+    function getCurrentSlideIndex() {
+        return Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    }
+
+    function showSlide(index) {
+        if (index >= slides.length) {
+            index = 0; // 맨 끝 슬라이드에서 다음으로 이동하면 첫 번째 슬라이드로 이동
+        } else if (index < 0) {
+            index = slides.length - 1; // 첫 번째 슬라이드에서 이전으로 이동하면 맨 끝 슬라이드로 이동
+        }
+
+        // 모든 슬라이드에서 'active' 클래스 제거
+        slides.forEach(slide => slide.classList.remove('active'));
+        // 현재 슬라이드에만 'active' 클래스 추가
+        slides[index].classList.add('active');
+
+        const offset = -index * slideWidth; // 각 슬라이드의 너비를 곱해 오프셋 계산
+        slider.querySelector('.slides').style.transform = `translateX(${offset}px)`;
+    }
+
+    showSlide(currentSlide + direction);
+}
+
+
+
+
+    </script>
+</body>
+</html>
