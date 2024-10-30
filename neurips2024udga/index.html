@@ -73,8 +73,8 @@
     </div>
 </div>
 <div class="container">
-<!-- <div class="sections-container">
-    <div class="section">
+<div class="sections-container">
+    <!-- <div class="section">
         <h2 class="section-title">Poster</h2>
         <div class="center-img">
             <img class="content" src="./image/ease_poster.png"/>
@@ -85,20 +85,21 @@
         <div class="center-img">
             <iframe width="840" height="472" src="https://www.youtube.com/embed/OxzWLJTuUJ4" title="EASE, CVPR2024" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-    </div>
+    </div> -->
     <div class="section">
         <h2 class="section-title">Abstract</h2>
         <p style="margin-top: 30px; font-size: 23px;">
-            While recent 3D instance segmentation approaches show promising results based on transformer architectures, they often fail to correctly identify instances with similar appearances. They also ambiguously determine edges, leading to multiple misclassifications of adjacent edge points.
-            In this work, we introduce a novel framework to overcome these challenges and improve the complex 3D instance perception.
-            We first propose a semantic guidance network to leverage rich semantic knowledge from a language model as intelligent priors, enhancing the functional understanding of real-world instances beyond relying solely on geometrical information.
-            We explicitly instruct the basic instance queries using text embeddings of each instance to learn deep semantic details.
-            Further, we utilize the edge prediction module, encouraging the segmentation network to be edge-aware.
-            We extract voxel-wise edge maps from point features and use them as auxiliary information for learning edge cues.
-            In our extensive experiments on large-scale benchmarks, ScanNetV2, ScanNet200, S3DIS, and STPLS3D, our method outperforms existing state-of-the-art models, demonstrating its superior performance.
+            Recent advances in 3D object detection leveraging multi-view cameras have demonstrated their practical and economical value in various challenging vision tasks.
+            However, typical supervised learning approaches face challenges in achieving satisfactory adaptation toward unseen and unlabeled target datasets (\ie, direct transfer) due to the inevitable geometric misalignment between the source and target domains.
+            In practice, we also encounter constraints on resources for training models and collecting annotations for the successful deployment of 3D object detectors.
+            In this paper, we propose Unified Domain Generalization and Adaptation (UDGA), a practical solution to mitigate those drawbacks.
+            We first propose Multi-view Overlap Depth Constraint that leverages the strong association between multi-view, significantly alleviating geometric gaps due to perspective view changes.
+            Then, we present a Label-Efficient Domain Adaptation approach to handle unfamiliar targets with significantly fewer amounts of labels (\ie, 1$\%$ and 5$\%)$, while preserving well-defined source knowledge for training efficiency.
+            Overall, UDGA framework enables stable detection performance in both source and target domains, effectively bridging inevitable domain gaps, while demanding fewer annotations.
+            We demonstrate the robustness of UDGA with large-scale benchmarks: nuScenes, Lyft, and Waymo, where our framework outperforms the current state-of-the-art methods. 
         </p>
     </div>
-    <div class="section">
+    <!-- <div class="section">
         <h2 class="section-title">Method</h2>
         <h2 class="section-subtitle">Overview</h2>
         <div class="center-img">
@@ -124,8 +125,8 @@
         pages     = {20644-20653}
     }</code>
         </pre>
-    </div>
-</div> -->
+    </div> -->
+</div>
 </body>
 <script></script>
 </html>
