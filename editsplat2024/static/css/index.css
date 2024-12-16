@@ -204,3 +204,23 @@ body {
     margin: 40px auto;
     display:block
 }
+
+.publication-affiliations {
+  display: flex; /* 수평 나열 */
+  justify-content: center; /* 가운데 정렬 */
+  gap: 20px; /* 각 소속 간 간격 */
+}
+
+.affiliation-block {
+  white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
+}
+
+pre, code {
+  text-align: left; /* 왼쪽 정렬 */
+  margin: 0; /* 불필요한 외부 여백 제거 */
+  padding: 10px; /* 내부 여백으로 간격 유지 */
+  background-color: #f5f5f5; /* 가독성을 위한 배경색 (선택 사항) */
+  border-radius: 4px; /* 모서리 둥글게 (선택 사항) */
+  overflow-x: auto; /* 가로 스크롤 허용 */
+  font-family: monospace; /* 고정 폭 글꼴 유지 */
+}

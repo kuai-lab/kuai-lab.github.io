@@ -1,6 +1,6 @@
 # EditSplat README
 
-## 1. EditSplat_projectpage_10124.html
+## 1. index.html
 
 This is our **locally hosted HTML project page**, designed to showcase the core features and results of our work. Open it in your browser to explore detailed visualizations, interactive examples, and additional resources.
 
