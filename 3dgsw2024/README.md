@@ -1,4 +1,4 @@
-# EditSplat README
+# 3D-GSW README
 
 ## 1. index.html
 
