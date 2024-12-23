@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="3D Scene Watermarking Framework">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>3D-GSW: 3D Gaussian Splatting for Robust Watermarking</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kalam:wght@300;400&family=Shadows+Into+Light&family=Google+Sans&family=Noto+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <!-- Optional CSS (Remove if not needed) -->
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- JavaScript Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            3D-GSW: 3D Gaussian Splatting for Robust Watermarking
+          </h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">Youngdong Jang <sup>1</sup>,&nbsp; Hyunje Park <sup>1</sup>, &nbsp; Feng Yang <sup>2</sup>, &nbsp; Heeju Ko <sup>1</sup>, &nbsp; Euijin Choo <sup>3</sup>, &nbsp; Sangpil Kim <sup>1</sup></span><br>
+          </div>
+
+          <br>
+
+          <div class="is-size-5 publication-affiliations">
+            <span class="affiliation-block"><sup>1</sup>Korea University</span>
+            <span class="affiliation-block"><sup>2</sup>Google DeepMind</span>
+            <span class="affiliation-block"><sup>3</sup>University of Alberta</span><br>
+          </div>
+
+          <!-- <br> -->
+
+          <div class="column has-text-centered">
+            
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+             <span class="link-block">
+                <a href="https://arxiv.org/abs/2409.13222"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <h2 class="subtitle" style="font-family: 'Kalam', cursive; font-size: 1.2em; margin-top: 10px;">
+                Code will be released soon 😊
+              </h2>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Figure Section -->
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered" style="width: 100%; margin: 50px 0 0;">
+        <div class="column" style="width: 80%; padding: 0;">
+            <h2 class="title is-3"> Abstract </h2>
+            <div class="content has-text-justified">
+              As 3D Gaussian Splatting (3D-GS) gains significant attention and its commercial usage increases, the need for watermarking technologies to prevent unauthorized use of the 3D-GS models and rendered images has become increasingly important.
+              In this paper, we introduce a robust watermarking method for 3D-GS that secures ownership of both the model and its rendered images.
+              Our proposed method remains robust against distortions in rendered images and model attacks while maintaining high rendering quality. 
+              To achieve these objectives, we present Frequency-Guided Densification (FGD), which removes 3D Gaussians based on their contribution to rendering quality, enhancing real-time rendering and the robustness of the message. 
+              FGD utilizes Discrete Fourier Transform to split 3D Gaussians in high-frequency areas, improving rendering quality. 
+              Furthermore, we employ a gradient mask for 3D Gaussians and design a wavelet-subband loss to enhance rendering quality. 
+              Our experiments show that our method embeds the message in the rendered images invisibly and robustly against various attacks, including model distortion. 
+              Our method achieves state-of-the-art performance.
+            </div>
+        </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <br> 
+    <h2 class="subtitle has-text-centered">
+    </h2>
+    
+
+<!-- Main Figure Section -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">
+          <h2 class="title is-3">Overview of 3D-GSW </h2>
+          <img src="static/imgs/Main_figure.png" alt="Teaser" style="width: 100%; height: auto;">
+        </div>
+      </div>
+      <p style="text-align: left;">
+        Before fine-tuning 3D-GS, Frequency-Guided Densification (FGD) removes 3D Gaussians based on their contribution 
+        to the rendering quality and splits 3D Gaussians in high-frequency areas into smaller ones. We also construct a gradient mask based on the parameters of 
+        an FGD-processed 3D-GS. During the fine-tuning, we apply the Discrete Wavelet Transform (DWT) to the rendered image for robustness, using the low frequency 
+        as input to a pre-trained message decoder. For rendering quality, we design a wavelet-subbands loss that utilizes only high-frequency subbands. Finally, 3D-GS is optimized through the $\mathcal{L}_{total}$.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+    <!-- Comparison -->
+    <div class="columns is-centered has-text-centered" style="width: 100%; margin: 15px 10px 0;">
+        <div class="column" style="width: 100%; padding: 0;">
+            <h2 class="title is-3"> Qualitative Comparison </h2>
+            <br> 
+
+            <h2 class="subtitle" style="font-family: 'Kalam', cursive; text-align: center; font-size: 1.5em;">
+              📷 <strong> Click </strong> on video to play or pause. <strong> Move</strong> mouse to change the hover  📷
+            </h2>
+            <h2 class="subtitle" style="font-family: 'Kalam', cursive; text-align: center; font-size: 1.5em;">
+              <strong> Mip-NeRF 360 </strong>
+            </h2>
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Scene Watermarking Results</title>
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Comparison Slider</title>
+            
+              <link rel="stylesheet" href="static/css/slidebar-container.css">
+            </head>
+            
+            <!-- Tabs -->
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-bicycle-tab" data-bs-toggle="tab" href="#nav-bicycle" role="tab" aria-controls="nav-bicycle" aria-selected="true">Bicycle</a>
+                <a class="nav-item nav-link" id="nav-bonsai-tab" data-bs-toggle="tab" href="#nav-bonsai" role="tab" aria-controls="nav-bonsai" aria-selected="false">Bonsai</a>
+                <a class="nav-item nav-link" id="nav-stump-tab" data-bs-toggle="tab" href="#nav-stump" role="tab" aria-controls="nav-stump" aria-selected="false">Stump</a>
+                <a class="nav-item nav-link" id="nav-garden-tab" data-bs-toggle="tab" href="#nav-garden" role="tab" aria-controls="nav-garden" aria-selected="false">Garden</a>
+                <a class="nav-item nav-link" id="nav-counter-tab" data-bs-toggle="tab" href="#nav-counter" role="tab" aria-controls="nav-counter" aria-selected="false">Counter</a>
+                <a class="nav-item nav-link" id="nav-treehill-tab" data-bs-toggle="tab" href="#nav-treehill" role="tab" aria-controls="nav-treehill" aria-selected="false">Treehill</a>
+                <a class="nav-item nav-link" id="nav-room-tab" data-bs-toggle="tab" href="#nav-room" role="tab" aria-controls="nav-room" aria-selected="false">Room</a>
+                <a class="nav-item nav-link" id="nav-flowers-tab" data-bs-toggle="tab" href="#nav-flowers" role="tab" aria-controls="nav-flowers" aria-selected="false">Flowers</a>
+                <a class="nav-item nav-link" id="nav-kitchen-tab" data-bs-toggle="tab" href="#nav-kitchen" role="tab" aria-controls="nav-kitchen" aria-selected="false">Kitchen</a>
+              </div>
+            </nav>
+            
+            <!-- Tabs Content -->
+            <div class="tab-content" id="nav-tabContent">
+              <!-- Bicycle Tab -->
+              <div class="tab-pane fade" id="nav-bicycle" role="tabpanel" aria-labelledby="nav-bicycle-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="bicycle-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/bicycle.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="bicycle-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/bicycle.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bonsai Tab -->
+              <div class="tab-pane fade" id="nav-bonsai" role="tabpanel" aria-labelledby="nav-bonsai-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="bonsai-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/bonsai.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="bonsai-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/bonsai.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Stump Tab -->
+              <div class="tab-pane fade" id="nav-stump" role="tabpanel" aria-labelledby="nav-stump-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="stump-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/stump.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="stump-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/stump.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Garden Tab -->
+              <div class="tab-pane fade" id="nav-garden" role="tabpanel" aria-labelledby="nav-garden-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="garden-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/garden.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="garden-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/garden.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- counter Tab -->
+              <div class="tab-pane fade" id="nav-counter" role="tabpanel" aria-labelledby="nav-counter-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="counter-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/counter.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="counter-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/counter.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- treehill Tab -->
+              <div class="tab-pane fade" id="nav-treehill" role="tabpanel" aria-labelledby="nav-treehill-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="treehill-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/treehill.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="treehill-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/treehill.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- room Tab -->
+              <div class="tab-pane fade" id="nav-room" role="tabpanel" aria-labelledby="nav-room-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="room-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/room.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="room-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/room.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- flowers Tab -->
+              <div class="tab-pane fade" id="nav-flowers" role="tabpanel" aria-labelledby="nav-flowers-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="flowers-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/flowers.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="flowers-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/flowers.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- kitchen Tab -->
+              <div class="tab-pane fade" id="nav-kitchen" role="tabpanel" aria-labelledby="nav-kitchen-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="kitchen-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/MipNeRF360/kitchen.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="kitchen-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/MipNeRF360/kitchen.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            <br><br>
+            <!-- LLFF -->
+            <h2 class="subtitle" style="font-family: 'Kalam', cursive; text-align: center; font-size: 1.5em;">
+              <strong> LLFF </strong>
+            </h2>
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Scene Watermarking Results</title>
+            <!-- Bootstrap CSS -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Comparison Slider</title>
+            
+              <link rel="stylesheet" href="static/css/slidebar-container.css">
+            </head>
+            
+            <!-- Tabs -->
+            <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-fern-tab" data-bs-toggle="tab" href="#nav-fern" role="tab" aria-controls="nav-fern" aria-selected="true">Fern</a>
+                <a class="nav-item nav-link" id="nav-flower-tab" data-bs-toggle="tab" href="#nav-flower" role="tab" aria-controls="nav-flower" aria-selected="false">Flower</a>
+                <a class="nav-item nav-link" id="nav-fortress-tab" data-bs-toggle="tab" href="#nav-fortress" role="tab" aria-controls="nav-fortress" aria-selected="false">Fortress</a>
+                <a class="nav-item nav-link" id="nav-horns-tab" data-bs-toggle="tab" href="#nav-horns" role="tab" aria-controls="nav-horns" aria-selected="false">Horns</a>
+                <a class="nav-item nav-link" id="nav-leaves-tab" data-bs-toggle="tab" href="#nav-leaves" role="tab" aria-controls="nav-leaves" aria-selected="false">Leaves</a>
+                <a class="nav-item nav-link" id="nav-orchids-tab" data-bs-toggle="tab" href="#nav-orchids" role="tab" aria-controls="nav-orchids" aria-selected="false">Orchids</a>
+                <a class="nav-item nav-link" id="nav-llffroom-tab" data-bs-toggle="tab" href="#nav-llffroom" role="tab" aria-controls="nav-llffroom" aria-selected="false">Room</a>
+                <a class="nav-item nav-link" id="nav-trex-tab" data-bs-toggle="tab" href="#nav-trex" role="tab" aria-controls="nav-trex" aria-selected="false">Trex</a>
+              </div>
+            </nav>
+            
+            <!-- Tabs Content -->
+            <div class="tab-content" id="nav-tabContent">
+              <!-- fern Tab -->
+              <div class="tab-pane fade" id="nav-fern" role="tabpanel" aria-labelledby="nav-fern-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="fern-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/fern.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="fern-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/fern.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- flower Tab -->
+              <div class="tab-pane fade" id="nav-flower" role="tabpanel" aria-labelledby="nav-flower-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="flower-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/flower.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="flower-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/flower.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- fortress Tab -->
+              <div class="tab-pane fade" id="nav-fortress" role="tabpanel" aria-labelledby="nav-fortress-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="fortress-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/fortress.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="fortress-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/fortress.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- horns Tab -->
+              <div class="tab-pane fade" id="nav-horns" role="tabpanel" aria-labelledby="nav-horns-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="horns-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/horns.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="horns-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/horns.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- leaves Tab -->
+              <div class="tab-pane fade" id="nav-leaves" role="tabpanel" aria-labelledby="nav-leaves-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="leaves-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/leaves.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="leaves-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/leaves.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- orchids Tab -->
+              <div class="tab-pane fade" id="nav-orchids" role="tabpanel" aria-labelledby="nav-orchids-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="orchids-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/orchids.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="orchids-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/orchids.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- room Tab -->
+              <div class="tab-pane fade" id="nav-llffroom" role="tabpanel" aria-labelledby="nav-llffroom-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="room-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/room.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="room-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/room.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- trex Tab -->
+              <div class="tab-pane fade" id="nav-trex" role="tabpanel" aria-labelledby="nav-trex-tab">
+                <div class="container h-100 pt-3 pb-3">
+                  <div class="custom-video-block">
+                    <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                      <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                      <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                    </div>
+                    <div class="video-compare-container" data-slider>
+                      <video class="left-video" id="trex-left-video" loop autoplay muted>
+                        <source src="RENDERING_RESULTS/Watermarking/LLFF/trex.mp4" type="video/mp4">
+                      </video>
+                      <div class="slider-bar">
+                        <div class="slider-divider"></div>
+                        <video class="right-video" id="trex-right-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/GT/LLFF/trex.mp4" type="video/mp4">
+                        </video>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br><br>
+              <!-- LLFF -->
+              <h2 class="subtitle" style="font-family: 'Kalam', cursive; text-align: center; font-size: 1.5em;">
+                <strong> NeRF-Blender </strong>
+              </h2>
+              <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Scene Watermarking Results</title>
+              <!-- Bootstrap CSS -->
+              <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+              <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Comparison Slider</title>
+              
+                <link rel="stylesheet" href="static/css/slidebar-container.css">
+              </head>
+              
+              <!-- Tabs -->
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active" id="nav-drums-tab" data-bs-toggle="tab" href="#nav-drums" role="tab" aria-controls="nav-drums" aria-selected="true">Drums</a>
+                  <a class="nav-item nav-link" id="nav-chair-tab" data-bs-toggle="tab" href="#nav-chair" role="tab" aria-controls="nav-chair" aria-selected="false">Chair</a>
+                  <a class="nav-item nav-link" id="nav-lego-tab" data-bs-toggle="tab" href="#nav-lego" role="tab" aria-controls="nav-lego" aria-selected="false">Lego</a>
+                  <a class="nav-item nav-link" id="nav-hotdog-tab" data-bs-toggle="tab" href="#nav-hotdog" role="tab" aria-controls="nav-hotdog" aria-selected="false">Hotdog</a>
+                  <a class="nav-item nav-link" id="nav-materials-tab" data-bs-toggle="tab" href="#nav-materials" role="tab" aria-controls="nav-materials" aria-selected="false">Materials</a>
+                  <a class="nav-item nav-link" id="nav-mic-tab" data-bs-toggle="tab" href="#nav-mic" role="tab" aria-controls="nav-mic" aria-selected="false">Mic</a>
+                  <a class="nav-item nav-link" id="nav-ship-tab" data-bs-toggle="tab" href="#nav-ship" role="tab" aria-controls="nav-ship" aria-selected="false">Ship</a>
+                  <a class="nav-item nav-link" id="nav-ficus-tab" data-bs-toggle="tab" href="#nav-ficus" role="tab" aria-controls="nav-ficus" aria-selected="false">Ficus</a>
+                </div>
+              </nav>
+              
+              <!-- Tabs Content -->
+              <div class="tab-content" id="nav-tabContent">
+                <!-- drums Tab -->
+                <div class="tab-pane fade" id="nav-drums" role="tabpanel" aria-labelledby="nav-drums-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="drums-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/drums.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="drums-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/drums.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- chair Tab -->
+                <div class="tab-pane fade" id="nav-chair" role="tabpanel" aria-labelledby="nav-chair-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="chair-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/chair.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="chair-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/chair.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- lego Tab -->
+                <div class="tab-pane fade" id="nav-lego" role="tabpanel" aria-labelledby="nav-lego-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="lego-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/lego.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="lego-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/lego.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Hotdog Tab -->
+                <div class="tab-pane fade" id="nav-hotdog" role="tabpanel" aria-labelledby="nav-hotdog-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="hotdog-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/hotdog.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="hotdog-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/hotdog.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+                <!-- Materials Tab -->
+                <div class="tab-pane fade" id="nav-materials" role="tabpanel" aria-labelledby="nav-materials-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="materials-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/materials.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="leaves-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/materials.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Mic Tab -->
+                <div class="tab-pane fade" id="nav-mic" role="tabpanel" aria-labelledby="nav-mic-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="mic-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/mic.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="mic-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/mic.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <!-- Ship Tab -->
+                <div class="tab-pane fade" id="nav-ship" role="tabpanel" aria-labelledby="nav-ship-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="ship-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/ship.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="ship-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/ship.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+  
+                <!-- ficus Tab -->
+                <div class="tab-pane fade" id="nav-ficus" role="tabpanel" aria-labelledby="nav-ficus-tab">
+                  <div class="container h-100 pt-3 pb-3">
+                    <div class="custom-video-block">
+                      <div style="display: flex; justify-content: space-between; text-align: center; font-size: 18px; margin-bottom: 2px; padding: 5px;">
+                        <span style="margin-left: 10px;"><strong>Ground Truth</strong></span>
+                        <span style="margin-right: 10px;"><strong>3D-GSW (Ours)</strong></span>
+                      </div>
+                      <div class="video-compare-container" data-slider>
+                        <video class="left-video" id="ficus-left-video" loop autoplay muted>
+                          <source src="RENDERING_RESULTS/Watermarking/Blender/ficus.mp4" type="video/mp4">
+                        </video>
+                        <div class="slider-bar">
+                          <div class="slider-divider"></div>
+                          <video class="right-video" id="ficus-right-video" loop autoplay muted>
+                            <source src="RENDERING_RESULTS/GT/Blender/ficus.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Custom Slider Logic -->
+            <script src="static/js/slidebar-container.js"></script>    
+            </body>
+            </html>
+
+            <br><br> <br><br> 
+            <hr/>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">
+          <h2 class="title is-3">Experiment Results </h2>
+          
+          <img src="static/imgs/qualitative_comparison.png" alt="Teaser" style="width: 100%; height: auto;">
+        </div>
+      </div>
+      <p style="text-align: left;">
+        <strong>Rendering quality comparison of each baseline with our method.</strong> We doubled the scale of the difference map. Our method outperforms others in bit accuracy and rendering quality, using 32-bit messages for the qualitative results.
+      </p>
+
+    </div>
+  </div>
+</section>
+<br><br> 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">          
+          <img src="static/imgs/quantitative_comparison.png" alt="Teaser" style="width: 100%; height: auto;">
+        </div>
+      </div>
+      <p style="text-align: left;">
+        <strong>Bit accuracy and quantitative comparison of rendering quality with baselines.</strong> We show the results in 32, 48, and 64 bits. The results are the average of Blender, LLFF, and Mip-NeRF 360 datasets. The best performances are highlighted in <strong>bold</strong>.
+      </p>
+
+    </div>
+  </div>
+</section>
+
+<br>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">          
+          <img src="static/imgs/robustness_image.png" alt="Teaser" style="width: 100%; height: auto;">
+        </div>
+      </div>
+      <p style="text-align: left;">
+        <strong>Quantitative evaluation of robustness under various attacks compared to baseline methods.</strong> The results are the average of Blender,
+          LLFF, and Mip-NeRF 360 datasets. We conduct experiments using 32-bit messages. The best performances are highlighted in bold.
+
+    </div>
+  </div>
+</section>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">          
+          <img src="static/imgs/robustness_model.png" alt="Teaser" style="width: 50%; height: auto;">
+        </div>
+      </div>
+      <p style="text-align: center;">
+        <strong>Robustness under model distortion.</strong> We show the results
+          on 32-bits. The best performances are highlighted in bold.
+
+    </div>
+  </div>
+</section>
+
+<br>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">          
+          <img src="static/imgs/real-time.png" alt="Teaser" style="width: 50%; height: auto;">
+        </div>
+      </div>
+      <p style="text-align: left;">
+        <strong>Results on the large-scale Mip-NeRF 360 dataset for 64-bits.</strong>  All scores are averaged across Mip-NeRF 360 scenes, with
+          ’fine-tunes’ referring to embedded messages. For a fair comparison, we utilize the pre-trained models provided by 3D-GS.
+          The first row is the performance of the pre-trained models.
+
+    </div>
+  </div>
+</section>
+
+
+
+<br><br> <br><br>
+
+
+ <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{jang20243d,
+      title={3d-gsw: 3d gaussian splatting watermark for protecting copyrights in radiance fields},
+      author={Jang, Youngdong and Park, Hyunje and Yang, Feng and Ko, Heeju and Choo, Euijin and Kim, Sangpil},
+      journal={arXiv preprint arXiv:2409.13222},
+      year={2024}
+    }</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="././static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            We borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            A heartfelt thanks to the original creators! 💖
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer> 
+
+</html>
