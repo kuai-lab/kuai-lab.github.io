@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Video Watermark Framework">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LVMark: Robust Watermark for latent video diffusion models</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kalam:wght@300;400&family=Shadows+Into+Light&family=Google+Sans&family=Noto+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <!-- Optional CSS (Remove if not needed) -->
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- JavaScript Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            LVMark: Robust Watermark for latent video diffusion models
+          </h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">MinHyuk Jang<sup>1*</sup>, &nbsp;Youngdong Jang<sup>1*</sup>, &nbsp;JaeHyeok Lee<sup>1</sup>,&nbsp; Kodai Kawamura<sup>1</sup>,<br> Feng Yang<sup>2</sup>, &nbsp;Sangpil Kim<sup>1✉️</sup></span><br>
+          </div>
+
+          <br>
+
+          <div class="is-size-5 publication-affiliations">
+            <span class="affiliation-block"><sup>1</sup>Korea University</span>
+            <span class="affiliation-block"><sup>2</sup>Google DeepMind</span>
+          </div>
+
+          <div class="is-size-5 publication-affiliations">
+            <span class="affiliation-block"><sup>*</sup>Equal contribution</span>
+            <span class="affiliation-block"><sup>✉️</sup>Corresponding author</span>
+          </div>
+
+          <!-- <br> -->
+
+          <div class="column has-text-centered">
+            
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+             <span class="link-block">
+                <a href="https://arxiv.org/abs/2412.09122"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <h2 class="subtitle" style="font-family: 'Kalam', cursive; font-size: 1.2em; margin-top: 10px;">
+                Code will be released soon 😊
+              </h2>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Figure Section -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- 제목: 중앙 정렬 -->
+      <h2 class="title is-3" style="text-align: center;">Overview</h2>
+      
+      <!-- 첫 번째 이미지 -->
+      <div style="width: 100%; text-align: center; margin-bottom: 20px;">
+        <img src="overview/Overview.png" alt="Image 1" style="width: 100%; height: auto;" />
+        <!-- 캡션 추가 -->
+        <figcaption style="text-align: center; font-size: 0.9rem; color: #555; margin-top: 10px;">
+          <strong>Training Pipeline.</strong> The training pipeline of our method is illustrated here. 
+          <strong>Top:</strong> We fine-tune the latent decoder to embed binary messages in generated videos and train the watermark decoder to retrieve messages from distorted videos. 
+          <strong>Bottom-left:</strong> We modulate layers of the latent decoder that minimally impact visual quality to embed random messages. 
+          <strong>Bottom-right:</strong> The watermark decoder combines the RGB video with low-frequency subbands from a 3D wavelet transform using cross-attention to decode the binary message.
+        </figcaption>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<br> 
+<h2 class="subtitle has-text-centered">
+</h2>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered" style="width: 100%; margin: 50px 0 0;">
+        <div class="column" style="width: 80%; padding: 0;">
+            <h2 class="title is-3"> Abstract </h2>
+            <div class="content has-text-justified">
+              Rapid advancements in generative models have made it possible to create hyper-realistic videos. As their applicability increases, their unauthorized use has raised significant concerns, leading to the growing demand for techniques to protect the ownership of the generative model itself. While existing watermarking methods effectively embed watermarks into image-generative models, they fail to account for temporal information, resulting in poor performance when applied to video-generative models. To address this issue, we introduce a novel watermarking method called LVMark, which embeds watermarks into video diffusion models. A key component of LVMark is a selective weight modulation strategy that efficiently embeds watermark messages into the video diffusion model while preserving the quality of the generated videos. To accurately decode messages in the presence of malicious attacks, we design a watermark decoder that leverages spatio-temporal information in the 3D wavelet domain through a cross-attention module. To the best of our knowledge, our approach is the first to highlight the potential of video-generative model watermarking as a valuable tool for enhancing the effectiveness of ownership protection in video-generative models.
+            </div>
+        </div>
+    </div>
+    <!--/ Abstract. -->
+
+
+
+
+
+
+<br><br> <br><br>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- Comparison -->
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 15px 10px 0;">
+        <div class="column" style="width: 100%; padding: 0;">
+          <h2 class="title is-3"> Qualitative Comparison </h2>
+            
+          <section style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+            <h4 class="title is-4"> Comparison between Original and Watermark videos </h4>
+
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+              <!-- 1번째 비디오 페어 -->
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/0/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/0/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- 2번째 비디오 페어 -->
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/1/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/1/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- 3번째 비디오 페어 -->
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/2/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/2/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- 4번째 비디오 페어 -->
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/3/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/3/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- 5번째 ~ 12번째 비디오 페어 -->
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/4/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/4/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/5/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/5/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/6/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/6/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/7/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/7/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/8/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/8/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/9/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/9/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/10/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/10/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div style="text-align: center; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <h3 style="margin-bottom: 10px;">Original</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/11/original.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <h3 style="margin: 10px 0;">Watermark</h3>
+                <video style="width: 100%; max-width: 250px; height: auto;" controls>
+                  <source src="our_qualitative/11/watermark.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- 반복 -->
+            </div>
+          </section>
+          
+          
+          <br>
+          <br>
+          <h4 class="title is-4"> Comparison between ours and baselines </h4>
+
+          <!-- <div class="gif-container" style="margin-top: 0px; position: relative;">
+            <img src="qualitative/video1.gif" alt="Video 1" style="width: 100%; height: auto; display: block; margin-bottom: 5px; clip-path: inset(115px 0 30px 0); position: relative; top: -0px;">
+            <img src="qualitative/video2.gif" alt="Video 2" style="width: 100%; height: auto; display: block; margin-bottom: 5px; clip-path: inset(115px 0 30px 0); position: relative; top: -0px;">
+            <img src="qualitative/video3.gif" alt="Video 3" style="width: 100%; height: auto; display: block; margin-bottom: 5px; clip-path: inset(115px 0 30px 0); position: relative; top: -0px;">
+            <img src="qualitative/video4.gif" alt="Video 4" style="width: 100%; height: auto; display: block; margin-bottom: 5px; clip-path: inset(115px 0 30px 0); position: relative; top: -0px;">
+          </div> -->
+          <div class="gif-container" style="margin-top: 0px; position: relative;">
+            <!-- 첫 번째 비디오 -->
+            <video controls style="width: 100%; height: auto; display: block; margin-bottom: 5px; position: relative; top: 0px;">
+              <source src="qualitative/video1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            <!-- 두 번째 비디오 -->
+            <video controls style="width: 100%; height: auto; display: block; margin-bottom: 5px; position: relative; top: 0px;">
+              <source src="qualitative/video2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            <!-- 세 번째 비디오 -->
+            <video controls style="width: 100%; height: auto; display: block; margin-bottom: 5px; position: relative; top: 0px;">
+              <source src="qualitative/video3.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            <!-- 네 번째 비디오 -->
+            <video controls style="width: 100%; height: auto; display: block; margin-bottom: 5px; position: relative; top: 0px;">
+              <source src="qualitative/video4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          
+          
+          
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- Quantitative comparison -->
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 50px 0;">
+        <div class="column" style="width: 70%; padding: 0;">
+          <h2 class="title is-3"> Quantitative Comparison </h2>
+          <figure class="figure-wrapper">
+            <img src="qualitative/1.png" alt="Teaser" class="centered-image" style="width: 100%;" />
+            <figcaption class="custom-caption" style="text-align: left;">
+              <strong> Quantitative results.</strong> We present the quantitative results for Open-Sora and DynamiCrafter with various watermarking
+              methods: HiDDeN, Blind, Stable Signature, WOUAF and LVMark, applied. The evaluation includes image metrics:
+              PSNR, SSIM, LPIPS, video metrics: tLP, FVD, and bit accuracy on 32 and 48-bit messages.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      
+      <!-- 추가된 이미지들 -->
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 30px 0;">
+        <div class="column" style="width: 70%; padding: 0;">
+          <figure class="figure-wrapper">
+            <img src="qualitative/2.png" alt="Teaser 2" class="centered-image" style="width: 100%;" />
+            <figcaption class="custom-caption" style="text-align: left;">
+              <strong> Robustness comparisons.</strong> We present bit accuracy results of watermarking methods under various attacks, including image
+              distortions, video distortions, combined distortions, and model distortions.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{jang2024lvmark,
+      title={LVMark: Robust Watermark for latent video diffusion models},
+      author={Jang, MinHyuk and Jang, Youngdong and Lee, JaeHyeok and Kawamura, Kodai and Yang, Feng and Kim, Sangpil},
+      journal={arXiv preprint arXiv:2412.09122},
+      year={2024}}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="././static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            We borrow the <a href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            A heartfelt thanks to the original creators! 💖
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</html>
