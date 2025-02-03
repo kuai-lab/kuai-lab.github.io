@@ -1,6 +1,6 @@
-# Nerfies
+# CATSplat
 
-This is the repository that contains source code for the [CATSplat website](https://nerfies.github.io).
+This is the repository that contains source code for the [CATSplat website](https://https://kuai-lab.github.io/catsplat2025/).
 
 If you find CATSplat useful for your work please cite:
 ```
