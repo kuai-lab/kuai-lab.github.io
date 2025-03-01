@@ -40,3 +40,15 @@
   display:block
 }
 
+@keyframes highlight {
+  0% { color: red; }
+  50% { color: black; }
+  100% { color: red; }
+}
+
+.cvpr-highlight {
+  font-size: 2rem;
+  font-weight: bold;
+  animation: highlight 1s infinite;
+}
+
