@@ -142,13 +142,12 @@
             <h2 class="title is-3"> Abstract </h2>
             <div class="content has-text-justified">
               As 3D Gaussian Splatting (3D-GS) gains significant attention and its commercial usage increases, the need for watermarking technologies to prevent unauthorized use of the 3D-GS models and rendered images has become increasingly important.
-              In this paper, we introduce a robust watermarking method for 3D-GS that secures ownership of both the model and its rendered images.
+              In this paper, we introduce a robust watermarking method for 3D-GS that secures copyright of both the model and its rendered images.
               Our proposed method remains robust against distortions in rendered images and model attacks while maintaining high rendering quality. 
-              To achieve these objectives, we present Frequency-Guided Densification (FGD), which removes 3D Gaussians based on their contribution to rendering quality, enhancing real-time rendering and the robustness of the message. 
-              FGD utilizes Discrete Fourier Transform to split 3D Gaussians in high-frequency areas, improving rendering quality. 
+              To achieve these objectives, we present Frequency-Guided Densification (FGD), which removes 3D Gaussians based on their contribution to rendering quality, enhancing real-time rendering and the robustness of the message. FGD utilizes Discrete Fourier Transform to split 3D Gaussians in high-frequency areas, improving rendering quality. 
               Furthermore, we employ a gradient mask for 3D Gaussians and design a wavelet-subband loss to enhance rendering quality. 
               Our experiments show that our method embeds the message in the rendered images invisibly and robustly against various attacks, including model distortion. 
-              Our method achieves state-of-the-art performance.
+              Our method achieves superior performance in both rendering quality and watermark robustness while improving real-time rendering efficiency.
             </div>
         </div>
     </div>
@@ -173,7 +172,8 @@
         Before fine-tuning 3D-GS, Frequency-Guided Densification (FGD) removes 3D Gaussians based on their contribution 
         to the rendering quality and splits 3D Gaussians in high-frequency areas into smaller ones. We also construct a gradient mask based on the parameters of 
         an FGD-processed 3D-GS. During the fine-tuning, we apply the Discrete Wavelet Transform (DWT) to the rendered image for robustness, using the low frequency 
-        as input to a pre-trained message decoder. For rendering quality, we design a wavelet-subbands loss that utilizes only high-frequency subbands. Finally, 3D-GS is optimized through the $\mathcal{L}_{total}$.
+        as input to a pre-trained message decoder. For rendering quality, we design a wavelet-subbands loss that utilizes only high-frequency subbands. 
+        Finally, 3D-GS is optimized through the $\mathcal{L}_{total}$.
       </p>
     </div>
   </div>
