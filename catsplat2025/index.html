@@ -6,6 +6,14 @@
         content="Context-Aware Transformer with Spatial Guidance for Generalizable 3D Gaussian Splatting from A Single-View Image.">
   <meta name="keywords" content="CATSplat">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']] // $...$ 구문을 지원
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <title>CATSplat</title>
 
   <script>
@@ -232,17 +240,19 @@
       <div class="column is-full">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
-          <h2 class="title is-3" style="text-align: center; font-size: 140%">
-            <span style="color: blue;">TL;DR:</span> We present CATSplat, a novel generalizable transformer-based framework designed to break through the inherent constraints in monocular settings.
+          <div style="border: 3px dotted black; padding: 10px; margin-bottom: 20px; background-color: rgb(230, 240, 243);">
+          <h2 class="title is-3" style="text-align: center; font-size: 130%; margin-bottom: 0;">
+            <span style="color: blue;">TL;DR:</span> We present CATSplat, a novel generalizable transformer-based 3D scene reconstruction framework designed to break through the inherent constraints in monocular settings.
           </h2>
+          </div>
           <p class="content is-size-6 has-text-left">
             Recently, generalizable feed-forward methods based on 3D Gaussian Splatting have gained significant attention for their potential to reconstruct 3D scenes using finite resources. 
             These approaches create a 3D radiance field, parameterized by per-pixel 3D Gaussian primitives, from just a few images in a single forward pass. 
-            However, unlike multi-view methods that benefit from cross-view correspondences, 3D scene reconstruction with a single-view image remains an underexplored area. 
+            Unlike multi-view methods that benefit from cross-view correspondences, 3D scene reconstruction with a single-view image remains an underexplored area.
             In this work, we introduce <b>CATSplat</b>, a novel generalizable transformer-based framework designed to break through the inherent constraints in monocular settings. 
-            First, we propose leveraging textual guidance from a visual-language model to complement insufficient information from a single image. 
+            First, we propose leveraging textual guidance from a visual-language model to complement insufficient information from single-view image features.
             By incorporating scene-specific contextual details from text embeddings through cross-attention, we pave the way for context-aware 3D scene reconstruction beyond relying solely on visual cues. 
-            Moreover, we advocate utilizing spatial guidance from 3D point features toward comprehensive geometric understanding under single-view settings. 
+            Moreover, we advocate utilizing spatial guidance from 3D point features toward comprehensive geometric understanding under monocular settings.
             With 3D priors, image features can capture rich structural insights for predicting 3D Gaussians without multi-view techniques. 
             Extensive experiments on large-scale datasets demonstrate the state-of-the-art performance of <b>CATSplat</b> in single-view 3D scene reconstruction with high-quality novel view synthesis.
           </p>
@@ -257,34 +267,61 @@
     <!-- Paper Pipeline. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
-        <h2 class="title is-3">Architecture</h2>
+        <h2 class="title is-3">How does CATSplat work?</h2>
         <div class="content">
           <img src="./static/images/CATSplat_main.png" alt="Paper pipeline." style="width: 100%; padding-top: 10px"/>
-          <p style="padding-top: 10px">
-            CATSplat takes an image and predicts 3D Gaussian primitives to construct a scene-representative 3D radiance field in a single <br> forward pass.
-            In this paradigm, our primary goal is to go beyond the finite knowledge inherent in a single image with our two<br> innovative priors. 
-            Through cross-attention layers, we enhance image features to be highlyinformative by incorporating valuable<br> insights: contextual cues from text features, and spatial cues from 3D point features.
+          <p class="content is-size-6" style="padding-top: 20px; width: 103%">
+            CATSplat takes an image \( \mathcal{I} \) and predicts 3D Gaussian primitives \( \{({\mu}_j, {\alpha}_j, {\Sigma}_j, {c}_j )\}^{J}_{j} \) to construct a scene-representative 3D radiance field in a single forward pass.
+            Our primary goal is to go beyond the finite knowledge inherent in single-view image features leveraging our two innovative priors.
+            Through cross-attention layers, we enhance image features $F^\mathcal{I}_i$ to be highly informative by incorporating valuable insights: contextual cues from text features $F^C_i$, and spatial cues from 3D point features $F^S_i$.
           </p>
         </div>
         <div class="content">
           <img src="./static/images/modules.png" alt="Module architecture." style="width: 100%; padding-top: 10px"/>
-          <p style="padding-top: 10px">
-            Detailed architecture of the transformer pipline and 3D point feature extraction from a monocular input image.
+            <p class="content is-size-6" style="padding-top: 10px">
+            <b>(Left) Detailed architecture of the transformer pipline.</b><br> In the $i$-th layer, we first operate cross-attention between $F_i^{\mathcal{I}}$ and $F_i^C$, then proceed cross-attention with $F_i^S$. <br>
+            We also use a ratio $\gamma$ to preserve visual information from $F_i^{\mathcal{I}}$ while incorporating extra cues from $F_i^C$ and $F_i^S$. <br>
+            </p>
+            <p class="content is-size-6" style="padding-top: 10px">
+            <b>(Right) Detailed architecture of 3D point feature extraction from a monocular input image $\mathcal{I}$.</b><br> Our point cloud encoder takes back-projected points $P$ and produces point features $F^S$ based on the <br> PointNet structure.
+            Here, T-Net indicates an affine transform network.
+            </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Quantitative Results</h2>
+        <img src="./static/images/quantitative_table1.png" style="width:100%; display: block;">
+        <p class="center-text" style="width: 100%; text-align: center; margin: 0 auto; padding-top: 10px;">
+          Comparisons of Novel View Synthesis (NVS) performance with state-of-the-art <b>single-view</b> 3D reconstruction approaches on the RE10K dataset.
+          Following the standard protocol, we evaluate NVS metrics on unseen target frames located $n$ frames away from the input source frame.
+          Also, we randomly sample an extra target frame within 30 frames apart from the source frame.
+        </p>
+        <img src="./static/images/quantitative_table2.png" style="width:100%; display: block; margin-top: 40px;">
+        <p class="center-text" style="width: 100%; text-align: center; margin: 0 auto; padding-top: 10px;">
+          Comparisons of Novel View Synthesis performance with state-of-the-art <b>few-view</b> 3D reconstruction approaches on the RE10K dataset.
+          Although we mainly focus on comparing with the leading single-view method, Flash3D, we also provide scores of two-view methods for additional references.
+          Following Flash3D, we use interpolation and extrapolation protocols from previous works, pixelSplat and latentSplat, respectively.
+        </p>                      
+      </div>
+    </div>
+  </div>
+</section>
   
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Qualitative Comparisons</h2>
-        <img src="./static/images/CVPR25_qualitative_results.png" style="width:100%; display: block; margin: 0 auto;">
+        <h2 class="title is-3">Qualitative Results</h2>
+        <img src="./static/images/CVPR25_qualitative_results.png" style="width:100%; display: block; margin-top: 40px">
         <p class="center-text" style="width: 100%; text-align: center; margin: 0 auto; padding-top: 10px;">
-          Qualitative comparison of novel view synthesis between Flash3D and ours with <br>Ground Truth on the novel veiw frames from RE10k and ACID (cross-dataset).
+          Qualitative comparisons of NVS performance between Flash3D and ours with <br>Ground Truth on the novel view frames from RE10k and ACID (cross-dataset).
         </p>                      
       </div>
     </div>
