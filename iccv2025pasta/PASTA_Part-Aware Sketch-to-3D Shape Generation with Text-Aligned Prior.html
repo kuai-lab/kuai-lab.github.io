@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Font Awesome 아이콘 라이브러리 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <title>PASTA: Part-Aware Sketch-to-3D Shape Generation with Text-Aligned Prior</title>
+  <!-- 구글 model-viewer 사용 -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/bulma.min.css">
+  <link rel="stylesheet" href="./css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="icon" href="./static/images/kitty.png">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./js/fontawesome.all.min.js"></script>
+  <script src="./js/bulma-carousel.min.js"></script>
+  <script src="./js/bulma-slider.min.js"></script>
+  <script src="./js/index.js"></script>
+
+
+
+  <style>
+    /* 전체 레이아웃 스타일 */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+    }
+    header, main, footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+    }
+    header {
+      text-align: center;
+      padding: 30px 0;
+    }
+    h1 {
+      margin-bottom: 0.5em;
+    }
+    /* Overview 섹션 */
+    .overview-section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .main-figure {
+      text-align: center;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      height: 300px; /* 실제 컨텐츠에 맞춰 조정하세요 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .figure-caption {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    /* Abstract 섹션 */
+    .abstract-section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .abstract-section p {
+      margin: 0;
+    }
+
+    /* Qualitative results 섹션 */
+    .results-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .results-grid-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-bottom: 20px; /* 아래쪽에 공간을 넓힘 */
+    }
+    /* 슬라이드(페이지) 여러 개를 겹쳐두고 하나씩만 보이도록 */
+    .slide {
+      display: none; /* 기본적으로 안 보이게 처리 */
+      transition: all 0.3s ease;
+    }
+    .slide.active {
+      display: block; /* 활성화된 슬라이드만 보이도록 */
+    }
+    /* 예시로 6개씩 보여주는 그리드 (3쌍) */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-gap: 10px;
+      margin: 20px 0;
+    }
+    .grid-item {
+      background-color: #ffffff;
+      border-radius: px;
+      padding: 0px;
+      text-align: center;
+      font-size: 0.9em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 180px;
+    }
+    /* .grid-item img { */
+      /* max-width: 80px; */
+      /* margin-bottom: 10px; */
+    /* } */
+    .grid-item model-viewer {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      /* border: 1px solid #ccc; */
+      /* border-radius: 4px; */
+    }
+
+    /* 슬라이드 이동 버튼 */
+    .slider-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 30px;
+    }
+    .slider-buttons button {
+      background-color: #555;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .slider-buttons button:hover {
+      background-color: #333;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8em;
+      color: #999;
+      margin-top: 40px;
+    }
+
+    /* 중앙 양옆 버튼 */
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      z-index: 10;
+    }
+    .slide-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .slide-btn.left {
+      left: 10px;
+    }
+    .slide-btn.right {
+      right: 10px;
+    }
+
+    /* 하단의 점(dot)들 */
+    .dots-container {
+      text-align: center;
+      margin-top: -10px; /* 그리드 하단 여백 위로 당기기 등 조정 가능 */
+    }
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ccc;
+      margin: 8px 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dot:hover {
+      background-color: #999;
+    }
+    .dot.active {
+      background-color: #555;
+    }
+    /* 모든 섹션의 기본 정렬 */
+    .hero-body, .columns, .column {
+      text-align: center;
+    }
+
+    /* author-block 텍스트 중앙 정렬 */
+    .publication-authors {
+      display: inline-block; /* inline-block으로 가운데 정렬되게 함 */
+      text-align: center;
+    }
+
+    /* author list 가로 줄바꿈 방지 */
+    .author-block {
+      display: inline-block;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+  <img src="logo.png" alt="Logo" style="display: block; margin: 0 auto; max-width: 300px; height: auto;">
+  <h1 style="display: block; text-align: center; font-size: 40px; font-weight: bold; line-height: 1.4;">
+    <span style="color: #FFA07A;">PASTA</span>: 
+    <span><span style="color: #FFA07A;">P</span>art-<span style="color: #FFA07A;">A</span>ware 
+    <span style="color: #FFA07A;">S</span>ketch-to-3D Shape Generation
+    <br>
+    with <span style="color: #FFA07A;">T</span>ext-<span style="color: #FFA07A;">A</span>ligned Prior</span>
+  </h1>
+</header>
+
+
+<!-- <h2 style="text-align: center; font-weight: normal; color: #555;">ICCV 2025</h2> -->
+<h2 style="text-align: center; font-weight: bold; color: #b3001e; font-size: 20pt; margin: -20pt">ICCV 2025</h2>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+      <div class="columns is-full-width">
+        <div class="column has-text-centered">
+          <div class="is-size-5 publication-authors">
+             <span class="author-block">
+              <a href="https://www.linkedin.com/in/seunggwanlee">Seunggwan Lee</a><sup>1</sup>,
+            </span></span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=Qq_qUZ4AAAAJ&hl">Hwanhee Jung</a><sup>1</sup>,</span>
+            </span></span>&nbsp;&nbsp;&nbsp;
+            <br>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/byoungsoo-koh-45174476/?originalSubdomain">Byoungsoo Koh</a><sup>2</sup>,
+            </span></span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://www.cs.utexas.edu/~huangqx/">Qixing Huang</a><sup>3</sup>,
+            </span></span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://sanghoy.com//">Sangho Yoon</a><sup>4</sup>,
+            </span></span>&nbsp;&nbsp;&nbsp;
+            <span class="author-block">
+              <a href="https://kuaicv.com/">Sangpil Kim</a></a><sup>1†</sup>
+            </span>
+          </div>
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1 </sup><span style="color: #900C3F;">Korea University</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>2 </sup><span style="color: #0066B3;">KOCCA</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>3 </sup><span style="color: #BF5700;">The University of Texas at Austin</span></span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>4 </sup><span style="color: #003478;">KAIST</span>
+
+            
+
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2503.12834"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/kuai-lab/iccv25_pasta"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <main>
+    <!-- Overview 섹션 -->
+    <section class="overview-section">
+      <h2 style="text-align: center;">Overview</h2>
+        <img src="./overview.png" alt="Main architecture figure" style="max-height: 100%; max-width: 100%;" />
+      <div class="figure-caption" style="padding-top: 10px; text-align: center;">
+        <strong>Overview of PASTA.</strong> Our framework enhances sketch-based 3D shape generation by integrating text-aligned priors. A vision-language model (VLM) and a visual backbone extract meaningful features from an input sketch, which are then processed by a Text-Visual Transformer Decoder with learnable queries. To refine structural details, we introduce ISG-Net, which consists of IndivGCN for fine-grained feature processing and PartGCN for aggregating part-level information. The output features are fed into the SPAGHETTI shape decoder, producing a more complete and structurally accurate 3D model.
+      </div>
+    </section>
+
+    <!-- Abstract 섹션 -->
+    <section class="abstract-section" style="text-align: center;">
+      <h3>Abstract</h3>
+      <p>
+        A fundamental challenge in conditional 3D shape generation is to minimize the information loss and maximize the intention of user input. Existing approaches have predominantly focused on two types of isolated conditional signals, i.e., user sketches and text descriptions, each of which does not offer flexible control of the generated shape. In this paper, we introduce PASTA, the flexible approach that seamlessly integrates a user sketch and a text description for 3D shape generation. The key idea is to use text embeddings from a vision-language model to enrich the semantic representation of sketches. Specifically, these text-derived priors specify the part components of the object, compensating for missing visual cues from ambiguous sketches. In addition, we introduce ISG-Net which employs two types of graph convolutional networks: IndivGCN, which processes fine-grained details, and PartGCN, which aggregates these details into parts and refines the structure of objects. Extensive experiments demonstrate that PASTA outperforms existing methods in part-level editing and achieves state-of-the-art results in sketch-to-3D shape generation.
+      </p>
+    </section>
+
+    <!-- Qualitative Results: Chair -->
+    <section class="results-section">
+      <h2>Qualitative Results: Chair</h2>
+      <!-- 의자 슬라이드 버튼 -->
+      <div class="slider-buttons">
+        <button onclick="prevSlideChair()">〈</button>
+        <button onclick="nextSlideChair()">〉</button>
+      </div>
+      <!-- 의자 슬라이드 컨테이너 -->
+      <div class="results-grid-container" id="chairGridContainer"></div>
+    </section>
+
+    <!-- 가로선 -->
+    <hr style="border: 1px solid #ccc; margin: 40px 0;">
+
+    <!-- Qualitative Results: Lamp -->
+    <section class="results-section">
+      <h2>Qualitative Results: Lamp</h2>
+      <!-- 램프 슬라이드 버튼 -->
+      <div class="slider-buttons">
+        <button onclick="prevSlideLamp()">〈</button>
+        <button onclick="nextSlideLamp()">〉</button>
+      </div>
+      <!-- 램프 슬라이드 컨테이너 -->
+      <div class="results-grid-container" id="lampGridContainer"></div>
+    </section>
+
+    <!-- 가로선 -->
+    <hr style="border: 1px solid #ccc; margin: 40px 0;">
+
+    <!-- Qualitative Results: Airplane -->
+    <section class="results-section">
+      <h2>Qualitative Results: Airplane</h2>
+      <!-- 비행기 슬라이드 버튼 -->
+      <div class="slider-buttons">
+        <button onclick="prevSlideAirplane()">〈</button>
+        <button onclick="nextSlideAirplane()">〉</button>
+      </div>
+      <!-- 비행기 슬라이드 컨테이너 -->
+      <div class="results-grid-container" id="airplaneGridContainer"></div>
+    </section>
+
+    <!-- Image Gallery Section -->
+    <section class="image-gallery-section">
+      <h2 style="text-align: center;">Quantitative Results</h2>
+      <div class="image-gallery" style="text-align: center;">
+        <img src="table/main_table.png" alt="table 1" style="max-width: 60%; height: auto; display: inline-block;">
+        <img src="table/other_cls_table.png" alt="table 2" style="max-width: 60%; height: auto; display: inline-block;">
+      </div>
+    </section>
+
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script>
+    ///////////////////////////////////////////////////////////////////////////
+    // 0) 공용 유틸: 배열 chunk (덩어리)로 나누기
+    ///////////////////////////////////////////////////////////////////////////
+    function chunkArray(array, chunkSize) {
+      const chunks = [];
+      for (let i = 0; i < array.length; i += chunkSize) {
+        chunks.push(array.slice(i, i + chunkSize));
+      }
+      return chunks;
+    }
+
+    // 모델 로드 후 재질을 회색으로 바꾸는 함수(옵션)
+    function makeModelGrayAfterLoad(modelViewer) {
+      modelViewer.addEventListener('load', () => {
+        const materials = modelViewer.model?.materials || [];
+        for (const mat of materials) {
+          // RGBA(0.65,0.65,0.65,1.0) = 조금 밝은 회색
+          mat.pbrMetallicRoughness.setBaseColorFactor([0.55, 0.65, 0.7, 1.0]);
+        }
+      });
+    }
+
+    // 각 섹션에 슬라이드(= .slide DIV들)를 생성하는 함수
+    function createSlidesForSection(dataArray, containerId, pairPerSlide) {
+      const container = document.getElementById(containerId);
+      if (!container) return [];
+
+      // data를 pairPerSlide 단위로 쪼갬
+      const chunkedData = chunkArray(dataArray, pairPerSlide);
+
+      // .slide 요소들을 담을 배열
+      const slides = [];
+
+      // chunk별로 <div class="slide"> 생성
+      chunkedData.forEach((group, groupIndex) => {
+        const slide = document.createElement('div');
+        slide.classList.add('slide');
+        if (groupIndex === 0) {
+          slide.classList.add('active'); // 첫 슬라이드만 표시
+        }
+
+        // 내부에 .grid
+        const grid = document.createElement('div');
+        grid.classList.add('grid');
+
+        // (스케치, 3D) 쌍 반복
+        group.forEach((item) => {
+          // 스케치
+          const sketchItem = document.createElement('div');
+          sketchItem.classList.add('grid-item');
+          sketchItem.innerHTML = `
+            <img src="${item.sketch}" alt="Sketch" style="max-width:100%;max-height:100%;" />
+          `;
+
+          // 3D 모델
+          const modelItem = document.createElement('div');
+          modelItem.classList.add('grid-item');
+          modelItem.innerHTML = `
+            <model-viewer
+              auto-rotate
+              camera-controls
+              shadow-intensity="1"
+              environment-image="neutral"
+              src="${item.model}">
+            </model-viewer>
+          `;
+
+          grid.appendChild(sketchItem);
+          grid.appendChild(modelItem);
+        });
+
+        slide.appendChild(grid);
+        container.appendChild(slide);
+        slides.push(slide);
+      });
+
+      // 생성된 .slide들 안의 model-viewer 각각에 대해, load 후 회색화
+      container.querySelectorAll('model-viewer').forEach(mv => {
+        makeModelGrayAfterLoad(mv);
+      });
+
+      return slides;
+    }
+
+    // 섹션별 "데이터 배열"
+    // (1) Chair
+    const resultsDataChair = [
+      // 예시: 6쌍(=12개) 넣으면 한 슬라이드, 12쌍(=24개)이면 두 슬라이드... 
+      { sketch: './chair_for_pp/2633/sketch.png', model: './chair_for_pp/2633/mesh.glb' },
+      { sketch: './chair_for_pp/2660/sketch.png', model: './chair_for_pp/2660/mesh.glb' },
+      { sketch: './chair_for_pp/2687/sketch.png', model: './chair_for_pp/2687/mesh.glb' },
+      { sketch: './chair_for_pp/2722/sketch.png', model: './chair_for_pp/2722/mesh.glb' },
+      { sketch: './chair_for_pp/2728/sketch.png', model: './chair_for_pp/2728/mesh.glb' },
+      { sketch: './chair_for_pp/2731/sketch.png', model: './chair_for_pp/2731/mesh.glb' },
+      { sketch: './chair_for_pp/2735/sketch.png', model: './chair_for_pp/2735/mesh.glb' },
+      { sketch: './chair_for_pp/2752/sketch.png', model: './chair_for_pp/2752/mesh.glb' },
+      { sketch: './chair_for_pp/2782/sketch.png', model: './chair_for_pp/2782/mesh.glb' },
+      { sketch: './chair_for_pp/2787/sketch.png', model: './chair_for_pp/2787/mesh.glb' },
+      { sketch: './chair_for_pp/2791/sketch.png', model: './chair_for_pp/2791/mesh.glb' },
+      { sketch: './chair_for_pp/2794/sketch.png', model: './chair_for_pp/2794/mesh.glb' },
+      { sketch: './chair_for_pp/2803/sketch.png', model: './chair_for_pp/2803/mesh.glb' },
+      { sketch: './chair_for_pp/2821/sketch.png', model: './chair_for_pp/2821/mesh.glb' },
+      { sketch: './chair_for_pp/2825/sketch.png', model: './chair_for_pp/2825/mesh.glb' },
+      { sketch: './chair_for_pp/2836/sketch.png', model: './chair_for_pp/2836/mesh.glb' },
+      { sketch: './chair_for_pp/2841/sketch.png', model: './chair_for_pp/2841/mesh.glb' },
+      { sketch: './chair_for_pp/2858/sketch.png', model: './chair_for_pp/2858/mesh.glb' },
+      { sketch: './chair_for_pp/2877/sketch.png', model: './chair_for_pp/2877/mesh.glb' },
+      { sketch: './chair_for_pp/2883/sketch.png', model: './chair_for_pp/2883/mesh.glb' },
+      { sketch: './chair_for_pp/2893/sketch.png', model: './chair_for_pp/2893/mesh.glb' },
+      { sketch: './chair_for_pp/2896/sketch.png', model: './chair_for_pp/2896/mesh.glb' },
+      { sketch: './chair_for_pp/2906/sketch.png', model: './chair_for_pp/2906/mesh.glb' },
+      { sketch: './chair_for_pp/2932/sketch.png', model: './chair_for_pp/2932/mesh.glb' },
+      { sketch: './chair_for_pp/2935/sketch.png', model: './chair_for_pp/2935/mesh.glb' },
+      { sketch: './chair_for_pp/2937/sketch.png', model: './chair_for_pp/2937/mesh.glb' },
+      { sketch: './chair_for_pp/2940/sketch.png', model: './chair_for_pp/2940/mesh.glb' },
+      { sketch: './chair_for_pp/2944/sketch.png', model: './chair_for_pp/2944/mesh.glb' },
+      { sketch: './chair_for_pp/2965/sketch.png', model: './chair_for_pp/2965/mesh.glb' },
+      { sketch: './chair_for_pp/2983/sketch.png', model: './chair_for_pp/2983/mesh.glb' },
+      { sketch: './chair_for_pp/2985/sketch.png', model: './chair_for_pp/2985/mesh.glb' },
+      { sketch: './chair_for_pp/2996/sketch.png', model: './chair_for_pp/2996/mesh.glb' },
+      { sketch: './chair_for_pp/2997/sketch.png', model: './chair_for_pp/2997/mesh.glb' },
+      { sketch: './chair_for_pp/3003/sketch.png', model: './chair_for_pp/3003/mesh.glb' },
+      { sketch: './chair_for_pp/3008/sketch.png', model: './chair_for_pp/3008/mesh.glb' },
+      { sketch: './chair_for_pp/0532/sketch.png', model: './chair_for_pp/0532/mesh.glb' },
+      // ... 필요만큼 의자 데이터 추가
+    ];
+
+    // (2) Lamp
+    const resultsDataLamp = [
+      // Lamp 예시 배열 (원하는 만큼)
+      { sketch: './lamp_for_pp/0001/sketch.png', model: './lamp_for_pp/0001/mesh.glb' },
+      { sketch: './lamp_for_pp/0002/sketch.png', model: './lamp_for_pp/0002/mesh.glb' },
+      { sketch: './lamp_for_pp/0003/sketch.png', model: './lamp_for_pp/0003/mesh.glb' },
+      { sketch: './lamp_for_pp/0004/sketch.png', model: './lamp_for_pp/0004/mesh.glb' },
+      { sketch: './lamp_for_pp/0005/sketch.png', model: './lamp_for_pp/0005/mesh.glb' },
+      { sketch: './lamp_for_pp/0006/sketch.png', model: './lamp_for_pp/0006/mesh.glb' },
+      { sketch: './lamp_for_pp/0007/sketch.png', model: './lamp_for_pp/0007/mesh.glb' },
+      { sketch: './lamp_for_pp/0008/sketch.png', model: './lamp_for_pp/0008/mesh.glb' },
+      { sketch: './lamp_for_pp/0009/sketch.png', model: './lamp_for_pp/0009/mesh.glb' },
+      { sketch: './lamp_for_pp/0010/sketch.png', model: './lamp_for_pp/0010/mesh.glb' },
+      { sketch: './lamp_for_pp/0011/sketch.png', model: './lamp_for_pp/0011/mesh.glb' },
+      { sketch: './lamp_for_pp/0012/sketch.png', model: './lamp_for_pp/0012/mesh.glb' },
+      // ...
+    ];
+
+    // (3) Airplane
+    const resultsDataAirplane = [
+      // Airplane 예시 배열 (원하는 만큼)
+      { sketch: './airplane_for_pp/0002/sketch.png', model: './airplane_for_pp/0002/mesh.glb' },
+      { sketch: './airplane_for_pp/0003/sketch.png', model: './airplane_for_pp/0003/mesh.glb' },
+      { sketch: './airplane_for_pp/0004/sketch.png', model: './airplane_for_pp/0004/mesh.glb' },
+      { sketch: './airplane_for_pp/0006/sketch.png', model: './airplane_for_pp/0006/mesh.glb' },
+      { sketch: './airplane_for_pp/0007/sketch.png', model: './airplane_for_pp/0007/mesh.glb' },
+      { sketch: './airplane_for_pp/0008/sketch.png', model: './airplane_for_pp/0008/mesh.glb' },
+      { sketch: './airplane_for_pp/0015/sketch.png', model: './airplane_for_pp/0015/mesh.glb' },
+      { sketch: './airplane_for_pp/0010/sketch.png', model: './airplane_for_pp/0010/mesh.glb' },
+      { sketch: './airplane_for_pp/0011/sketch.png', model: './airplane_for_pp/0011/mesh.glb' },
+      { sketch: './airplane_for_pp/0017/sketch.png', model: './airplane_for_pp/0017/mesh.glb' },
+      { sketch: './airplane_for_pp/0013/sketch.png', model: './airplane_for_pp/0013/mesh.glb' },
+      { sketch: './airplane_for_pp/0014/sketch.png', model: './airplane_for_pp/0014/mesh.glb' },
+
+      // ...
+    ];
+
+    // 슬라이드당 (스케치,3D) “쌍” 갯수. 예: 6 → 한 슬라이드에 12개의 grid-item
+    // (Sketch 6개 + 3D 6개)
+    const PAIR_PER_SLIDE = 12;
+
+    // 섹션별로 슬라이드 구성
+    const slidesChair     = createSlidesForSection(resultsDataChair,    'chairGridContainer',     PAIR_PER_SLIDE);
+    const slidesLamp      = createSlidesForSection(resultsDataLamp,     'lampGridContainer',      PAIR_PER_SLIDE);
+    const slidesAirplane  = createSlidesForSection(resultsDataAirplane, 'airplaneGridContainer',  PAIR_PER_SLIDE);
+
+    // 현재 슬라이드 인덱스 각각 따로 관리
+    let currentSlideChair = 0;
+    let currentSlideLamp = 0;
+    let currentSlideAirplane = 0;
+
+    // 공용 함수
+    function showSlide(slidesArray, index) {
+      slidesArray.forEach((slide) => slide.classList.remove('active'));
+      slidesArray[index].classList.add('active');
+    }
+
+    // Chair 슬라이드 전환
+    window.nextSlideChair = function() {
+      if (slidesChair.length === 0) return;
+      currentSlideChair = (currentSlideChair + 1) % slidesChair.length;
+      showSlide(slidesChair, currentSlideChair);
+    };
+    window.prevSlideChair = function() {
+      if (slidesChair.length === 0) return;
+      currentSlideChair = (currentSlideChair - 1 + slidesChair.length) % slidesChair.length;
+      showSlide(slidesChair, currentSlideChair);
+    };
+
+    // Lamp 슬라이드 전환
+    window.nextSlideLamp = function() {
+      if (slidesLamp.length === 0) return;
+      currentSlideLamp = (currentSlideLamp + 1) % slidesLamp.length;
+      showSlide(slidesLamp, currentSlideLamp);
+    };
+    window.prevSlideLamp = function() {
+      if (slidesLamp.length === 0) return;
+      currentSlideLamp = (currentSlideLamp - 1 + slidesLamp.length) % slidesLamp.length;
+      showSlide(slidesLamp, currentSlideLamp);
+    };
+
+    // Airplane 슬라이드 전환
+    window.nextSlideAirplane = function() {
+      if (slidesAirplane.length === 0) return;
+      currentSlideAirplane = (currentSlideAirplane + 1) % slidesAirplane.length;
+      showSlide(slidesAirplane, currentSlideAirplane);
+    };
+    window.prevSlideAirplane = function() {
+      if (slidesAirplane.length === 0) return;
+      currentSlideAirplane = (currentSlideAirplane - 1 + slidesAirplane.length) % slidesAirplane.length;
+      showSlide(slidesAirplane, currentSlideAirplane);
+    };
+  </script>
+
+  <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{lee2025pasta,
+    title={PASTA: Part-Aware Sketch-to-3D Shape Generation with Text-Aligned Prior},
+    author={Lee, Seunggwan and Jung, Hwanhee and Koh, Byoungsoo and Huang, Qixing and Yoon, Sangho and Kim, Sangpil},
+    journal={arXiv preprint arXiv:2503.12834},
+    year={2025}
+  }</code></pre>
+  </div>
+</section>
+
+
+
+</body>
+</html>
