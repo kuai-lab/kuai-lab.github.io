@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="description"
+        content="RevoNAD: Reflective Evolutionary Exploration for Neural Architecture Design">
+  <meta name="keywords" content="RevoNAD">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> RevoNAD: Reflective Evolutionary Exploration for Neural Architecture Design</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <script>
+    MathJax = {
+      tex: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <!-- <div class="container is-max-desktop"> -->
+      <div class="container is-max-widescreen">
+
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RevoNAD: Reflective Evolutionary Exploration for Neural Architecture Design</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Gyusam Chang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Jeongyoon Yoon</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Shin han yi</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">JaeHyeokLee</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Sujin Jang</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Sangpil Kim</a><sup>1,*</sup>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Korea University</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="author-block"><sup>2</sup>Samsung AI Center, DS Division</span>
+          </div>
+          <div class="is-size-5 publication-authors" style="margin-top: 0.5rem;">
+            <span class="author-block"><tt style="font-size: 0.9em;">{gsjang95, spk7}@korea.ac.kr</tt></span>
+          </div>
+          * Corresponding Author
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <!-- Overview -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3" style="margin-bottom: 2rem;">Overview</h2>
+          
+          <div style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            width: 100%;
+          ">
+            <img src="./static/fig_teaser.png" style="width: 30%; height: auto;">
+            <img src="./static/fig_teaser_cifar100.png" style="width: 30%; height: auto;">
+            <img src="./static/fig_teaser_imagenet.png" style="width: 30%; height: auto;">
+          </div>
+          
+          <figcaption class="custom-caption" style="margin-bottom: 4rem; text-align: justify; text-justify: inter-word;">
+            <strong>Comparison of search efficiency across CIFAR10, CIFAR100, and ImageNet16-120.</strong> 
+            RevoNAD discovers significantly stronger architectures with only five generated candidates, outperforming 
+            prior NAD, NAS, and LLM-driven NAS methods that require up to hundreds or thousands of searches. 
+            The results demonstrate RevoNAD's cost-efficient exploration and superior design effectiveness across 
+            diverse datasets.
+          </figcaption>
+          
+          <img src="./static/fig_main_2.png" alt="Teaser" style="width: 100%; margin-top: 2rem; margin-bottom: 1.5rem; height: auto;" />
+          
+          <figcaption class="custom-caption" style="text-align: justify; text-justify: inter-word;">
+            <strong>Overview of the RevoNAD Orchestrator.</strong> 
+            Starting from a base model, RevoNAD employs a Multi-Expert Ideation module that distills literature 
+            into structured architectural inspiration tokens. These inspirations guide an LLM-based Reflective Design 
+            Exploration module, which adaptively balances exploration and refinement based on reward variance. 
+            Each generated candidate is trained and evaluated, and a Pareto-guided Evolution process selects diverse, 
+            high-quality architectures, enabling stable, feedback-aligned neural architecture design.
+          </figcaption>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color:#efeff081; padding-bottom: 0rem;" id="Abstract">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent progress in leveraging large language models (LLMs) has enabled Neural Architecture Design (NAD) systems to generate new architecture not limited from manually predefined search space.
+            Nevertheless, LLM-driven generation remains challenging: the token-level design loop is discrete and non-differentiable, preventing feedback from smoothly guiding architectural improvement.
+            These methods, in turn, commonly suffer from mode collapse into redundant structures or drift toward infeasible designs when constructive reasoning is not well grounded.
+            We introduce RevoNAD, a reflective evolutionary orchestrator that effectively bridges LLM-based reasoning with feedback-aligned architectural search.
+            First, RevoNAD presents a Multi-round Multi-expert Consensus to transfer isolated design rules into meaningful architectural clues.
+            Then, Adaptive Reflective Exploration adjusts the degree of exploration leveraging reward variance; it explores when feedback is uncertain and refines when stability is reached.
+            Finally, Pareto-guided Evolutionary Selection effectively promotes architectures that jointly optimize accuracy, efficiency, latency, confidence, and structural diversity.
+            Across CIFAR10, CIFAR100, ImageNet16-120, COCO-5K, and Cityscape, RevoNAD achieves state-of-the-art performance.
+            Ablation and transfer studies further validate the effectiveness of RevoNAD in allowing practically reliable, and deployable neural architecture design.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<br></br>
+
+<section class="section" id="overall-performance-table">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3">Quantitative Results</h2>
+    </div>
+  </div>
+
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+
+          <style>
+            table.PerformanceTable,
+            table.WinTable {
+              width: 100%;
+              background-color: #ffffff;
+              border-collapse: separate;
+              border-spacing: 0;
+              border: 1px solid #e5e7eb;
+              border-radius: 8px;
+              overflow: hidden;
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+              color: #111827;
+              font-size: 0.9rem;
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                system-ui, sans-serif;
+            }
+
+            table.PerformanceTable th,
+            table.PerformanceTable td,
+            table.WinTable th,
+            table.WinTable td {
+              border-right: 1px solid #e5e7eb;
+              border-bottom: 1px solid #e5e7eb;
+              padding: 12px 14px;
+              vertical-align: middle;
+              white-space: nowrap;
+            }
+
+            table.PerformanceTable th:last-child,
+            table.PerformanceTable td:last-child,
+            table.WinTable th:last-child,
+            table.WinTable td:last-child {
+              border-right: none;
+            }
+
+            /* Header */
+            table.PerformanceTable thead th,
+            table.WinTable thead th {
+              background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+              font-weight: 600;
+              text-align: center;
+              padding: 14px 12px;
+              color: #1e293b;
+              letter-spacing: 0.01em;
+              border-bottom: 2px solid #cbd5e1;
+            }
+
+            table.PerformanceTable thead tr:first-child th {
+              border-top: none;
+            }
+
+            /* Left-align method column */
+            table.PerformanceTable th:first-child,
+            table.PerformanceTable td:first-child {
+              text-align: left;
+              padding-left: 16px;
+            }
+
+            /* Center all header cells in second row */
+            table.PerformanceTable thead tr:nth-child(2) th {
+              text-align: center;
+            }
+
+            /* Center others */
+            table.PerformanceTable th:not(:first-child),
+            table.PerformanceTable td:not(:first-child),
+            table.WinTable th,
+            table.WinTable td {
+              text-align: center;
+            }
+
+            /* Zebra rows */
+            table.PerformanceTable tbody tr:nth-child(even):not(.revo-row):not(.oracle-row),
+            table.WinTable tbody tr:nth-child(even) {
+              background-color: #f8fafc;
+            }
+
+            table.PerformanceTable tbody tr:last-child td {
+              border-bottom: none;
+            }
+
+            table.PerformanceTable .model-cell {
+              font-weight: 600;
+            }
+
+            /* Best numbers */
+            table.PerformanceTable .best,
+            table.WinTable .best {
+              font-weight: 700;
+              color: #2563eb;
+              background-color: #eff6ff;
+              border-radius: 4px;
+              padding: 2px 4px;
+            }
+
+            /* Oracle row (reference) */
+            table.PerformanceTable tr.oracle-row {
+              background-color: #f9fafb;
+              font-style: italic;
+              border-top: 2px solid #9ca3af;
+            }
+
+            table.PerformanceTable tr.oracle-row td {
+              border-top: 2px solid #9ca3af;
+              padding-top: 14px;
+            }
+
+            /* RevoNAD highlight rows */
+            table.PerformanceTable tr.revo-row {
+              background: linear-gradient(90deg, #eff6ff 0%, #dbeafe 100%);
+              font-weight: 600;
+              position: relative;
+            }
+
+            table.PerformanceTable tr.revo-row td {
+              border-top: 2px solid #3b82f6;
+              border-bottom: 1px solid #bfdbfe;
+            }
+
+            table.PerformanceTable tr.revo-row:first-child td {
+              border-top: 2px solid #3b82f6;
+            }
+
+            table.PerformanceTable tr.revo-row:last-child td {
+              border-bottom: 2px solid #3b82f6;
+            }
+
+            /* Hover effect */
+            table.PerformanceTable tbody tr:hover:not(.revo-row):not(.oracle-row) {
+              background-color: #f1f5f9;
+              transition: background-color 0.2s ease;
+            }
+
+            table.PerformanceTable tbody tr.revo-row:hover {
+              background: linear-gradient(90deg, #dbeafe 0%, #bfdbfe 100%);
+              transition: background 0.2s ease;
+            }
+
+            .perf-table-wrapper {
+              overflow-x: auto;
+              margin: 2rem 0;
+              padding: 0 4px;
+            }
+
+            .perf-table-wrapper table {
+              margin: 0 auto;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+              table.PerformanceTable th,
+              table.PerformanceTable td {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+              }
+            }
+          </style>
+
+          <div class="perf-table-wrapper">
+            <table class="PerformanceTable">
+              <thead>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th rowspan="2"># Archs</th>
+                  <th colspan="2">CIFAR10 (↑)</th>
+                  <th colspan="2">CIFAR100 (↑)</th>
+                  <th colspan="2">ImageNet16-120 (↑)</th>
+                </tr>
+                <tr>
+                  <th>Val.</th><th>Test</th>
+                  <th>Val.</th><th>Test</th>
+                  <th>Val.</th><th>Test</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ENAS [41]</td>
+                  <td>-</td>
+                  <td>37.51±3.19</td><td>53.89±0.58</td>
+                  <td>13.37±2.35</td><td>13.96±2.33</td>
+                  <td>15.06±1.95</td><td>14.84±2.10</td>
+                </tr>
+                <tr>
+                  <td>DARTS [33]</td>
+                  <td>-</td>
+                  <td>39.77±0.00</td><td>54.30±0.00</td>
+                  <td>38.57±0.00</td><td>15.61±0.00</td>
+                  <td>18.87±0.00</td><td>16.32±0.00</td>
+                </tr>
+                <tr>
+                  <td>SETN [14]</td>
+                  <td>-</td>
+                  <td>84.04±0.28</td><td>87.64±0.00</td>
+                  <td>58.86±0.06</td><td>59.05±0.24</td>
+                  <td>33.06±0.02</td><td>32.52±0.21</td>
+                </tr>
+                <tr>
+                  <td>DSNAS [56]</td>
+                  <td>-</td>
+                  <td>89.66±0.29</td><td>93.08±0.13</td>
+                  <td>30.87±16.40</td><td>31.01±16.4</td>
+                  <td>40.61±0.10</td><td>41.07±0.09</td>
+                </tr>
+                <tr>
+                  <td>PC-DARTS [56]</td>
+                  <td>-</td>
+                  <td>89.96±0.15</td><td>93.41±0.30</td>
+                  <td>67.12±0.39</td><td>67.48±0.89</td>
+                  <td>40.83±0.08</td><td>41.31±0.22</td>
+                </tr>
+                <tr>
+                  <td>SNAS [55]</td>
+                  <td>-</td>
+                  <td>90.10±1.04</td><td>92.77±0.83</td>
+                  <td>69.69±2.39</td><td>69.34±1.98</td>
+                  <td>42.84±1.79</td><td>43.16±2.64</td>
+                </tr>
+                <tr>
+                  <td>iDARTS [61]</td>
+                  <td>-</td>
+                  <td>89.86±0.60</td><td>93.58±0.32</td>
+                  <td>70.57±0.24</td><td>70.83±0.48</td>
+                  <td>40.38±0.59</td><td>40.89±0.68</td>
+                </tr>
+                <tr>
+                  <td>GDAS [15]</td>
+                  <td>-</td>
+                  <td>89.89±0.08</td><td>93.61±0.09</td>
+                  <td>71.34±0.04</td><td>70.70±0.30</td>
+                  <td>41.59±1.33</td><td>41.71±0.98</td>
+                </tr>
+                <tr>
+                  <td>DRNAS [8]</td>
+                  <td>-</td>
+                  <td>91.55±0.00</td><td>94.36±0.00</td>
+                  <td>73.49±0.00</td><td>73.51±0.00</td>
+                  <td>46.37±0.00</td><td>46.34±0.00</td>
+                </tr>
+                <tr>
+                  <td>β-DARTS [58]</td>
+                  <td>-</td>
+                  <td>91.55±0.00</td><td>94.36±0.00</td>
+                  <td>73.49±0.00</td><td>73.51±0.00</td>
+                  <td>46.37±0.00</td><td>46.34±0.00</td>
+                </tr>
+                <tr>
+                  <td>Λ-DARTS [36]</td>
+                  <td>-</td>
+                  <td>91.55±0.00</td><td>94.36±0.00</td>
+                  <td>73.49±0.00</td><td>73.51±0.00</td>
+                  <td>46.37±0.00</td><td>46.34±0.00</td>
+                </tr>
+                <tr>
+                  <td>REA [16]</td>
+                  <td>500</td>
+                  <td>91.19±0.31</td><td>93.92±0.30</td>
+                  <td>71.81±1.12</td><td>71.84±0.99</td>
+                  <td>45.15±0.89</td><td>45.54±1.03</td>
+                </tr>
+                <tr>
+                  <td>RS [43]</td>
+                  <td>500</td>
+                  <td>90.93±0.36</td><td>93.70±0.36</td>
+                  <td>70.93±1.09</td><td>71.04±1.07</td>
+                  <td>44.45±1.10</td><td>44.57±1.25</td>
+                </tr>
+                <tr>
+                  <td>REINFORCE [51]</td>
+                  <td>500</td>
+                  <td>91.09±0.37</td><td>93.85±0.37</td>
+                  <td>71.61±1.12</td><td>71.71±1.09</td>
+                  <td>45.05±1.02</td><td>45.24±1.18</td>
+                </tr>
+                <tr>
+                  <td>BOHB [18]</td>
+                  <td>500</td>
+                  <td>90.82±0.53</td><td>93.61±0.52</td>
+                  <td>70.74±1.29</td><td>70.85±1.28</td>
+                  <td>44.26±1.36</td><td>44.42±1.49</td>
+                </tr>
+                <tr class="oracle-row">
+                  <td>Oracle</td>
+                  <td>-</td>
+                  <td>91.61</td><td>94.37</td>
+                  <td>73.49</td><td>73.51</td>
+                  <td>46.77</td><td>47.31</td>
+                </tr>
+                <tr>
+                  <td>GENIUS [65]</td>
+                  <td>10</td>
+                  <td>91.07±0.20</td><td>93.79±0.09</td>
+                  <td>70.96±0.33</td><td>70.91±0.72</td>
+                  <td>45.29±0.81</td><td>44.96±1.02</td>
+                </tr>
+                <tr>
+                  <td>LLMatic [38]</td>
+                  <td>2000</td>
+                  <td>-</td><td>94.26±0.13</td>
+                  <td>-</td><td>71.62±1.73</td>
+                  <td>-</td><td>45.87±0.96</td>
+                </tr>
+                <tr>
+                  <td>LeMo-NADe-GPT4 [42]</td>
+                  <td>30</td>
+                  <td>90.90</td><td>89.41</td>
+                  <td>63.38</td><td>67.90</td>
+                  <td>27.05</td><td>27.70</td>
+                </tr>
+                <tr>
+                  <td>NADER [57]</td>
+                  <td>5</td>
+                  <td>91.17±0.24</td><td>94.52±0.22</td>
+                  <td>73.29±1.86</td><td>73.12±1.09</td>
+                  <td>47.98±0.73</td><td>47.99±0.38</td>
+                </tr>
+                <tr>
+                  <td>NADER [57]</td>
+                  <td>10</td>
+                  <td>91.18±0.23</td><td>94.52±0.22</td>
+                  <td>74.71±0.45</td><td>74.65±0.33</td>
+                  <td>48.56±0.83</td><td>48.61±0.76</td>
+                </tr>
+                <tr>
+                  <td>NADER [57]</td>
+                  <td>500</td>
+                  <td>91.55</td><td>94.62</td>
+                  <td>75.72</td><td>76.00</td>
+                  <td>50.20</td><td>50.52</td>
+                </tr>
+                <tr class="revo-row">
+                  <td>RevoNAD (Qwen2.5)</td>
+                  <td>5</td>
+                  <td>91.17±0.25</td><td>94.77±0.18</td>
+                  <td>76.21±0.42</td><td>76.25±0.37</td>
+                  <td class="best">51.00±0.21</td><td>50.55±0.17</td>
+                </tr>
+                <tr class="revo-row">
+                  <td>RevoNAD (GPT4o)</td>
+                  <td>5</td>
+                  <td class="best">92.55±0.27</td><td class="best">95.22±0.20</td>
+                  <td class="best">76.70±0.39</td><td class="best">76.38±0.32</td>
+                  <td>50.58±0.19</td><td class="best">50.72±0.20</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="has-text-centered" style="margin-top: 1rem;">
+              <figcaption class="custom-caption">
+                <strong>Table 1. Comparison with existing state-of-the-art NAS and NAD methods on CIFAR10, CIFAR100 and ImageNet16-120.</strong>
+                Classification accuracy (%) on CIFAR-10/100 and ImageNet16-120. The bold values indicate the best performance. RevoNAD rows are highlighted in blue.
+              </figcaption>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+            
+
+
+
+<br>
+<br/>
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
