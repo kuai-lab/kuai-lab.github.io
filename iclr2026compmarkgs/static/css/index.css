@@ -1,0 +1,387 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+
+.footer .icon-link {
+    font-size: 25px;
+    color: #000;
+}
+
+.link-block .button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+  
+}
+
+
+.publication-title {
+}
+
+.publication-banner {
+  max-height: parent;
+
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+    font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+    color: #555;
+    width: fit-content;
+    margin: 0 auto 0.6rem;
+    font-weight: bold;
+}
+
+.publication-awards {
+    color: #ff3860;
+    width: fit-content;
+    font-weight: bolder;
+}
+
+.publication-authors {
+}
+
+.publication-authors a {
+   color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+    text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+  margin-right: 0.15rem;
+}
+
+.publication-banner img {
+}
+
+.publication-authors {
+  /*color: #4286f4;*/
+}
+
+.publication-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+
+    overflow: hidden;
+    border-radius: 10px !important;
+}
+
+.publication-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 120%;
+}
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+
+/* 이미지를 가운데 정렬 */
+.centered-image {
+  display: block; /* 블록 요소로 변환 */
+  margin: 0 auto; /* 자동으로 좌우 가운데 정렬 */
+  width: 100%; /* 이미지 너비 조정 */
+  height: auto; /* 비율 유지 */
+}
+
+/* 캡션 스타일 */
+.custom-caption {
+  text-align: center; /* 가운데 정렬 */
+  font-style: italic; /* 기울임체 */
+  margin-top: 10px; /* 이미지와 캡션 간 간격 */
+  font-size: 1em; /* 글자 크기를 줄임 */
+  line-height: 1.6; /* 줄 간격 */
+  color: #555; /* 텍스트 색상 */
+}
+
+#video-compare-container {
+  display: inline-block;
+  line-height: 0;
+  position: relative;
+  width: 100%;
+  padding-top: 42.3%;
+}
+#video-compare-container > video {
+  width: 100%;
+  position: absolute;
+  top: 0; height: 100%;
+}
+#video-clipper {
+  width: 50%; position: absolute;
+  top: 0; bottom: 0;
+  overflow: hidden;
+}
+#video-clipper video {
+  width: 200%;
+  position: absolute;
+  height: 100%;
+}
+
+#videoPlay{
+    padding: 40px;
+    margin: 40px auto;
+    display:block
+}
+
+.publication-affiliations {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.2rem;
+  margin-top: 0.4rem;
+}
+
+.affiliation-block {
+  white-space: nowrap;
+}
+
+.publication-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.publication-links .link-block {
+  display: inline-flex;
+}
+
+.publication-links .button {
+  min-width: 120px;
+}
+
+.prototype-note {
+  margin-top: 0.8rem;
+}
+
+.prototype-dataset {
+  margin-top: 2rem;
+}
+
+.prototype-gt-wrap {
+  max-width: 560px;
+  margin: 0.6rem auto 1.2rem;
+}
+
+.prototype-gt-wrap video {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.prototype-dataset .columns {
+  align-items: stretch;
+}
+
+.prototype-dataset .column {
+  display: flex;
+}
+
+.prototype-dataset .custom-video-block {
+  width: 100%;
+  height: 100%;
+  margin: 6px 0;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+}
+
+.prototype-dataset .custom-video-block > p.has-text-centered {
+  margin-bottom: 0.35rem;
+}
+
+.prototype-dataset .video-compare-container {
+  padding-top: 72%;
+}
+
+.prototype-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+  text-align: center;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  padding: 0 4px;
+}
+
+.prototype-label-row span {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.prototype-footnote {
+  margin-top: 1rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+pre, code {
+  text-align: left; /* 왼쪽 정렬 */
+  margin: 0; /* 불필요한 외부 여백 제거 */
+  padding: 10px; /* 내부 여백으로 간격 유지 */
+  background-color: #f5f5f5; /* 가독성을 위한 배경색 (선택 사항) */
+  border-radius: 4px; /* 모서리 둥글게 (선택 사항) */
+  overflow-x: auto; /* 가로 스크롤 허용 */
+  font-family: monospace; /* 고정 폭 글꼴 유지 */
+}
+
+
+/* Compression robustness 4-column layout (flat cards) */
+.prototype-grid {
+  margin-top: 0.4rem;
+}
+
+.prototype-dataset .prototype-flat-card {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.prototype-dataset .prototype-flat-card > p.has-text-centered {
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+}
+
+.prototype-dataset .prototype-flat-card .video-compare-container {
+  padding-top: 66%;
+  border-radius: 12px;
+}
+
+@media screen and (max-width: 1023px) {
+  .prototype-dataset .prototype-flat-card .video-compare-container {
+    padding-top: 70%;
+  }
+}
+
+
+
+
+
+/* Qualitative section extra-wide layout */
+.qualitative-section .hero-body {
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.qualitative-section .columns.is-variable.is-4 {
+  --columnGap: 0.7rem;
+}
+
+.qualitative-section .prototype-dataset .column {
+  padding: 0.35rem;
+}
+
+.qualitative-section .prototype-dataset .custom-video-block {
+  padding: 10px;
+  margin: 4px 0;
+}
+
+.qualitative-section .prototype-dataset .video-compare-container {
+  padding-top: 70%;
+}
+
+@media screen and (max-width: 1023px) {
+  .qualitative-section .columns.is-variable.is-4 {
+    --columnGap: 0.55rem;
+  }
+  .qualitative-section .prototype-dataset .column {
+    padding: 0.3rem;
+  }
+}

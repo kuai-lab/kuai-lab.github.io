@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="3D Scene Watermarking Framework">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CompMarkGS: Robust Watermarking for Compression 3D Gaussian Splatting</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Kalam:wght@300;400&family=Shadows+Into+Light&family=Google+Sans&family=Noto+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/styles.css">
+  <link rel="stylesheet" href="./static/css/slidebar-container.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <!-- Optional CSS (Remove if not needed) -->
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- JavaScript Libraries -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            CompMarkGS: Robust Watermarking for Compressed 3D Gaussian Splatting
+          </h1>
+
+          <div class="is-size-3 publication-venue">
+            ICLR 2026
+          </div>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">Sumin In<sup>1</sup>,</span>
+            <span class="author-block">Youngdong Jang<sup>1</sup>,</span>
+            <span class="author-block">Utae Jeong<sup>1</sup>,</span>
+            <span class="author-block">MinHyuk Jang<sup>1</sup>,</span>
+            <span class="author-block">Hyeongcheol Park<sup>1</sup>,</span>
+            <br>
+            <span class="author-block">Eunbyung Park<sup>2</sup>,</span>
+            <span class="author-block">Sangpil Kim<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-affiliations">
+            <span class="affiliation-block"><sup>1</sup>Korea University</span>
+            <span class="affiliation-block"><sup>2</sup>Yonsei University</span>
+          </div>
+
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="https://openreview.net/pdf?id=NXQvejGBFx" target="_blank" rel="noopener noreferrer"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fas fa-file-alt"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/kuai-lab/iclr26_CompMarkGS" target="_blank" rel="noopener noreferrer"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>GitHub</span>
+              </a>
+            </span>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Figure Section -->
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">
+          <h2 class="title is-3"> Overview </h2>
+          <img src="static/imgs/main_figure.jpg" alt="Teaser" style="width: 100%; height: auto;">
+        </div>
+      </div>
+      <p style="text-align: justify;">
+        First, a learnable watermark embedding feature $f'$ is added to the anchor feature $f$ to create a watermarked anchor feature $f^{w}$. 
+        This feature is processed by the quantization distortion layer to simulate quantization noise before being fed into MLPs to predict Gaussian attributes. 
+        For watermark extraction, a pre-trained decoder retrieves the message from the low-frequency band of the rendered image. 
+        For rendering quality, our frequency-aware anchor growing strategy selectively densifies anchors in high-frequency regions. 
+        The entire framework is optimized using the total loss $\mathcal{L}_{total}$, incorporating HSV loss $\mathcal{L}_{hsv}$ and frequency loss $\mathcal{L}_{freq}$.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered" style="width: 100%; margin: 30px 0 0;">
+        <div class="column" style="width: 80%; padding: 0;">
+            <h2 class="title is-3"> Abstract </h2>
+            <div class="content has-text-justified">
+              As 3D Gaussian Splatting (3DGS) is increasingly adopted in various academic and commercial applications due to its high-quality and real-time rendering capabilities, 
+              the need for copyright protection is growing. At the same time, its large model size requires efficient compression for storage and transmission. 
+              However, compression techniques, especially quantization-based methods, degrade the integrity of existing 3DGS watermarking methods, thus creating the need for a novel methodology that is robust against compression. 
+              To ensure reliable watermark detection under compression, we propose a compression-tolerant 3DGS watermarking method that preserves watermark integrity and rendering quality. 
+              Our approach utilizes an anchor-based 3DGS, embedding the watermark into anchor attributes, particularly the anchor feature, to enhance security and rendering quality. 
+              We also propose a quantization distortion layer that injects quantization noise during training, preserving the watermark after quantization-based compression. 
+              Moreover, we employ a frequency-aware anchor growing strategy that enhances rendering quality by effectively identifying Gaussians in high-frequency regions, 
+              and an HSV loss to mitigate color artifacts for further rendering quality improvement. Extensive experiments demonstrate that our proposed method preserves the watermark even under compression and maintains high rendering quality.
+            </div>
+        </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <br>
+    <h2 class="subtitle has-text-centered">
+    </h2>
+    </div>
+  </div>
+</section>
+<section class="hero teaser qualitative-section">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 15px 10px 0;">
+        <div class="column" style="width: 100%; padding: 0;">
+          <h2 class="title is-3">Qualitative Comparison</h2>
+        </div>
+      </div>
+
+      <div class="qualitative-width-wrap" style="width: min(72vw, 1120px); margin: 0 auto;">
+      <div id="proto-blender" class="prototype-dataset">
+        <h3 class="title is-4 has-text-centered">Blender - Lego</h3>
+        <div class="columns is-variable is-4 is-multiline">
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>GT</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Reference</strong></span>
+              </div>
+              <div class="video-compare-container">
+                <video loop autoplay muted playsinline>
+                  <source src="rendering_results/lego/GT/reference.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>ContextGS</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Before Compression</strong></span>
+                <span><strong>After Compression</strong></span>
+              </div>
+              <div class="video-compare-container" data-slider>
+                <video class="left-video" loop autoplay muted>
+                  <source src="rendering_results/lego/ContextGS/before.mp4" type="video/mp4">
+                </video>
+                <div class="slider-bar">
+                  <div class="slider-divider"></div>
+                  <video class="right-video" loop autoplay muted>
+                    <source src="rendering_results/lego/ContextGS/after.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>HAC</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Before Compression</strong></span>
+                <span><strong>After Compression</strong></span>
+              </div>
+              <div class="video-compare-container" data-slider>
+                <video class="left-video" loop autoplay muted>
+                  <source src="rendering_results/lego/HAC/before.mp4" type="video/mp4">
+                </video>
+                <div class="slider-bar">
+                  <div class="slider-divider"></div>
+                  <video class="right-video" loop autoplay muted>
+                    <source src="rendering_results/lego/HAC/after.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="proto-mipnerf360" class="prototype-dataset">
+        <h3 class="title is-4 has-text-centered">Mip-NeRF 360 - Bicycle</h3>
+        <div class="columns is-variable is-4 is-multiline">
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>GT</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Reference</strong></span>
+              </div>
+              <div class="video-compare-container">
+                <video loop muted playsinline>
+                  <source src="rendering_results/bicycle/GT/reference.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>ContextGS</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Before Compression</strong></span>
+                <span><strong>After Compression</strong></span>
+              </div>
+              <div class="video-compare-container" data-slider>
+                <video class="left-video" loop autoplay muted>
+                  <source src="rendering_results/bicycle/ContextGS/before.mp4" type="video/mp4">
+                </video>
+                <div class="slider-bar">
+                  <div class="slider-divider"></div>
+                  <video class="right-video" loop autoplay muted>
+                    <source src="rendering_results/bicycle/ContextGS/after.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>HAC</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Before Compression</strong></span>
+                <span><strong>After Compression</strong></span>
+              </div>
+              <div class="video-compare-container" data-slider>
+                <video class="left-video" loop autoplay muted>
+                  <source src="rendering_results/bicycle/HAC/before.mp4" type="video/mp4">
+                </video>
+                <div class="slider-bar">
+                  <div class="slider-divider"></div>
+                  <video class="right-video" loop autoplay muted>
+                    <source src="rendering_results/bicycle/HAC/after.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="proto-llff" class="prototype-dataset">
+        <h3 class="title is-4 has-text-centered">LLFF - Fern</h3>
+        <div class="columns is-variable is-4 is-multiline">
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>GT</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Reference</strong></span>
+              </div>
+              <div class="video-compare-container">
+                <video loop muted playsinline>
+                  <source src="rendering_results/fern/GT/reference.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>ContextGS</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Before Compression</strong></span>
+                <span><strong>After Compression</strong></span>
+              </div>
+              <div class="video-compare-container" data-slider>
+                <video class="left-video" loop autoplay muted>
+                  <source src="rendering_results/fern/ContextGS/before.mp4" type="video/mp4">
+                </video>
+                <div class="slider-bar">
+                  <div class="slider-divider"></div>
+                  <video class="right-video" loop autoplay muted>
+                    <source src="rendering_results/fern/ContextGS/after.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-4">
+            <div class="custom-video-block">
+              <p class="has-text-centered"><strong>HAC</strong></p>
+              <div class="prototype-label-row">
+                <span><strong>Before Compression</strong></span>
+                <span><strong>After Compression</strong></span>
+              </div>
+              <div class="video-compare-container" data-slider>
+                <video class="left-video" loop autoplay muted>
+                  <source src="rendering_results/fern/HAC/before.mp4" type="video/mp4">
+                </video>
+                <div class="slider-bar">
+                  <div class="slider-divider"></div>
+                  <video class="right-video" loop autoplay muted>
+                    <source src="rendering_results/fern/HAC/after.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="prototype-footnote">
+        * Before/After clips are loaded from rendering_results/{scene}/ContextGS and rendering_results/{scene}/HAC.
+      </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr/>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
+        <div class="column" style="width: 10%; padding: 0;">
+          <h2 class="title is-3">Quantitative Results</h2>
+          <img src="static/imgs/quantitative_comparison.jpg" alt="Teaser" style="width: 100%; height: auto;">
+          <p style="text-align: justify; margin-top: 12px;">
+            <strong>Quantitative comparison of before (left) and after (right) compression bit accuracy and rendering quality.</strong> Evaluations are performed using a 48-bit setting, averaged over the Blender, LLFF, and Mip-NeRF 360 datasets. Baselines are tested within an anchor-based 3DGS framework with HAC and ContextGS compression. The best results are in <strong>bold</strong>.
+          </p>
+          <br><br>
+        </div>
+      </div>
+      <!-- <p style="text-align: left;">
+        <strong>Rendering quality comparison of each baseline with our method.</strong> We doubled the scale of the difference map. Our method outperforms others in bit accuracy and rendering quality, using 32-bit messages for the qualitative results.
+      </p> -->
+
+    </div>
+  </div>
+</section>
+<br><br> 
+
+<br>
+
+
+<br>
+
+
+<br><br> <br><br>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link external-link" href="https://github.com/kuai-lab/iclr26_CompMarkGS" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            We borrow the <a href="">source code</a> of this website,
+            A heartfelt thanks to the original creators! 💖
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="static/js/slidebar-container.js"></script>
+</body>
+</html>
