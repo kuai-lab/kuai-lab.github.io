@@ -4,11 +4,12 @@ This is the repository that contains source code for the [CATSplat website](http
 
 If you find CATSplat useful for your work please cite:
 ```
-@article{roh2024catsplat,
-  title   = {CATSplat: Context-Aware Transformer with Spatial Guidance for Generalizable 3D Gaussian Splatting from A Single-View Image},
-  author  = {Roh, Wonseok and Jung, Hwanhee and Kim, Jong Wook and Lee, Seunggwan and Yoo, Innfarn and Lugmayr, Andreas and Chi, Seunggeun and Ramani, Karthik and Kim, Sangpil},
-  journal = {arXiv preprint arXiv:2412.12906},
-  year    = {2024}
+@inproceedings{roh2025catsplat,
+  title={CATSplat: Context-Aware Transformer with Spatial Guidance for Generalizable 3D Gaussian Splatting from A Single-View Image},
+  author={Roh, Wonseok and Jung, Hwanhee and Kim, Jong Wook and Lee, Seunggwan and Yoo, Innfarn and Lugmayr, Andreas and Chi, Seunggeun and Ramani, Karthik and Kim, Sangpil},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={28228--28238},
+  year={2025}
 }
 ```
 
