@@ -429,6 +429,13 @@
     margin: 8px auto 0;      
   }
 
+  .contribution-section ul {
+    list-style: disc;
+    margin: 0;
+    padding-left: 22px;
+    line-height: 1.55;
+  }
+
 
   .video-hand-caption {
     width: 100%;
@@ -454,7 +461,7 @@
   }
 
   /* Top overview video section */
-  .hero-video-section {
+  .supplementary-video-section {
     background-color: #fff;
     padding: 20px;
     margin: 10px auto 10px;
@@ -463,9 +470,13 @@
     text-align: center;
   }
 
-  .hero-video {
+  .supplementary-video {
+    position: static;
+    display: block;
     width: 100%;
     max-width: 900px;
+    height: auto;
+    margin: 0 auto;
     border-radius: 12px;
     background: #000;
   }
