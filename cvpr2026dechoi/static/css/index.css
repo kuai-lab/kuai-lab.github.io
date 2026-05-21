@@ -5,7 +5,7 @@
       line-height: 1.6;
       background-color: #ffffff;
     }
-    header, main, footer {
+    header, main {
       max-width: 1200px;
       margin: 0 auto;
       padding: 10px 20px;
@@ -304,21 +304,10 @@
       white-space: pre;
     }
 
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #6b7280;
-      margin-top: 40px;
-      padding: 24px 20px 32px;
-      border-top: 1px solid #e5e7eb;
-    }
-
-    footer p {
-      margin: 4px 0;
-    }
-
-    footer strong {
-      color: #374151;
+    .footer .icon-link {
+      color: #000;
+      font-size: 25px;
+      margin: 0 8px;
     }
 
     .video-controls {
