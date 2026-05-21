@@ -1,0 +1,488 @@
+    /* Overall layout style */
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+    }
+    header, main, footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+    }
+    header {
+      text-align: center;
+      padding: 36px 20px 22px;
+    }
+    h1 {
+      margin-bottom: 0.5em;
+      font-size:40px;
+      letter-spacing: 0.02em; 
+      font-family: "Trebuchet MS", "Helvetica Neue", Arial,
+               "Noto Sans KR", sans-serif;
+    }
+
+    .project-logo {
+      display: block;
+      margin: 0 auto 18px;
+      width: min(360px, 74vw);
+      height: auto;
+    }
+
+    .project-title {
+      margin: 0 auto 26px;
+      max-width: 1080px;
+      color: #111827;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .author-list {
+      max-width: 900px;
+      margin: 0 auto 10px;
+      color: #111827;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(18px, 2.2vw, 22px);
+      line-height: 1.35;
+    }
+
+    .author-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      column-gap: 18px;
+      row-gap: 5px;
+    }
+
+    .author-row + .author-row {
+      margin-top: 2px;
+    }
+
+    .author-list span {
+      white-space: nowrap;
+    }
+
+    .author-list sup,
+    .affiliation-list sup {
+      font-size: 0.62em;
+      line-height: 0;
+      vertical-align: super;
+    }
+
+    .affiliation-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 28px;
+      margin: 0 auto 20px;
+      color: #1f2937;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(16px, 1.8vw, 20px);
+      line-height: 1.35;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 104px;
+      padding: 8px 15px;
+      border: 1px solid rgba(50, 106, 112, 0.22);
+      border-radius: 999px;
+      background: #f5fbfa;
+      color: #24575d;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
+      text-decoration: none;
+      transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+    }
+
+    .project-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(50, 106, 112, 0.42);
+      background: #e9f5f3;
+      color: #173f44;
+    }
+
+    .project-link--disabled {
+      border-color: #e5e7eb;
+      background: #f8fafc;
+      color: #9ca3af;
+      cursor: default;
+    }
+
+    .project-link--disabled:hover {
+      transform: none;
+      border-color: #e5e7eb;
+      background: #f8fafc;
+      color: #9ca3af;
+    }
+
+    h2{
+      font-family: "Trebuchet MS", "Helvetica Neue", Arial,
+               "Noto Sans KR", sans-serif;
+      font-size:30px;
+      letter-spacing: 0.02em; 
+    }
+
+
+    /* Overview Section */
+    .overview-section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .figure-caption {
+      text-align: center;
+      font-size: 1.0em;
+      color: #000000;
+      margin-bottom: 10px;
+    }
+
+    /* Abstract Section */
+    .abstract-section {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px auto;      
+      border-radius: 6px;
+      max-width: 900px;      
+      text-align: justify;      
+    }
+
+    .abstract-section p {
+      margin: 0;
+    }
+
+    /* Video Results Section */
+    .video-section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .video-section h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .video-item video {
+      width: 100%;
+      max-height: 260px;     
+      border-radius: 8px;
+      background: #000;
+      object-fit: cover;                
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    /* .video-item:hover video {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
+    } */
+
+    .video-caption {
+      margin-top: 6px;
+      font-size: 0.9em;
+      color: #555;
+      text-align: center;
+    }
+
+    /* Quantitative Results Image Section */
+    .image-gallery-section {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .image-gallery-section h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+    .image-gallery {
+      text-align: center;
+    }
+    .image-gallery img {
+      max-width: 60%;
+      height: auto;
+      display: block;
+      margin: 10px auto;
+    }
+
+    .citation-section {
+      max-width: 900px;
+      margin: 20px auto 8px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 6px;
+    }
+
+    .citation-section h2 {
+      font-size: 30px;
+      font-weight: 600;
+      text-align: center;
+      margin: 0 0 18px;
+      padding-bottom: 8px;
+      position: relative;
+    }
+
+    .citation-section h2::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: #1010103e;
+      margin: 8px auto 0;
+    }
+
+    .bibtex-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      background: #f8fafc;
+      overflow: hidden;
+    }
+
+    .bibtex-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .copy-bibtex {
+      border: 1px solid rgba(50, 106, 112, 0.22);
+      border-radius: 999px;
+      background: #fff;
+      color: #24575d;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+    }
+
+    .copy-bibtex:hover {
+      border-color: rgba(50, 106, 112, 0.42);
+      background: #e9f5f3;
+      color: #173f44;
+    }
+
+    .bibtex-card pre {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      color: #111827;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px;
+      line-height: 1.55;
+      text-align: left;
+      white-space: pre;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #6b7280;
+      margin-top: 40px;
+      padding: 24px 20px 32px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    footer strong {
+      color: #374151;
+    }
+
+    .video-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .video-controls button {
+      padding: 4px 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .video-controls button:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+
+
+  .video-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Left and right arrow buttons */
+  .video-arrow {
+    border: none;       
+    background: transparent; 
+    cursor: pointer;
+    font-size: 30px; 
+    font-weight: 700;
+    padding: 0 6px;    
+    line-height: 1;
+  }
+
+.video-arrow:hover:not(:disabled) {
+  transform: translateY(-1px);
+  color: #111827;       
+}
+
+.video-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+
+  .video-arrow:hover:not(:disabled) {
+    background-color: #eff4ff;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+    transform: translateY(-1px);
+  }
+
+
+  .video-arrow:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+
+  /* Make the center grid take up more space */
+  .video-grid {
+    flex: 1;
+  }
+
+  /* Display below page information */
+  .video-page-info {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #666;
+  }
+
+  /* Light color band background – Different colors for Video Results / DynaPlan */
+  .video-section--videos {
+    background-color: rgba(60, 120, 255, 0.06);
+  }
+
+  .video-section--dynaplan {
+    background-color: rgba(255, 180, 80, 0.06); 
+  }
+
+  .main-title {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .dec-hoi {
+    color: #326A70; 
+  }
+
+  /* Section titles (Overview / Abstract / Video Results / Quantitative Results) common style + gray line below */
+  .overview-section h2,
+  .abstract-section h2,
+  .video-section h2,
+  .image-gallery-section h2 {
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    margin: 0 0 18px;
+    padding-bottom: 8px;
+    position: relative;
+  }
+
+  /* Light gray line below h2 titles */
+  .overview-section h2::after,
+  .abstract-section h2::after,
+  .image-gallery-section h2::after {
+    content: "";
+    display: block;
+    width: 100%;                
+    height: 1px;
+    background-color: #1010103e; 
+    margin: 8px auto 0;      
+  }
+
+
+  .video-hand-caption {
+    width: 100%;
+    text-align: center; 
+    font-family: "Comic Sans MS", "Bradley Hand", "Segoe Print",
+                "Noto Sans KR", cursive;  
+    font-size: 1.5rem;
+    color: #374151;
+    margin-bottom: 6px;
+  }
+
+    /* Block  */
+  .scene-block {
+    margin-bottom: 16px;
+  }
+
+  /* Arrange three videos horizontally within a scene */
+  .scene-video-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  /* Top overview video section */
+  .hero-video-section {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px auto 10px;
+    border-radius: 6px;
+    max-width: 900px;
+    text-align: center;
+  }
+
+  .hero-video {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    background: #000;
+  }
+
+  .hero-caption {
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #555;
+  }
