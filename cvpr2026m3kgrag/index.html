@@ -978,5 +978,91 @@ function update_dialog_demo() {
   </div>
 </footer>
 
+<style>
+  @media screen and (max-width: 768px) {
+    /* Top title */
+    .publication-title {
+      font-size: 1.65rem !important;
+      line-height: 1.2 !important;
+    }
+
+    /* CVPR 2026 */
+    .publication-authors.is-size-3 {
+      font-size: 1.35rem !important;
+    }
+
+    /* Author names */
+    .publication-authors.is-size-4 {
+      font-size: 1.05rem !important;
+      line-height: 1.35 !important;
+    }
+
+    /* Affiliations */
+    .publication-affiliations.is-size-5 {
+      font-size: 0.95rem !important;
+      line-height: 1.35 !important;
+    }
+
+    /* Section titles: Overview, Abstract, QA, Performance */
+    h2.title.is-3 {
+      font-size: 1.45rem !important;
+    }
+
+    /* Abstract/body text */
+    .content p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    /* Figure captions */
+    .custom-caption {
+      font-size: 0.85rem !important;
+      line-height: 1.45 !important;
+      text-align: left;
+    }
+
+    /* QA example box text */
+    .chat-bubble {
+      font-size: 0.85rem !important;
+      line-height: 1.45 !important;
+      padding: 10px !important;
+    }
+
+    /* QA examples: 2 columns -> 1 column on mobile */
+    .chat-history {
+      flex-direction: column !important;
+      gap: 1rem !important;
+    }
+
+    .example-wrapper {
+      flex: 0 0 100% !important;
+      width: 100% !important;
+    }
+
+    /* Card padding too large on mobile */
+    .card-body {
+      padding: 1rem !important;
+    }
+
+    /* Hero spacing */
+    .hero-body {
+      padding: 2rem 1rem !important;
+    }
+
+    /* Tables */
+    table.PerformanceTable,
+    table.WinTable {
+      font-size: 0.72rem !important;
+    }
+
+    table.PerformanceTable th,
+    table.PerformanceTable td,
+    table.WinTable th,
+    table.WinTable td {
+      padding: 4px 5px !important;
+    }
+  }
+</style>
+  
 </body>
 </html>
