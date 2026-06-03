@@ -40,6 +40,195 @@
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
     </script>
 
+
+  <style>
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
+    .publication-title {
+      word-break: keep-all;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+
+    .publication-venue {
+      font-weight: 600;
+      margin-top: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .publication-authors {
+      line-height: 1.55;
+      margin-top: 1rem;
+    }
+
+    .publication-affiliations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.2rem 1.25rem;
+      line-height: 1.45;
+      margin: 1rem 0 1.35rem;
+    }
+
+    .publication-links .link-block {
+      display: inline-block;
+      margin: 0.25rem 0.2rem;
+    }
+
+    .paper-figure-column {
+      width: 100%;
+      padding: 0;
+    }
+
+    .paper-figure-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .section-description {
+      width: 80%;
+      margin: 1rem auto 0;
+      text-align: justify;
+    }
+
+    .qualitative-width-wrap {
+      width: min(72vw, 1120px);
+      margin: 0 auto;
+    }
+
+    .video-compare-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media screen and (max-width: 768px) {
+      body > .hero:first-of-type .hero-body {
+        padding: 2rem 1rem 1.25rem;
+      }
+
+      .publication-title {
+        max-width: 100%;
+        font-size: clamp(1.85rem, 7.4vw, 2.35rem) !important;
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+      }
+
+      .publication-venue {
+        font-size: 1.25rem !important;
+        line-height: 1.3;
+        margin-top: 0.9rem;
+      }
+
+      .publication-authors {
+        font-size: 1rem !important;
+        line-height: 1.45;
+        margin-top: 0.9rem;
+      }
+
+      .publication-affiliations {
+        font-size: 0.95rem !important;
+        gap: 0.1rem 0.75rem;
+        margin: 0.8rem 0 1rem;
+      }
+
+      .publication-links {
+        margin-top: 0.5rem;
+      }
+
+      .publication-links .button {
+        font-size: 0.95rem;
+        padding: 0.55rem 0.9rem;
+      }
+
+      .hero.teaser .hero-body {
+        padding: 1.35rem 1rem;
+      }
+
+      .hero.teaser .columns[style] {
+        width: 100% !important;
+        margin: 1.8rem 0 0 !important;
+      }
+
+      .hero.teaser .column[style] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      .title.is-3 {
+        font-size: 1.55rem;
+        line-height: 1.2;
+      }
+
+      .title.is-4 {
+        font-size: 1.2rem;
+        line-height: 1.25;
+      }
+
+      .section-description {
+        width: 100%;
+        padding: 0 0.75rem;
+        text-align: left;
+      }
+
+      .content.has-text-justified,
+      p[style*="text-align: justify"] {
+        text-align: left !important;
+      }
+
+      .qualitative-section .hero-body {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+
+      .qualitative-width-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 0.25rem;
+      }
+
+      .prototype-dataset {
+        margin-top: 1.8rem;
+      }
+
+      .custom-video-block {
+        margin-bottom: 1.5rem;
+      }
+
+      .prototype-label-row {
+        font-size: 0.78rem;
+        line-height: 1.2;
+        gap: 0.35rem;
+      }
+
+      .video-compare-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .prototype-footnote {
+        font-size: 0.8rem;
+        line-height: 1.35;
+        text-align: left;
+        padding: 0 0.5rem;
+      }
+
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -109,12 +298,12 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
-        <div class="column" style="width: 10%; padding: 0;">
+        <div class="column paper-figure-column" style="width: 100%; padding: 0;">
           <h2 class="title is-3"> Overview </h2>
-          <img src="static/imgs/main_figure.jpg" alt="Teaser" style="width: 100%; height: auto;">
+          <img src="static/imgs/main_figure.jpg" alt="Teaser" class="paper-figure-image">
         </div>
       </div>
-      <p style="text-align: justify;">
+      <p class="section-description">
         First, a learnable watermark embedding feature $f'$ is added to the anchor feature $f$ to create a watermarked anchor feature $f^{w}$. 
         This feature is processed by the quantization distortion layer to simulate quantization noise before being fed into MLPs to predict Gaussian attributes. 
         For watermark extraction, a pre-trained decoder retrieves the message from the low-frequency band of the rendered image. 
@@ -161,7 +350,7 @@
         </div>
       </div>
 
-      <div class="qualitative-width-wrap" style="width: min(72vw, 1120px); margin: 0 auto;">
+      <div class="qualitative-width-wrap">
       <div id="proto-blender" class="prototype-dataset">
         <h3 class="title is-4 has-text-centered">Blender - Lego</h3>
         <div class="columns is-variable is-4 is-multiline">
@@ -187,12 +376,12 @@
                 <span><strong>After Compression</strong></span>
               </div>
               <div class="video-compare-container" data-slider>
-                <video class="left-video" loop autoplay muted>
+                <video class="left-video" loop autoplay muted playsinline>
                   <source src="rendering_results/lego/ContextGS/before.mp4" type="video/mp4">
                 </video>
                 <div class="slider-bar">
                   <div class="slider-divider"></div>
-                  <video class="right-video" loop autoplay muted>
+                  <video class="right-video" loop autoplay muted playsinline>
                     <source src="rendering_results/lego/ContextGS/after.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -208,12 +397,12 @@
                 <span><strong>After Compression</strong></span>
               </div>
               <div class="video-compare-container" data-slider>
-                <video class="left-video" loop autoplay muted>
+                <video class="left-video" loop autoplay muted playsinline>
                   <source src="rendering_results/lego/HAC/before.mp4" type="video/mp4">
                 </video>
                 <div class="slider-bar">
                   <div class="slider-divider"></div>
-                  <video class="right-video" loop autoplay muted>
+                  <video class="right-video" loop autoplay muted playsinline>
                     <source src="rendering_results/lego/HAC/after.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -248,12 +437,12 @@
                 <span><strong>After Compression</strong></span>
               </div>
               <div class="video-compare-container" data-slider>
-                <video class="left-video" loop autoplay muted>
+                <video class="left-video" loop autoplay muted playsinline>
                   <source src="rendering_results/bicycle/ContextGS/before.mp4" type="video/mp4">
                 </video>
                 <div class="slider-bar">
                   <div class="slider-divider"></div>
-                  <video class="right-video" loop autoplay muted>
+                  <video class="right-video" loop autoplay muted playsinline>
                     <source src="rendering_results/bicycle/ContextGS/after.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -269,12 +458,12 @@
                 <span><strong>After Compression</strong></span>
               </div>
               <div class="video-compare-container" data-slider>
-                <video class="left-video" loop autoplay muted>
+                <video class="left-video" loop autoplay muted playsinline>
                   <source src="rendering_results/bicycle/HAC/before.mp4" type="video/mp4">
                 </video>
                 <div class="slider-bar">
                   <div class="slider-divider"></div>
-                  <video class="right-video" loop autoplay muted>
+                  <video class="right-video" loop autoplay muted playsinline>
                     <source src="rendering_results/bicycle/HAC/after.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -309,12 +498,12 @@
                 <span><strong>After Compression</strong></span>
               </div>
               <div class="video-compare-container" data-slider>
-                <video class="left-video" loop autoplay muted>
+                <video class="left-video" loop autoplay muted playsinline>
                   <source src="rendering_results/fern/ContextGS/before.mp4" type="video/mp4">
                 </video>
                 <div class="slider-bar">
                   <div class="slider-divider"></div>
-                  <video class="right-video" loop autoplay muted>
+                  <video class="right-video" loop autoplay muted playsinline>
                     <source src="rendering_results/fern/ContextGS/after.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -330,12 +519,12 @@
                 <span><strong>After Compression</strong></span>
               </div>
               <div class="video-compare-container" data-slider>
-                <video class="left-video" loop autoplay muted>
+                <video class="left-video" loop autoplay muted playsinline>
                   <source src="rendering_results/fern/HAC/before.mp4" type="video/mp4">
                 </video>
                 <div class="slider-bar">
                   <div class="slider-divider"></div>
-                  <video class="right-video" loop autoplay muted>
+                  <video class="right-video" loop autoplay muted playsinline>
                     <source src="rendering_results/fern/HAC/after.mp4" type="video/mp4">
                   </video>
                 </div>
@@ -358,10 +547,10 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <div class="columns is-centered has-text-centered" style="width: 100%; margin: 0px;">
-        <div class="column" style="width: 10%; padding: 0;">
+        <div class="column paper-figure-column" style="width: 100%; padding: 0;">
           <h2 class="title is-3">Quantitative Results</h2>
-          <img src="static/imgs/quantitative_comparison.jpg" alt="Teaser" style="width: 100%; height: auto;">
-          <p style="text-align: justify; margin-top: 12px;">
+          <img src="static/imgs/quantitative_comparison.jpg" alt="Teaser" class="paper-figure-image">
+          <p class="section-description" style="margin-top: 12px;">
             <strong>Quantitative comparison of before (left) and after (right) compression bit accuracy and rendering quality.</strong> Evaluations are performed using a 48-bit setting, averaged over the Blender, LLFF, and Mip-NeRF 360 datasets. Baselines are tested within an anchor-based 3DGS framework with HAC and ContextGS compression. The best results are in <strong>bold</strong>.
           </p>
           <br><br>
