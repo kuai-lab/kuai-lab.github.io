@@ -6,7 +6,7 @@
   <meta name="description"
         content="M$^3$KG-RAG: Multi-hop Multimodal Knowledge Graph-enhanced Retrieval-Augmented Generation">
   <meta name="keywords" content="Multi-modal RAG">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=1200">
   <title> M³KG-RAG: Multi-hop Multimodal Knowledge Graph-enhanced Retrieval-Augmented Generation</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -127,7 +127,7 @@
     <div class="columns is-centered has-text-centered" style="width: 100%; margin: 10px 10px 0;">
         <div class="column" style="width: 100%; padding: 0;">
             <h2 class="title is-3"> Overview </h2>
-          <img src="./static/m3kg_construction.png" alt="Teaser" style="width: 110%; margin-bottom:30px; height: auto;" />
+          <img src="./static/m3kg_construction.png" alt="Teaser" style="width: 100%; margin-bottom:30px; height: auto;" />
           <figcaption class="custom-caption">
             <strong> An overview of the M$^3$KG construction pipeline.</strong> 
             The pipeline consists of three steps: 
@@ -979,88 +979,71 @@ function update_dialog_demo() {
 </footer>
 
 <style>
-  @media screen and (max-width: 768px) {
-    /* Top title */
-    .publication-title {
-      font-size: 1.65rem !important;
-      line-height: 1.2 !important;
-    }
+  html {
+    font-size: 16px;
+  }
 
-    /* CVPR 2026 */
-    .publication-authors.is-size-3 {
-      font-size: 1.35rem !important;
-    }
+  body {
+    min-width: 1200px;
+    font-family: 'Noto Sans', 'Google Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.55;
+  }
 
-    /* Author names */
-    .publication-authors.is-size-4 {
-      font-size: 1.05rem !important;
-      line-height: 1.35 !important;
-    }
+  .container,
+  .container.is-max-widescreen {
+    max-width: 1100px !important;
+  }
 
-    /* Affiliations */
-    .publication-affiliations.is-size-5 {
-      font-size: 0.95rem !important;
-      line-height: 1.35 !important;
-    }
+  .publication-title {
+    font-size: 2.6rem !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.02em;
+  }
 
-    /* Section titles: Overview, Abstract, QA, Performance */
-    h2.title.is-3 {
-      font-size: 1.45rem !important;
-    }
+  .publication-authors.is-size-3 {
+    font-size: 1.55rem !important;
+  }
 
-    /* Abstract/body text */
-    .content p {
-      font-size: 0.95rem;
-      line-height: 1.55;
-    }
+  .publication-authors.is-size-4 {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+  }
 
-    /* Figure captions */
-    .custom-caption {
-      font-size: 0.85rem !important;
-      line-height: 1.45 !important;
-      text-align: left;
-    }
+  .publication-affiliations.is-size-5 {
+    font-size: 1.05rem !important;
+    line-height: 1.4 !important;
+  }
 
-    /* QA example box text */
-    .chat-bubble {
-      font-size: 0.85rem !important;
-      line-height: 1.45 !important;
-      padding: 10px !important;
-    }
+  h2.title.is-3 {
+    font-size: 2rem !important;
+    line-height: 1.25 !important;
+  }
 
-    /* QA examples: 2 columns -> 1 column on mobile */
-    .chat-history {
-      flex-direction: column !important;
-      gap: 1rem !important;
-    }
+  .content p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 
-    .example-wrapper {
-      flex: 0 0 100% !important;
-      width: 100% !important;
-    }
+  .custom-caption {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    text-align: left;
+  }
 
-    /* Card padding too large on mobile */
-    .card-body {
-      padding: 1rem !important;
-    }
+  .chat-bubble {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+  }
 
-    /* Hero spacing */
-    .hero-body {
-      padding: 2rem 1rem !important;
-    }
+  table.PerformanceTable,
+  table.WinTable {
+    font-size: 0.9rem !important;
+  }
 
-    /* Tables */
-    table.PerformanceTable,
-    table.WinTable {
-      font-size: 0.72rem !important;
-    }
-
-    table.PerformanceTable th,
-    table.PerformanceTable td,
-    table.WinTable th,
-    table.WinTable td {
-      padding: 4px 5px !important;
-    }
+  img {
+    max-width: 100%;
+    height: auto;
   }
 </style>
   
