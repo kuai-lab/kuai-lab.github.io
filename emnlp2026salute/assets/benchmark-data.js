@@ -19,24 +19,24 @@ window.SALUTE_BENCHMARKS = {
       "N4_Analytical_Criteria_Assessment": 69
     },
     "example": {
-      "question": "Which statement best distinguishes the core functional responsibility of the DCS, G\u20131 in the Army Flag Program from related but distinct roles?",
-      "reference": "Plans and manages execution of policies and procedures for the Army Flag Program as the central staff authority for heraldic activities.",
-      "task": "D2_Functional_Role_Purpose",
-      "source": "doctrine",
-      "document": "AR 840-10_1029425",
+      "question": "Which statement most accurately reflects the structure of the SWEAT obstacle course used in the NATO trial without overstating its design or scope?",
+      "reference": "The course included 14 firing points and 36 distinct actions performed by soldiers during the trial.",
+      "task": "N1_Asset_Capability_Role",
+      "source": "news",
+      "document": "GOV.UK \u2014 Live-firing exercise tests latest soldier systems",
       "options": {
-        "A": "Approves all flag designs and ensures compliance with heraldic standards across all Army units and commands.",
-        "B": "Directs the care and storage of inactive unit flags and determines official unit designations for heraldic use.",
-        "C": "Plans and manages execution of policies and procedures for the Army Flag Program as the central staff authority for heraldic activities.",
-        "D": "Coordinates with TACOM to procure flags and ensures only authorized flags are displayed within Army installations."
+        "A": "The course included 14 firing points and 36 distinct actions performed by soldiers during the trial.",
+        "B": "The course featured 14 firing positions and 36 mobility challenges tested over two days.",
+        "C": "The trial course consisted of 36 firing points and 14 actions to evaluate weapon system performance.",
+        "D": "Soldiers completed 14 actions across 36 firing points while engaging targets at varying distances."
       },
-      "answer": "C"
+      "answer": "A"
     }
   },
   "oe": {
     "count": 2638,
-    "bytes": 2018646,
-    "sha256": "027f23888e320adede6c13e2054669c9bee569930d5c15470014e7fdc399c568",
+    "bytes": 2006780,
+    "sha256": "3ab5320f88a117558318a0c9e5124f18ea2a4af9de6d8f5ba49b83d8b7cc6837",
     "sources": {
       "doctrine": 1479,
       "news": 1159
@@ -52,11 +52,11 @@ window.SALUTE_BENCHMARKS = {
       "N4_Analytical_Criteria_Assessment": 341
     },
     "example": {
-      "question": "What is the primary responsibility of the Deputy Chief of Staff (DCS), G\u20131 regarding heraldic activities in the U.S. Army?",
-      "reference": "The primary responsibility of the Deputy Chief of Staff (DCS), G\u20131 regarding heraldic activities in the U.S. Army is to have staff responsibility for all heraldic activities and to plan and manage the execution of policies and procedures for the Army Flag Program.",
-      "task": "D2_Functional_Role_Purpose",
-      "source": "doctrine",
-      "document": "AR 840-10_1029425",
+      "question": "How many firing points and actions were included in the SWEAT obstacle course used during the trial?",
+      "reference": "The SWEAT obstacle course used during the trial included 14 firing points and 36 actions.",
+      "task": "N1_Asset_Capability_Role",
+      "source": "news",
+      "document": "GOV.UK \u2014 Live-firing exercise tests latest soldier systems",
       "options": null,
       "answer": null
     }
