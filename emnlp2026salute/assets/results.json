@@ -1,0 +1,26 @@
+{
+  "source": "2609.15022v1.pdf, Tables 4–6, PDF pages 7–8",
+  "defense_columns": ["Correctness", "Completeness", "Relevance", "Overall", "OE avg.", "MCQ acc. (%)"],
+  "general_columns": ["Mean", "MMLU", "TruthfulQA", "ARC", "IFEval", "GSM8K", "GPQA"],
+  "models": [
+    {"name": "Qwen3-8B-Base", "group": "Open-weight baselines", "defense": [55.35, 47.73, 70.27, 50.74, 56.02, 72.04], "general": [63.95, 76.94, 50.99, 64.41, null, 85.67, 41.74]},
+    {"name": "Qwen3-8B", "group": "Open-weight baselines", "defense": [54.70, 46.95, 69.34, 49.85, 55.21, 77.28], "general": [63.53, 72.04, 53.16, 57.16, 76.34, 85.44, 37.05]},
+    {"name": "Llama-3.1-8B-Instruct", "group": "Open-weight baselines", "defense": [47.29, 45.77, 59.11, 45.72, 49.47, 70.20], "general": [62.72, 68.66, 55.04, 60.49, 73.75, 83.16, 35.26]},
+    {"name": "Ministral-3-8B-Instruct", "group": "Open-weight baselines", "defense": [53.14, 48.24, 63.64, 48.94, 53.49, 77.80], "general": [62.16, 76.44, 63.88, 63.05, 52.12, 79.75, 37.72]},
+    {"name": "Tulu-3-8B", "group": "Open-weight baselines", "defense": [58.59, 56.31, 71.90, 56.52, 60.83, 63.00], "general": [62.56, 62.22, 60.34, 55.20, 76.34, 88.70, 32.58]},
+    {"name": "Granite-3.3-8B-Instruct", "group": "Open-weight baselines", "defense": [54.48, 50.85, 68.67, 52.03, 56.51, 71.63], "general": [60.86, 65.16, 66.64, 60.23, 64.51, 76.72, 31.91]},
+    {"name": "Salute-8B-Base", "group": "SALUTE variants", "defense": [58.89, 54.60, 73.20, 56.02, 60.68, 78.52], "general": [62.96, 76.96, 48.61, 63.82, null, 84.83, 40.62]},
+    {"name": "Salute-8B-Instruct", "group": "SALUTE variants", "defense": [60.62, 56.71, 78.47, 58.17, 63.49, 85.09], "general": [61.72, 74.69, 48.90, 59.47, 64.87, 81.57, 40.84]},
+    {"name": "Salute-LLM", "group": "SALUTE variants", "defense": [60.91, 59.87, 77.71, 59.53, 64.51, 86.02], "general": [64.69, 75.35, 52.31, 61.00, 70.97, 86.35, 42.19]},
+    {"name": "Qwen3-30B", "group": "Strong reference models", "defense": [61.82, 56.30, 75.91, 57.30, 62.83, 78.11], "general": [69.10, 81.00, 60.04, 59.98, 73.75, 94.76, 45.08]},
+    {"name": "GPT-5", "group": "Strong reference models", "defense": [72.85, 65.20, 84.23, 66.88, 72.29, 92.18], "general": [82.39, 85.97, 81.72, 95.90, 84.47, 94.31, 52.00]}
+  ],
+  "ablation": [
+    {"name": "Base", "stages": [false, false, false], "scores": [56.02, 72.04, 63.95]},
+    {"name": "CPT-only", "stages": [true, false, false], "scores": [60.68, 78.52, 62.96]},
+    {"name": "SFT-only", "stages": [false, true, false], "scores": [62.12, 80.26, 61.14]},
+    {"name": "CPT → SFT", "stages": [true, true, false], "scores": [63.49, 85.09, 61.72]},
+    {"name": "SFT → DPO", "stages": [false, true, true], "scores": [63.54, 84.58, 64.58]},
+    {"name": "Full", "stages": [true, true, true], "scores": [64.51, 86.02, 64.69]}
+  ]
+}

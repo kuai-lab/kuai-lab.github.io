@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#214e41">
+  <title>SALUTE — Benchmarking and Adapting LLMs for the Defense Domain</title>
+  <meta name="description" content="SALUTE: an end-to-end framework for defense-domain language models. Read the paper and download the SALUTE-MCQ and SALUTE-OE benchmarks.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SALUTE — Benchmarking and Adapting LLMs for the Defense Domain">
+  <meta property="og:description" content="Explore the SALUTE framework and download 973 multiple-choice and 2,638 open-ended benchmark questions.">
+  <meta name="citation_title" content="SALUTE: Benchmarking and Adapting LLMs for the Defense Domain">
+  <meta name="citation_author" content="Hyeongcheol Park">
+  <meta name="citation_author" content="Sumin In">
+  <meta name="citation_author" content="Suyeon Myeong">
+  <meta name="citation_author" content="Hogun Park">
+  <meta name="citation_author" content="Sangmin Kim">
+  <meta name="citation_author" content="Moonhyun Lee">
+  <meta name="citation_author" content="Daekyeong Park">
+  <meta name="citation_author" content="Sangpil Kim">
+  <meta name="citation_publication_date" content="2026/09/14">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2609.15022v1">
+  <link rel="icon" href="assets/figures/salute-shield.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/figures/salute-shield.png">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="assets/benchmark-data.js" defer></script>
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="wordmark" href="#" aria-label="SALUTE home"><img class="brand-mark" src="assets/figures/salute-shield.png" width="36" height="36" alt="">SALUTE</a>
+      <div class="nav-links"><a href="#overview">Overview</a><a href="#results">Results</a><a href="#benchmarks">Benchmarks</a><a href="#citation">Citation</a></div>
+      <a class="nav-paper" href="https://arxiv.org/abs/2609.15022v1" target="_blank" rel="noopener noreferrer">Read paper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container" aria-labelledby="paper-title">
+      <p class="venue"><span class="status-dot" aria-hidden="true"></span> Findings of EMNLP 2026</p>
+      <h1 id="paper-title">
+        <span class="hero-brand"><img src="assets/figures/salute-shield.png" width="76" height="76" alt=""><span class="hero-name">SALUTE</span></span>
+        <span class="hero-title">Benchmarking and Adapting LLMs<span class="hero-title-domain">for the Defense Domain</span></span>
+      </h1>
+      <div class="author-block">
+        <ul class="authors" aria-label="Authors and affiliation numbers">
+          <li>Hyeongcheol Park<sup>1</sup></li><li>Sumin In<sup>1</sup></li><li>Suyeon Myeong<sup>1</sup></li><li>Hogun Park<sup>2</sup></li>
+          <li>Sangmin Kim<sup>3</sup></li><li>Moonhyun Lee<sup>3</sup></li><li>Daekyeong Park<sup>3</sup></li><li>Sangpil Kim<sup>1</sup></li>
+        </ul>
+        <ul class="affiliations" aria-label="Affiliations"><li><sup>1</sup>Korea University</li><li><sup>2</sup>Sungkyunkwan University</li><li><sup>3</sup>Hanwha Systems</li></ul>
+      </div>
+      <div class="hero-actions">
+        <a class="button button-dark" href="https://arxiv.org/abs/2609.15022v1" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M8 12h8M8 16h6"/></svg>Read the paper <span aria-hidden="true">↗</span></a>
+        <a class="button button-green" href="downloads/salute-bench.zip" download="salute-bench.zip" aria-label="Download both SALUTE benchmarks as a ZIP"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg>Download benchmarks <span class="zip-label">ZIP</span></a>
+      </div>
+      <p class="hero-note">arXiv:2609.15022v1 <span aria-hidden="true">/</span> September 2026</p>
+    </section>
+
+    <section id="overview" class="container overview section" aria-labelledby="overview-title">
+      <div class="overview-intro">
+        <div class="section-heading"><p class="eyebrow">01 / The framework</p><h2 id="overview-title">From domain knowledge<br>to domain capability.</h2></div>
+        <div class="overview-copy"><p>SALUTE connects data construction, model adaptation, and evaluation for defense-domain language models. Military doctrine and defense news provide the foundation for a curated corpus, grounded instructions, preference pairs, and a held-out benchmark.</p><p>Starting from Qwen3-8B-Base, continual pretraining, two-stage supervised fine-tuning, and preference alignment produce Salute-LLM.</p></div>
+        <dl class="resource-stats"><div><dt>Corpus tokens</dt><dd>107M</dd></div><div><dt>Instruction pairs</dt><dd>255K</dd></div><div><dt>Preference pairs</dt><dd>19K</dd></div></dl>
+        <p class="resource-note">Approximate training-resource sizes · Sections 3.1–3.3</p>
+        <a class="text-link" href="assets/paper/2609.15022v1.pdf#page=3" target="_blank" rel="noopener noreferrer">Read the methodology <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="paper-figure overview-figure">
+        <a class="figure-link" href="assets/figures/figure-1-overview.png" data-figure="Figure 1 · SALUTE overview" aria-label="Enlarge Figure 1: SALUTE overview"><img src="assets/figures/figure-1-overview.png" width="921" height="959" alt="Original SALUTE overview: military doctrine and news feed corpus and instruction construction, followed by preference alignment and evaluation on open-ended and multiple-choice questions."><span class="figure-zoom" aria-hidden="true">⤢</span></a>
+        <figcaption><span>Figure 1</span> The SALUTE framework.</figcaption>
+      </figure>
+      <figure class="paper-figure framework-figure">
+        <div class="figure-heading"><div><p class="eyebrow">Inside the method</p><h3>A connected adaptation pipeline.</h3></div><span>Click any figure to explore</span></div>
+        <a class="figure-link" href="assets/figures/figure-2-framework.png" data-figure="Figure 2 · End-to-end SALUTE framework" aria-label="Enlarge Figure 2: end-to-end SALUTE framework"><img src="assets/figures/figure-2-framework.png" width="1905" height="817" loading="lazy" alt="Original detailed pipeline: source parsing, section-aware chunking, quality scoring and filtering for CPT; task planning and retrieval-augmented instruction generation for SFT; rejected-response generation and pair filtering for DPO."><span class="figure-zoom" aria-hidden="true">⤢</span></a>
+        <figcaption><span>Figure 2</span> Resource construction and the CPT → SFT → DPO training sequence.</figcaption>
+      </figure>
+      <figure class="pipeline" id="animated-pipeline">
+        <div class="pipeline-top"><div><span class="eyebrow">Follow the training flow</span><p class="pipeline-caption">Qwen3-8B-Base → Salute-LLM</p></div><button class="animation-toggle" id="pipeline-toggle" type="button" hidden>Pause animation</button></div>
+        <ol class="pipeline-stages">
+          <li><button type="button" class="stage-select" data-stage="0" aria-pressed="true" aria-controls="pipeline-detail"><span class="stage-number">01</span><span class="stage-resource">Salute-Corpus</span><span class="stage-title">Build knowledge</span><span class="stage-description">Continual pretraining on domain text</span><span class="stage-tag">CPT</span></button></li>
+          <li><button type="button" class="stage-select" data-stage="1" aria-pressed="false" aria-controls="pipeline-detail"><span class="stage-number">02</span><span class="stage-resource">Salute-Conv</span><span class="stage-title">Learn to respond</span><span class="stage-description">Two-stage supervised fine-tuning</span><span class="stage-tag">SFT</span></button></li>
+          <li><button type="button" class="stage-select" data-stage="2" aria-pressed="false" aria-controls="pipeline-detail"><span class="stage-number">03</span><span class="stage-resource">Salute-Pref</span><span class="stage-title">Align preferences</span><span class="stage-description">Preference optimization with domain replay</span><span class="stage-tag">DPO</span></button></li>
+          <li class="evaluation-stage"><button type="button" class="stage-select" data-stage="3" aria-pressed="false" aria-controls="pipeline-detail"><span class="stage-number">04</span><span class="stage-resource">Salute-Bench</span><span class="stage-title">Evaluate capability</span><span class="stage-description">Multiple-choice and open-ended questions</span><span class="stage-tag">EVALUATION</span></button></li>
+        </ol>
+        <div id="pipeline-detail" class="pipeline-detail"><span id="pipeline-output">Salute-Base</span><p id="pipeline-description">Continual pretraining combines Salute-Corpus with 10.2M general replay tokens to build a defense-domain knowledge foundation.</p></div>
+        <figcaption>Explore each stage. Evaluation uses held-out data and does not update the model.</figcaption>
+      </figure>
+    </section>
+
+    <section id="results" class="results-section section" aria-labelledby="results-title">
+      <div class="container">
+        <div class="results-heading"><div><p class="eyebrow">02 / Experimental results</p><h2 id="results-title">Specialized knowledge.<br>Measurable gains.</h2></div><p>Salute-LLM leads the compared 8B-scale models on Salute-Bench while retaining competitive general capabilities. All scores below are reported in the paper.</p></div>
+        <div class="result-highlights">
+          <article><p>Salute-Bench · MCQ accuracy</p><strong>86.02<span>%</span></strong><span class="result-gain">+8.22 percentage points</span><p>over Ministral-3-8B-Instruct, the strongest non-SALUTE 8B MCQ baseline.</p><a href="assets/paper/2609.15022v1.pdf#page=7" target="_blank" rel="noopener noreferrer">Table 4 ↗</a></article>
+          <article><p>Salute-Bench · Open-ended average</p><strong>64.51<span>/100</span></strong><span class="result-gain">+3.68 points</span><p>over Tulu-3-8B, the strongest non-SALUTE 8B open-ended baseline.</p><a href="assets/paper/2609.15022v1.pdf#page=7" target="_blank" rel="noopener noreferrer">Table 4 ↗</a></article>
+          <article><p>General benchmarks · Mean</p><strong>64.69<span>/100</span></strong><span class="result-gain">+1.16 points vs. Qwen3-8B</span><p>Across MMLU, TruthfulQA, ARC, IFEval, GSM8K, and GPQA.</p><a href="assets/paper/2609.15022v1.pdf#page=8" target="_blank" rel="noopener noreferrer">Table 5 ↗</a></article>
+        </div>
+        <div class="results-browser">
+          <div class="results-tabs" role="tablist" aria-label="Experimental result tables" hidden>
+            <button type="button" role="tab" id="defense-tab" data-result="defense" aria-selected="true" aria-controls="defense-panel">Salute-Bench <span>Table 4</span></button>
+            <button type="button" role="tab" id="general-tab" data-result="general" aria-selected="false" aria-controls="general-panel" tabindex="-1">General capabilities <span>Table 5</span></button>
+            <button type="button" role="tab" id="ablation-tab" data-result="ablation" aria-selected="false" aria-controls="ablation-panel" tabindex="-1">Training ablation <span>Table 6</span></button>
+          </div>
+          <!-- RESULTS:START -->
+<section id="defense-panel" class="result-panel" aria-labelledby="defense-heading"><div class="result-panel-heading"><h3 id="defense-heading">Table 4 · Performance on Salute-Bench</h3><a href="assets/paper/2609.15022v1.pdf#page=7" target="_blank" rel="noopener noreferrer">View in paper ↗</a></div><div class="table-scroll" role="region" aria-label="Table 4 · Performance on Salute-Bench; scroll horizontally for all columns" tabindex="0"><table class="results-table"><caption class="sr-only">Table 4 · Performance on Salute-Bench</caption><thead><tr><th scope="col">Model</th><th scope="col">Correctness</th><th scope="col">Completeness</th><th scope="col">Relevance</th><th scope="col">Overall</th><th scope="col">OE avg.</th><th scope="col">MCQ acc. (%)</th></tr></thead><tbody><tr class="model-group"><th colspan="7">Open-weight baselines</th></tr><tr><th scope="row">Qwen3-8B-Base</th><td>55.35</td><td>47.73</td><td>70.27</td><td>50.74</td><td>56.02</td><td>72.04</td></tr><tr><th scope="row">Qwen3-8B</th><td>54.70</td><td>46.95</td><td>69.34</td><td>49.85</td><td>55.21</td><td>77.28</td></tr><tr><th scope="row">Llama-3.1-8B-Instruct</th><td>47.29</td><td>45.77</td><td>59.11</td><td>45.72</td><td>49.47</td><td>70.20</td></tr><tr><th scope="row">Ministral-3-8B-Instruct</th><td>53.14</td><td>48.24</td><td>63.64</td><td>48.94</td><td>53.49</td><td>77.80</td></tr><tr><th scope="row">Tulu-3-8B</th><td>58.59</td><td>56.31</td><td>71.90</td><td>56.52</td><td>60.83</td><td>63.00</td></tr><tr><th scope="row">Granite-3.3-8B-Instruct</th><td>54.48</td><td>50.85</td><td>68.67</td><td>52.03</td><td>56.51</td><td>71.63</td></tr><tr class="model-group"><th colspan="7">SALUTE variants</th></tr><tr><th scope="row">Salute-8B-Base</th><td>58.89</td><td>54.60</td><td>73.20</td><td>56.02</td><td>60.68</td><td>78.52</td></tr><tr><th scope="row">Salute-8B-Instruct</th><td>60.62</td><td>56.71</td><td>78.47</td><td>58.17</td><td>63.49</td><td>85.09</td></tr><tr class="salute-result"><th scope="row">Salute-LLM</th><td>60.91</td><td>59.87</td><td>77.71</td><td>59.53</td><td>64.51</td><td>86.02</td></tr><tr class="model-group"><th colspan="7">Strong reference models</th></tr><tr><th scope="row">Qwen3-30B</th><td>61.82</td><td>56.30</td><td>75.91</td><td>57.30</td><td>62.83</td><td>78.11</td></tr><tr><th scope="row">GPT-5</th><td>72.85</td><td>65.20</td><td>84.23</td><td>66.88</td><td>72.29</td><td>92.18</td></tr></tbody></table></div><div class="result-explanation"><p>MCQ reports accuracy (%). GPT-OSS-120B scores open-ended answers on correctness, completeness, relevance, and overall quality; raw 1–5 scores are rescaled to 0–100. OE avg. is their mean.</p><p>Salute-LLM achieves the highest MCQ accuracy and OE average among the compared 8B-scale models. Qwen3-30B and GPT-5 are stronger reference models and are shown separately.</p></div></section>
+<section id="general-panel" class="result-panel" aria-labelledby="general-heading"><div class="result-panel-heading"><h3 id="general-heading">Table 5 · General capability retention</h3><a href="assets/paper/2609.15022v1.pdf#page=8" target="_blank" rel="noopener noreferrer">View in paper ↗</a></div><div class="table-scroll" role="region" aria-label="Table 5 · General capability retention; scroll horizontally for all columns" tabindex="0"><table class="results-table"><caption class="sr-only">Table 5 · General capability retention</caption><thead><tr><th scope="col">Model</th><th scope="col">Mean</th><th scope="col">MMLU</th><th scope="col">TruthfulQA</th><th scope="col">ARC</th><th scope="col">IFEval</th><th scope="col">GSM8K</th><th scope="col">GPQA</th></tr></thead><tbody><tr class="model-group"><th colspan="8">Open-weight baselines</th></tr><tr><th scope="row">Qwen3-8B-Base</th><td>63.95</td><td>76.94</td><td>50.99</td><td>64.41</td><td aria-label="Not evaluated">—</td><td>85.67</td><td>41.74</td></tr><tr><th scope="row">Qwen3-8B</th><td>63.53</td><td>72.04</td><td>53.16</td><td>57.16</td><td>76.34</td><td>85.44</td><td>37.05</td></tr><tr><th scope="row">Llama-3.1-8B-Instruct</th><td>62.72</td><td>68.66</td><td>55.04</td><td>60.49</td><td>73.75</td><td>83.16</td><td>35.26</td></tr><tr><th scope="row">Ministral-3-8B-Instruct</th><td>62.16</td><td>76.44</td><td>63.88</td><td>63.05</td><td>52.12</td><td>79.75</td><td>37.72</td></tr><tr><th scope="row">Tulu-3-8B</th><td>62.56</td><td>62.22</td><td>60.34</td><td>55.20</td><td>76.34</td><td>88.70</td><td>32.58</td></tr><tr><th scope="row">Granite-3.3-8B-Instruct</th><td>60.86</td><td>65.16</td><td>66.64</td><td>60.23</td><td>64.51</td><td>76.72</td><td>31.91</td></tr><tr class="model-group"><th colspan="8">SALUTE variants</th></tr><tr><th scope="row">Salute-8B-Base</th><td>62.96</td><td>76.96</td><td>48.61</td><td>63.82</td><td aria-label="Not evaluated">—</td><td>84.83</td><td>40.62</td></tr><tr><th scope="row">Salute-8B-Instruct</th><td>61.72</td><td>74.69</td><td>48.90</td><td>59.47</td><td>64.87</td><td>81.57</td><td>40.84</td></tr><tr class="salute-result"><th scope="row">Salute-LLM</th><td>64.69</td><td>75.35</td><td>52.31</td><td>61.00</td><td>70.97</td><td>86.35</td><td>42.19</td></tr><tr class="model-group"><th colspan="8">Strong reference models</th></tr><tr><th scope="row">Qwen3-30B</th><td>69.10</td><td>81.00</td><td>60.04</td><td>59.98</td><td>73.75</td><td>94.76</td><td>45.08</td></tr><tr><th scope="row">GPT-5</th><td>82.39</td><td>85.97</td><td>81.72</td><td>95.90</td><td>84.47</td><td>94.31</td><td>52.00</td></tr></tbody></table></div><div class="result-explanation"><p>Mean is the macro-average over applicable benchmarks. IFEval is not evaluated for base models (—), so their means cover five tasks; instruction-model means cover six.</p><p>Salute-LLM has the highest reported general mean among the compared 8B-scale models. Individual-task results vary; its GPQA score is 42.19.</p></div></section>
+<section id="ablation-panel" class="result-panel" aria-labelledby="ablation-heading"><div class="result-panel-heading"><h3 id="ablation-heading">Table 6 · What does each stage contribute?</h3><a href="assets/paper/2609.15022v1.pdf#page=8" target="_blank" rel="noopener noreferrer">View in paper ↗</a></div><div class="table-scroll" role="region" aria-label="Table 6 · Training-stage ablation; scroll horizontally for all columns" tabindex="0"><table class="results-table"><caption class="sr-only">Table 6 · Training-stage ablation</caption><thead><tr><th scope="col">Variant</th><th scope="col">CPT</th><th scope="col">SFT</th><th scope="col">DPO</th><th scope="col">OE avg.</th><th scope="col">MCQ acc. (%)</th><th scope="col">General mean</th></tr></thead><tbody><tr><th scope="row">Base</th><td class="stage-flag" aria-label="Not included">—</td><td class="stage-flag" aria-label="Not included">—</td><td class="stage-flag" aria-label="Not included">—</td><td>56.02</td><td>72.04</td><td>63.95</td></tr><tr><th scope="row">CPT-only</th><td class="stage-flag" aria-label="Included">✓</td><td class="stage-flag" aria-label="Not included">—</td><td class="stage-flag" aria-label="Not included">—</td><td>60.68</td><td>78.52</td><td>62.96</td></tr><tr><th scope="row">SFT-only</th><td class="stage-flag" aria-label="Not included">—</td><td class="stage-flag" aria-label="Included">✓</td><td class="stage-flag" aria-label="Not included">—</td><td>62.12</td><td>80.26</td><td>61.14</td></tr><tr><th scope="row">CPT → SFT</th><td class="stage-flag" aria-label="Included">✓</td><td class="stage-flag" aria-label="Included">✓</td><td class="stage-flag" aria-label="Not included">—</td><td>63.49</td><td>85.09</td><td>61.72</td></tr><tr><th scope="row">SFT → DPO</th><td class="stage-flag" aria-label="Not included">—</td><td class="stage-flag" aria-label="Included">✓</td><td class="stage-flag" aria-label="Included">✓</td><td>63.54</td><td>84.58</td><td>64.58</td></tr><tr class="salute-result"><th scope="row">Full</th><td class="stage-flag" aria-label="Included">✓</td><td class="stage-flag" aria-label="Included">✓</td><td class="stage-flag" aria-label="Included">✓</td><td>64.51</td><td>86.02</td><td>64.69</td></tr></tbody></table></div><div class="ablation-insights"><div><strong>+6.48 pp</strong><span>MCQ accuracy from continual pretraining alone, relative to the base model.</span></div><div><strong>+4.83 pp</strong><span>MCQ accuracy for CPT → SFT compared with SFT alone.</span></div><div><strong>+2.97 points</strong><span>General mean after adding DPO to CPT → SFT.</span></div></div><div class="result-explanation"><p>All variants start from Qwen3-8B-Base. The full pipeline scores highest across all three reported metrics. General means use applicable tasks, excluding IFEval for base variants.</p></div></section>
+          <!-- RESULTS:END -->
+        </div>
+      </div>
+    </section>
+
+    <section id="benchmarks" class="benchmark-section section" aria-labelledby="benchmark-title">
+      <div class="container">
+        <div class="section-heading benchmark-heading"><div><p class="eyebrow">03 / Salute-Bench</p><h2 id="benchmark-title">Two formats. A broader perspective.</h2><p class="section-description">Evaluate understanding across doctrine and defense news with eight task categories.</p></div></div>
+        <div class="dataset-grid">
+          <article class="dataset-card" aria-labelledby="mcq-title">
+            <div class="dataset-top"><span class="dataset-icon" aria-hidden="true">A–D</span><span class="format-tag">MULTIPLE CHOICE</span></div>
+            <h3 id="mcq-title">SALUTE-MCQ</h3><p class="dataset-description">Four choices. One correct answer. Assess domain knowledge with exact-match accuracy.</p>
+            <p class="dataset-count"><strong data-count="mcq">973</strong><span>evaluation questions</span></p>
+            <div class="split-bar" aria-hidden="true"><span data-split="mcq" style="width:66.6%"></span></div>
+            <div class="split-labels"><span><i class="dot doctrine-dot" aria-hidden="true"></i>Doctrine <b data-source-count="mcq:doctrine">648</b></span><span><i class="dot news-dot" aria-hidden="true"></i>News <b data-source-count="mcq:news">325</b></span></div>
+          </article>
+          <article class="dataset-card" aria-labelledby="oe-title">
+            <div class="dataset-top"><span class="dataset-icon" aria-hidden="true">Aa</span><span class="format-tag">OPEN ENDED</span></div>
+            <h3 id="oe-title">SALUTE-OE</h3><p class="dataset-description">Questions with reference answers. Assess correctness, completeness, relevance, and overall quality.</p>
+            <p class="dataset-count"><strong data-count="oe">2,638</strong><span>evaluation questions</span></p>
+            <div class="split-bar" aria-hidden="true"><span data-split="oe" style="width:56.1%"></span></div>
+            <div class="split-labels"><span><i class="dot doctrine-dot" aria-hidden="true"></i>Doctrine <b data-source-count="oe:doctrine">1,479</b></span><span><i class="dot news-dot" aria-hidden="true"></i>News <b data-source-count="oe:news">1,159</b></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples" class="container section examples-section" aria-labelledby="examples-title">
+      <div class="section-heading"><p class="eyebrow">04 / A closer look</p><h2 id="examples-title">Inside the benchmark.</h2><p class="section-description">A real record from each downloadable dataset.</p></div>
+      <div class="example-browser" id="example-browser" hidden>
+        <div class="example-toolbar"><div class="example-tabs" role="tablist" aria-label="Example format"><button type="button" role="tab" id="mcq-tab" aria-controls="example-panel" aria-selected="true" data-example="mcq">Multiple choice</button><button type="button" role="tab" id="oe-tab" aria-controls="example-panel" aria-selected="false" tabindex="-1" data-example="oe">Open ended</button></div><span class="example-source">SOURCE: DOCTRINE</span></div>
+        <div id="example-panel" role="tabpanel" aria-labelledby="mcq-tab" tabindex="0"><div class="example-meta"><span id="example-task"></span><span id="example-document"></span></div><h3 id="example-question"></h3><ol id="example-options" class="example-options" aria-label="Answer choices"></ol><details id="example-answer" class="answer-details"><summary>Show reference answer <span aria-hidden="true">+</span></summary><div class="answer-content"><p id="example-key"></p><p id="example-reference"></p></div></details></div>
+      </div>
+      <noscript><p class="noscript-note">The benchmark ZIP at the top of the page contains both JSONL files. Enable JavaScript to preview examples here.</p></noscript>
+    </section>
+
+    <section id="citation" class="citation-section section" aria-labelledby="citation-title">
+      <div class="container citation-layout"><div class="section-heading"><p class="eyebrow">05 / Citation</p><h2 id="citation-title">Build on SALUTE.</h2><p class="section-description">If you use SALUTE in your research,<br>please cite our paper.</p><a class="text-link" href="assets/salute.bib" download>Download BibTeX <span aria-hidden="true">↓</span></a></div><div class="citation-box"><div class="citation-toolbar"><span>BibTeX</span><button type="button" id="copy-citation" hidden>Copy citation <span aria-hidden="true">⧉</span></button></div><pre><code id="bibtex">@misc{park2026salute,
+  title = {SALUTE: Benchmarking and Adapting LLMs
+           for the Defense Domain},
+  author = {Hyeongcheol Park and Sumin In and
+            Suyeon Myeong and Hogun Park and
+            Sangmin Kim and Moonhyun Lee and
+            Daekyeong Park and Sangpil Kim},
+  year = {2026},
+  eprint = {2609.15022},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CL},
+  url = {https://arxiv.org/abs/2609.15022v1}
+}</code></pre><p id="copy-status" class="sr-only" role="status"></p></div></div>
+    </section>
+  </main>
+  <dialog id="figure-dialog" aria-labelledby="figure-dialog-title">
+    <div class="figure-dialog-toolbar"><h2 id="figure-dialog-title">Paper figure</h2><div><button type="button" id="figure-size" aria-pressed="false">Original size</button><button type="button" id="figure-close" aria-label="Close figure">Close <span aria-hidden="true">×</span></button></div></div>
+    <div class="figure-dialog-image" tabindex="0" aria-label="Figure image; scroll to explore when zoomed"><img id="figure-dialog-img" alt=""></div>
+  </dialog>
+  <footer class="container footer"><a class="wordmark" href="#" aria-label="SALUTE home"><img class="brand-mark" src="assets/figures/salute-shield.png" width="36" height="36" alt="">SALUTE</a><p>Benchmarking and Adapting LLMs for the Defense Domain</p><a href="https://arxiv.org/abs/2609.15022v1" target="_blank" rel="noopener noreferrer">Paper on arXiv <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>
