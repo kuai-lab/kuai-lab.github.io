@@ -73,6 +73,7 @@
 .project-footer .project-footer-name { max-width: 560px; margin: 0; line-height: 1.8; }
 .project-footer .project-footer-meta { flex-shrink: 0; text-align: right; }
 .project-footer .project-footer-meta p { margin: 3px 0; }
+.project-footer .project-footer-meta .site-launch-date { margin-top: 12px; color: var(--ink); font-size: .875rem; font-weight: 600; }
 .project-footer .project-footer-meta a:hover { text-decoration: underline; text-underline-offset: 4px; }
 @media (max-width: 960px) {
   .project-branding-inner { gap: 24px; grid-template-columns: minmax(0, 1fr) minmax(340px, 1fr); }
