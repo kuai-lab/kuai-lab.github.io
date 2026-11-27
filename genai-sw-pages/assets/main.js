@@ -12,7 +12,8 @@
   ];
   const labels = Object.fromEntries(categories);
   const projects = [...(window.SOFTWARE_PROJECTS || [])].sort(
-    (a, b) => Number(b.featured) - Number(a.featured) || a.page - b.page
+    (a, b) => Number(b.featured) - Number(a.featured)
+      || (a.page ?? Number.MAX_SAFE_INTEGER) - (b.page ?? Number.MAX_SAFE_INTEGER)
   );
   const grid = document.getElementById("project-grid");
   const search = document.getElementById("project-search");
@@ -38,7 +39,7 @@
   };
 
   if (!projects.length) {
-    count.textContent = "목록을 불러오지 못했습니다. 아래 홍보자료 PDF에서 전체 연구 SW를 확인해 주세요.";
+    count.textContent = "목록을 불러오지 못했습니다. 위 주요 기술 카드와 아래 홍보자료 PDF에서 연구 정보를 확인해 주세요.";
     return;
   }
 
@@ -51,18 +52,26 @@
     const title = element("h3", "", project.name);
     title.title = project.title;
     const description = element("p", "project-description", project.description);
-    const repoPath = element("p", "repo-path", project.url.replace("https://github.com/", ""));
+    const codePending = project.codeStatus === "planned";
+    const repoPath = element("p", "repo-path", project.url.replace(/^https:\/\/(github\.com\/)?/, ""));
     const links = element("div", "project-links");
     links.append(
-      link(project.url, "GitHub 코드 보기", `${project.name} GitHub 저장소 (새 탭)`),
-      link(`./genai_compyright_sw.pdf#page=${project.page}`, "소개자료", `${project.name} 소개자료 PDF ${project.page}페이지 (새 탭)`)
+      link(project.url, codePending ? "코드 공개 예정" : "GitHub 코드 보기",
+        codePending ? `${project.name} 코드 공개 예정 — 연구 소개 페이지 (새 탭)` : `${project.name} GitHub 저장소 (새 탭)`)
     );
-    article.append(category, title, description, repoPath, links);
+    if (Number.isInteger(project.page)) {
+      links.append(link(`./genai_compyright_sw.pdf#page=${project.page}`, "소개자료", `${project.name} 소개자료 PDF ${project.page}페이지 (새 탭)`));
+    } else if (project.paperUrl) {
+      links.append(link(project.paperUrl, "논문 보기", `${project.name} 논문 (새 탭)`));
+    }
+    article.append(category, title, description);
+    if (codePending) article.append(element("p", "release-note", project.releaseNote));
+    article.append(repoPath, links);
     grid.append(article);
     return {
       article,
       category: project.category,
-      searchText: normalize([project.name, project.title, project.description, project.url, labels[project.category]].join(" "))
+      searchText: normalize([project.name, project.title, project.description, project.url, project.releaseNote || "", labels[project.category]].join(" "))
     };
   });
 

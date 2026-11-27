@@ -1,5 +1,6 @@
-// PDF 수록 순서와 페이지를 유지한 연구 소프트웨어 목록입니다.
-// URL은 제공된 자료를 기준으로 작성했으며, 기능 설명은 연구 제목을 요약했습니다.
+// PDF 수록 SW 32건과 공식 연구실 웹사이트에서 추가한 연구 4건입니다.
+// PDF 미수록 연구는 page: null과 paperUrl을 사용합니다.
+// GuardMarkGS는 코드 공개 전까지 공식 연구 소개 페이지로 연결합니다.
 window.SOFTWARE_PROJECTS = [
   {
     id: "trackcraft3r",
@@ -319,6 +320,52 @@ window.SOFTWARE_PROJECTS = [
     category: "spatial",
     url: "https://github.com/kuai-lab/cvpr26_Decoupled_HOI",
     page: 33,
+    featured: false
+  },
+  {
+    id: "3d-gsw",
+    name: "3D-GSW",
+    title: "3D-GSW: 3D Gaussian Splatting for Robust Watermarking",
+    description: "3D Gaussian Splatting에 워터마크를 삽입해 모델과 렌더링 이미지의 변형 이후에도 소유권을 식별하는 연구입니다.",
+    category: "protection",
+    url: "https://github.com/kuai-lab/cvpr25_3D-GSW",
+    paperUrl: "https://arxiv.org/abs/2409.13222",
+    page: null,
+    featured: true
+  },
+  {
+    id: "waterf",
+    name: "WateRF",
+    title: "WateRF: Robust Watermarks in Radiance Fields for Protection of Copyrights",
+    description: "NeRF에 이진 메시지를 삽입하고 다양한 시점에서 렌더링한 이미지에서 복원해 3D 콘텐츠의 저작권을 보호합니다.",
+    category: "protection",
+    url: "https://github.com/kuai-lab/cvpr2024_WateRF",
+    paperUrl: "https://arxiv.org/abs/2405.02066",
+    page: null,
+    featured: true
+  },
+  {
+    id: "guardmarkgs",
+    name: "GuardMarkGS",
+    title: "GuardMarkGS: Unified Ownership Tracing and Edit Deterrence for 3D Gaussian Splatting",
+    description: "3D Gaussian Splatting의 소유권 추적과 무단 편집 억제를 함께 최적화하는 통합 저작권 보호 연구입니다.",
+    category: "protection",
+    url: "https://kuaicv.com/pre-print/",
+    paperUrl: "https://arxiv.org/abs/2605.12919",
+    codeStatus: "planned",
+    releaseNote: "코드 비공개 · 2026.12.18 이후 공개 예정",
+    page: null,
+    featured: true
+  },
+  {
+    id: "faceshield",
+    name: "FaceShield",
+    title: "FaceShield: Defending Facial Image against Deepfake Threats",
+    description: "얼굴 이미지에 보호용 미세 교란을 삽입해 확산 모델과 GAN 기반 딥페이크의 얼굴 합성을 방해합니다.",
+    category: "protection",
+    url: "https://github.com/kuai-lab/iccv25_faceshield",
+    paperUrl: "https://arxiv.org/abs/2412.09921",
+    page: null,
     featured: false
   }
 ];
